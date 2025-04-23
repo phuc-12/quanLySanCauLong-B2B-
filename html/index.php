@@ -397,11 +397,16 @@
 			        	<div class="owl-carousel featured-venues-slider owl-theme">
 
 							<!-- Featured Item -->
-						    <div class="featured-venues-item aos" data-aos="fade-up">
+							<?php
+
+								include("assets/view/sancaulong/sancaulong.php");
+								
+							?>
+						    <!-- <div class="featured-venues-item aos" data-aos="fade-up">
 								<div class="listing-item mb-0">										
 									<div class="listing-img">
 										<a href="venue-details.html">
-											<img src="assets/img/venues/venues-01.jpg" alt="Venue">
+											<img src="assets/img/venues/quangvinh.jpg" alt="Venue">
 										</a>
 										<div class="fav-item-venues">
 											<span class="tag tag-blue">Featured</span>		
@@ -436,20 +441,17 @@
 											</ul>
 										</div>
 										<div class="listing-button">
-											<div class="listing-venue-owner">
-												<a class="navigation" href="coach-detail.html">
-													<img src="assets/img/profiles/avatar-01.jpg" alt="Venue">Mart Sublin
-												</a>												
+											<div class="listing-venue-owner">										
 											</div>
 											<a href="venue-details.html" class="user-book-now"><span><i class="feather-calendar me-2"></i></span>Book Now</a>
 										</div>	
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<!-- /Featured Item -->
 
 							<!-- Featured Item -->
-						    <div class="featured-venues-item aos" data-aos="fade-up">
+						    <!-- <div class="featured-venues-item aos" data-aos="fade-up">
 								<div class="listing-item mb-0">										
 									<div class="listing-img">
 										<a href="venue-details.html">
@@ -497,11 +499,11 @@
 										</div>	
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<!-- /Featured Item -->
 
 							<!-- Featured Item -->
-						    <div class="featured-venues-item aos" data-aos="fade-up">
+						    <!-- <div class="featured-venues-item aos" data-aos="fade-up">
 								<div class="listing-item mb-0">										
 									<div class="listing-img">
 										<a href="venue-details.html">
@@ -548,11 +550,11 @@
 										</div>	
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<!-- /Featured Item -->
 
 							<!-- Featured Item -->
-						    <div class="featured-venues-item aos" data-aos="fade-up">
+						    <!-- <div class="featured-venues-item aos" data-aos="fade-up">
 								<div class="listing-item mb-0">										
 									<div class="listing-img">
 										<a href="venue-details.html">
@@ -600,7 +602,7 @@
 										</div>	
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<!-- /Featured Item -->
 
 						</div>	

@@ -1,6 +1,16 @@
 <?php
-    class clsKetNoi
+
+    class clsketnoi
     {
-        private function ket
+        public function moketnoi()
+        {
+            return mysqli_connect('localhost','cnm','123','sancaulong');
+        }
+
+        public function dongketnoi($con)
+        {
+            $con->close();
+        }
     }
+
 ?>
