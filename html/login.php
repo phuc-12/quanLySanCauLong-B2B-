@@ -74,8 +74,8 @@
 								<div class="col-sm-10 col-md-10 col-lg-10 mx-auto">
 									<div class="h-100 d-flex justify-content-center align-items-center">
 										<div class="text-bg register text-center">
-											<button type="button" class="btn btn-limegreen text-capitalize"><i class="fa-solid fa-thumbs-up me-3"></i>Login User & Coach</button>
-											<p>Log in right away for our advanced sports software solutions, created to address issues in regular sporting events and activities.</p>
+											<button type="button" class="btn btn-limegreen text-capitalize"><i class="fa-solid fa-thumbs-up me-3"></i>Đăng nhập Khách hàng & Doanh nghiệp</button>
+											<p>Đăng nhập ngay để bắt đầu !</p>
 										</div>
 									</div>
 								</div>
@@ -92,8 +92,8 @@
 										</a>
 									</header>
 									<div class="shadow-card">
-										<h2>Welcome Back</h2>
-										<p>Login into your account</p>
+										<h2>Xin Chào!</h2>
+										<p>Đăng Nhập Vào Tài Khoản Của Bạn</p>
 
 										<ul class="nav nav-tabs" id="myTab" role="tablist">
 											<li class="nav-item" role="presentation">
@@ -126,32 +126,12 @@
 													<div class="form-group d-sm-flex align-items-center justify-content-between">
 														<div class="form-check form-switch d-flex align-items-center justify-content-start">
 														  	<input class="form-check-input" type="checkbox" id="user-pass">
-														  	<label class="form-check-label" for="user-pass">Remember Password</label>
+														  	<label class="form-check-label" for="user-pass">Nhớ mặt khẩu</label>
 														</div>																	
-														<span><a href="forgot-password.html" class="forgot-pass">Forgot Password</a></span>
+														<span><a href="forgot-password.html" class="forgot-pass">Quên mật khẩu?</a></span>
 													</div>
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Sign In<i class="feather-arrow-right-circle ms-2"></i></button>
-													<div class="form-group">
-														<div class="login-options text-center">
-															<span class="text">Or continue with</span>
-														</div>
-													</div>
-													<div class="form-group mb-0">
-														<ul class="social-login d-flex justify-content-center align-items-center">
-															<li class="text-center">
-																<button type="button" class="btn btn-social d-flex align-items-center justify-content-center">
-																	<img src="assets/img/icons/google.svg" class="img-fluid" alt="Google">
-																	<span>Google</span>
-																</button>
-															</li>
-															<li class="text-center">
-																<button type="button" class="btn btn-social d-flex align-items-center justify-content-center">
-																	<img src="assets/img/icons/facebook.svg" class="img-fluid" alt="Facebook">
-																	<span>Facebook</span>
-																</button>
-															</li>
-														</ul>
-													</div>								
+													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Đăng nhập<i class="feather-arrow-right-circle ms-2"></i></button>
+																					
 												</form>
 												<!-- /Login Form -->
 											</div>
@@ -173,39 +153,18 @@
 													<div class="form-group d-sm-flex align-items-center justify-content-between">
 														<div class="form-check form-switch d-flex align-items-center justify-content-start">
 														  	<input class="form-check-input" type="checkbox" id="user-login">
-														  	<label class="form-check-label" for="user-login">Remember Password</label>
+														  	<label class="form-check-label" for="user-login">Nhớ mặt khẩu</label>
 														</div>																	
-														<span><a href="forgot-password.html" class="forgot-pass">Forgot Password</a></span>
+														<span><a href="forgot-password.html" class="forgot-pass">Quên mật khẩu?</a></span>
 													</div>
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Sign In<i class="feather-arrow-right-circle ms-2" ></i></button>
-													<div class="form-group">
-														<div class="login-options text-center">
-															<span class="text">Or continue with</span>
-														</div>
-													</div>
-													<div class="form-group mb-0">
-														<ul class="social-login d-flex justify-content-center align-items-center">
-															<li class="text-center">
-																<button type="button" class="btn btn-social d-flex align-items-center justify-content-center">
-																	<img src="assets/img/icons/google.svg" class="img-fluid" alt="Google">
-																	<span>Google</span>
-																</button>
-															</li>
-															<li class="text-center">
-																<button type="button" class="btn btn-social d-flex align-items-center justify-content-center">
-																	<img src="assets/img/icons/facebook.svg" class="img-fluid" alt="Facebook">
-																	<span>Facebook</span>
-																</button>
-															</li>
-														</ul>
-													</div>								
+													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Đăng nhập<i class="feather-arrow-right-circle ms-2" ></i></button>							
 												</form>
 												<!-- /Login Form -->
 											</div>
 										</div>
 									</div>
 									<div class="bottom-text text-center">
-										<p>Don’t have an account? <a href="register.php">Sign up!</a></p>
+										<p>Chưa có tài khoản? <a href="register.php">Đăng ký!</a></p>
 									</div>
 								</div>
 							</div>
