@@ -74,8 +74,8 @@
 								<div class="col-sm-10 col-md-10 col-lg-10 mx-auto">
 									<div class="h-100 d-flex justify-content-center align-items-center">
 										<div class="text-bg register text-center">
-											<button type="button" class="btn btn-limegreen text-capitalize"><i class="fa-solid fa-thumbs-up me-3"></i>register Now</button>
-											<p>Register now for our innovative sports software solutions, designed to tackle challenges in everyday sports activities and events.</p>
+											<button type="button" class="btn btn-limegreen text-capitalize"><i class="fa-solid fa-thumbs-up me-3"></i>Đăng ký ngay!</button>
+											<p>Đăng ký ngay để nhận thêm nhiều ưu đãi.	</p>
 										</div>
 									</div>
 								</div>
@@ -92,8 +92,8 @@
 										</a>
 									</header>
 									<div class="shadow-card">
-										<h2>Get Started With Dreamsports</h2>
-										<p>Ignite your sports journey with DreamSports and get started now.
+										<h2>Bắt đầu với Dreamsports</h2>
+										<p>Khơi dậy hành trình thể thao của bạn với DreamSports và bắt đầu ngay bây giờ.
 										</p>
 
 										<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -111,7 +111,7 @@
 										<div class="tab-content" id="myTabContent">
 											<div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
 												<!-- Register Form -->
-												<form action="https://dreamsports.dreamstechnologies.com/html/login.html">
+												<form action="login.php">
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
@@ -136,40 +136,16 @@
 															<input type="password" class="form-control pass-confirm" placeholder="Confirm Password">
 														</div>
 													</div>
-													<div class="form-check d-flex justify-content-start align-items-center policy">
-														<div class="d-inline-block">
-															<input class="form-check-input" type="checkbox" value="" id="policy">
-														</div>
-														<label class="form-check-label" for="policy">Đồng ý điều khoản sử dụng<a href="terms-condition.html">Terms of Use</a></label>
-													</div>
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Create Account<i class="feather-arrow-right-circle ms-2"></i></button>
-													<div class="form-group">
-														<div class="login-options text-center">
-															<span class="text">Or continue with</span>
-														</div>
-													</div>
-													<div class="form-group mb-0">
-														<ul class="social-login d-flex justify-content-center align-items-center">
-															<li class="text-center">
-																<button type="button" class="btn btn-social d-flex align-items-center justify-content-center">
-																	<img src="assets/img/icons/google.svg" class="img-fluid" alt="Google">
-																	<span>Google</span>
-																</button>
-															</li>
-															<li class="text-center">
-																<button type="button" class="btn btn-social d-flex align-items-center justify-content-center">
-																	<img src="assets/img/icons/facebook.svg" class="img-fluid" alt="Facebook">
-																	<span>Facebook</span>
-																</button>
-															</li>
-														</ul>
-													</div>								
+													
+													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Đăng Ký<i class="feather-arrow-right-circle ms-2"></i></button>
+													
+																			
 												</form>
 												<!-- /Register Form -->
 											</div>
 											<div class="tab-pane fade" id="coach" role="tabpanel" aria-labelledby="coach-tab">
 												<!-- Register Form -->
-												<form action="https://dreamsports.dreamstechnologies.com/html/login.html">
+												<form action="login.php">
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
@@ -194,41 +170,16 @@
 															<input type="password" class="form-control pass-confirm" placeholder="Confirm Password">
 														</div>
 													</div>
-													<div class="form-check d-flex justify-content-start align-items-center policy">
-														<div class="d-inline-block">
-															<input class="form-check-input" type="checkbox" value="" id="terms">
-														</div>
-														<label class="form-check-label" for="terms">By continuing you indicate that you read and agreed to the <a href="terms-condition.html">Terms of Use</a></label>
-													</div>
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Create Account<i class="feather-arrow-right-circle ms-2"></i></button>
-													<div class="form-group">
-														<div class="login-options text-center">
-															<span class="text">Or continue with</span>
-														</div>
-													</div>
-													<div class="form-group mb-0">
-														<ul class="social-login d-flex justify-content-center align-items-center">
-															<li class="text-center">
-																<button type="button" class="btn btn-social d-flex align-items-center justify-content-center">
-																	<img src="assets/img/icons/google.svg" class="img-fluid" alt="Google">
-																	<span>Google</span>
-																</button>
-															</li>
-															<li class="text-center">
-																<button type="button" class="btn btn-social d-flex align-items-center justify-content-center">
-																	<img src="assets/img/icons/facebook.svg" class="img-fluid" alt="Facebook">
-																	<span>Facebook</span>
-																</button>
-															</li>
-														</ul>
-													</div>								
+													
+													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Đăng Ký<i class="feather-arrow-right-circle ms-2"></i></button>
+																		
 												</form>
 												<!-- /Register Form -->
 											</div>
 										</div>
 									</div>
 									<div class="bottom-text text-center">
-										<p>Have an account? <a href="login.php">Sign In!</a></p>
+										<p>Đã có tài khoản? <a href="login.php">Đăng nhập!</a></p>
 									</div>
 								</div>
 							</div>
