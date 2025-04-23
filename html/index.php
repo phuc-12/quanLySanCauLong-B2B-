@@ -159,7 +159,7 @@
 									<li class="has-submenu">
 										<a href="javascript:void(0);">Authentication</a>
 										<ul class="submenu">
-											<li><a href="register.html">Signup</a></li>
+											<li><a href="register.php">Signup</a></li>
 											<li><a href="login.html">Signin</a></li>
 											<li><a href="forgot-password.html">Forgot Password</a></li>
 											<li><a href="change-password.html">Reset Password</a></li>
@@ -220,7 +220,7 @@
 							</li>
 							<li><a href="contact-us.html">Liên Hệ</a></li>
 							<li class="login-link">
-								<a href="register.html">Sign Up</a>
+								<a href="register.php">Sign Up</a>
 							</li>
 							<li class="login-link">
 								<a href="login.html">Sign In</a>
@@ -637,7 +637,7 @@
 							</div>
 							<div class="service-content">
 								<h4><a href="service-detail.html">Court Rent</a></h4>
-								<a href="service-detail.html">Learn More</a>
+								<a href="service-detail.html">Tìm hiểu thêm</a>
 							</div>
 						</div>
 					</div>
@@ -650,7 +650,7 @@
 							</div>
 							<div class="service-content">
 								<h4><a href="service-detail.html">Group Lesson</a></h4>
-								<a href="service-detail.html">Learn More</a>
+								<a href="service-detail.html">Tìm hiểu thêm</a>
 							</div>
 						</div>
 					</div>
@@ -663,7 +663,7 @@
 							</div>
 							<div class="service-content">
 								<h4><a href="service-detail.html">Training Program</a></h4>
-								<a href="service-detail.html">Learn More</a>
+								<a href="service-detail.html">Tìm hiểu thêm</a>
 							</div>
 						</div>
 					</div>
@@ -676,7 +676,7 @@
 							</div>
 							<div class="service-content">
 								<h4><a href="service-detail.html">Private Lessons</a></h4>
-								<a href="service-detail.html">Learn More</a>
+								<a href="service-detail.html">Tìm hiểu thêm</a>
 							</div>
 						</div>
 					</div>
@@ -911,7 +911,7 @@
 								</ul>
 							</div>
 							<div class="convenient-btns">
-								<a href="register.html" class="btn btn-primary d-inline-flex align-items-center">
+								<a href="register.php" class="btn btn-primary d-inline-flex align-items-center">
 									<span><i class="feather-user-plus me-2"></i></span>Tham Gia Cùng Chúng Tôi 
 								</a>
 								<a href="about-us.html" class="btn btn-secondary d-inline-flex align-items-center">
@@ -938,7 +938,7 @@
 					<p class="sub-title">Khám phá khả năng của bản thân với cơ sở vật chất tiên tiến. Hãy tham gia cùng chúng tôi để cải thiện sức khỏe của bạn.</p>
 				</div>
 				<div class="row justify-content-center">
-					<div class="col-lg-4 col-md-6 d-flex">
+					<!-- <div class="col-lg-4 col-md-6 d-flex">
 						<div class="work-grid coaching-grid w-100 aos" data-aos="fade-up">
 							<div class="work-icon">
 								<div class="work-icon-inner">
@@ -949,11 +949,11 @@
 								<h3>Group Coaching</h3>
 								<p>Accelerate your skills with tailored group coaching sessions for badminton players game.</p>
 								<a href="javascript:void(0);">
-									Learn More
+									Tìm hiểu thêm
 								</a>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="col-lg-4 col-md-6 d-flex">
 						<div class="work-grid coaching-grid w-100 aos" data-aos="fade-up">
 							<div class="work-icon">
@@ -962,10 +962,10 @@
 								</div>
 							</div>
 							<div class="work-content">
-								<h3>Private Coaching</h3>
-								<p>Find private badminton coaches and academies for a personalized approach to skill enhancement.</p>
+								<h3 style="text-align:center">Huấn luyện riêng</h3>
+								<p>Tìm kiếm huấn luyện viên cầu lông tư nhân và các học viện để có phương pháp tiếp cận cá nhân hóa nhằm nâng cao kỹ năng.</p>
 								<a href="javascript:void(0);">
-									Learn More
+									Tìm hiểu thêm
 								</a>
 							</div>
 						</div>
@@ -978,10 +978,10 @@
 								</div>
 							</div>
 							<div class="work-content">
-								<h3>Equipment Store</h3>
-								<p>Your one-stop shop for high-quality badminton equipment, enhancing your on-court performance.</p>
+								<h3 style="text-align:center">Cửa hàng thiết bị</h3>
+								<p>Cửa hàng cung cấp cho bạn thiết bị cầu lông chất lượng cao, nâng cao hiệu suất trên sân của bạn.</p>
 								<a href="javascript:void(0);">
-									Learn More
+									Tìm hiểu thêm
 								</a>
 							</div>
 						</div>
@@ -994,10 +994,10 @@
 								</div>
 							</div>
 							<div class="work-content">
-								<h3>Innovative Lessons</h3>
-								<p>Enhance your badminton skills with innovative lessons, combining modern techniques and training methods</p>
+								<h3 style="text-align:center">Bài học sáng tạo</h3>
+								<p>Nâng cao kỹ năng cầu lông của bạn với các bài học sáng tạo, kết hợp các kỹ thuật và phương pháp đào tạo hiện đại.</p>
 								<a href="javascript:void(0);">
-									Learn More
+									Tìm hiểu thêm
 								</a>
 							</div>
 						</div>
@@ -1010,10 +1010,10 @@
 								</div>
 							</div>
 							<div class="work-content">
-								<h3>Badminton Community</h3>
-								<p>Upraise your game with engaging lessons and a supportive community. Join us now and take your skills to new heights.</p>
+								<h3 style="text-align:center">Cộng đồng</h3>
+								<p>Nâng cao trò chơi của bạn với các bài học hấp dẫn và cộng đồng hỗ trợ. Tham gia với chúng tôi ngay bây giờ và đưa kỹ năng của bạn lên một tầm cao mới.</p>
 								<a href="javascript:void(0);">
-									Learn More
+									Tìm hiểu thêm
 								</a>
 							</div>
 						</div>
@@ -1026,10 +1026,10 @@
 								</div>
 							</div>
 							<div class="work-content">
-								<h3>Court Rental</h3>
-								<p>Enjoy uninterrupted badminton sessions at DreamSports with our premium court rental services.</p>
+								<h3 style="text-align:center">Thuê sân cầu lông</h3>
+								<p>Tận hưởng các buổi cầu lông không bị gián đoạn tại DreamSports với dịch vụ cho thuê sân cao cấp của chúng tôi.</p>
 								<a href="javascript:void(0);">
-									Learn More
+									Tìm hiểu thêm
 								</a>
 							</div>
 						</div>
@@ -1076,7 +1076,7 @@
 										</ul>
 									</div>
 									<div class="convenient-btns">
-										<a href="register.html" class="btn btn-secondary d-inline-flex align-items-center">
+										<a href="register.php" class="btn btn-secondary d-inline-flex align-items-center">
 											<span class="lh-1"><i class="feather-user-plus me-2"></i></span>Join With Us 
 										</a>
 									</div>
@@ -1094,7 +1094,7 @@
 										</ul>
 									</div>
 									<div class="convenient-btns">
-										<a href="register.html" class="btn btn-secondary d-inline-flex align-items-center">
+										<a href="register.php" class="btn btn-secondary d-inline-flex align-items-center">
 											<span class="lh-1"><i class="feather-user-plus me-2"></i></span>Join With Us 
 										</a>
 									</div>
@@ -1919,7 +1919,7 @@
 				<div class="footer-join aos" data-aos="fade-up">
 					<h2>We Welcome Your Passion And Expertise</h2>
 					<p class="sub-title">Join our empowering sports community today and grow with us.</p>
-					<a href="register.html" class="btn btn-primary"><i class="feather-user-plus"></i> Join With Us</a>
+					<a href="register.php" class="btn btn-primary"><i class="feather-user-plus"></i> Tham gia cùng chúng tôi</a>
 				</div>
 				<!-- /Footer Join -->
 			
