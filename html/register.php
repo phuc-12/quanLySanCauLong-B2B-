@@ -99,12 +99,12 @@
 										<ul class="nav nav-tabs" id="myTab" role="tablist">
 											<li class="nav-item" role="presentation">
 												<button class="nav-link active d-flex align-items-center" id="user-tab" data-bs-toggle="tab" data-bs-target="#user" type="button" role="tab" aria-controls="user" aria-selected="true">
-													<span class="d-flex justify-content-center align-items-center"></span>I am a User
+													<span class="d-flex justify-content-center align-items-center"></span>Khách Hàng
 												</button>
 											</li>
 											<li class="nav-item" role="presentation">
 												<button class="nav-link d-flex align-items-center" id="coach-tab" data-bs-toggle="tab" data-bs-target="#coach" type="button" role="tab" aria-controls="coach" aria-selected="false">
-													<span class="d-flex justify-content-center align-items-center"></span>I am a Coach
+													<span class="d-flex justify-content-center align-items-center"></span>Doanh Nghiệp
 												</button>
 											</li>
 										</ul>
@@ -140,7 +140,7 @@
 														<div class="d-inline-block">
 															<input class="form-check-input" type="checkbox" value="" id="policy">
 														</div>
-														<label class="form-check-label" for="policy">By continuing you indicate that you read and agreed to the <a href="terms-condition.html">Terms of Use</a></label>
+														<label class="form-check-label" for="policy">Đồng ý điều khoản sử dụng<a href="terms-condition.html">Terms of Use</a></label>
 													</div>
 													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Create Account<i class="feather-arrow-right-circle ms-2"></i></button>
 													<div class="form-group">
@@ -228,7 +228,7 @@
 										</div>
 									</div>
 									<div class="bottom-text text-center">
-										<p>Have an account? <a href="login.html">Sign In!</a></p>
+										<p>Have an account? <a href="login.php">Sign In!</a></p>
 									</div>
 								</div>
 							</div>

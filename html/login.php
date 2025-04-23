@@ -98,12 +98,12 @@
 										<ul class="nav nav-tabs" id="myTab" role="tablist">
 											<li class="nav-item" role="presentation">
 												<button class="nav-link active d-flex align-items-center" id="user-tab" data-bs-toggle="tab" data-bs-target="#user" type="button" role="tab" aria-controls="user" aria-selected="true">
-													<span class="d-flex justify-content-center align-items-center"></span>I am a User
+													<span class="d-flex justify-content-center align-items-center"></span> Khách hàng
 												</button>
 											</li>
 											<li class="nav-item" role="presentation">
 												<button class="nav-link d-flex align-items-center" id="coach-tab" data-bs-toggle="tab" data-bs-target="#coach" type="button" role="tab" aria-controls="coach" aria-selected="false">
-													<span class="d-flex justify-content-center align-items-center"></span>I am a Coach
+													<span class="d-flex justify-content-center align-items-center"></span>Doanh nghiệp
 												</button>
 											</li>
 										</ul>
@@ -114,7 +114,7 @@
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
-															<input type="text" class="form-control" placeholder="Email / Username">
+															<input type="text" class="form-control" placeholder="Username">
 														</div>
 													</div>
 													<div class="form-group">
@@ -177,7 +177,7 @@
 														</div>																	
 														<span><a href="forgot-password.html" class="forgot-pass">Forgot Password</a></span>
 													</div>
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Sign In<i class="feather-arrow-right-circle ms-2"></i></button>
+													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Sign In<i class="feather-arrow-right-circle ms-2" ></i></button>
 													<div class="form-group">
 														<div class="login-options text-center">
 															<span class="text">Or continue with</span>
@@ -205,7 +205,7 @@
 										</div>
 									</div>
 									<div class="bottom-text text-center">
-										<p>Don’t have an account? <a href="register.html">Sign up!</a></p>
+										<p>Don’t have an account? <a href="register.php">Sign up!</a></p>
 									</div>
 								</div>
 							</div>
