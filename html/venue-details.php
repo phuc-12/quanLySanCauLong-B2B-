@@ -86,21 +86,21 @@
 								<span></span>
 							</span>
 						</a>
-						<a href="index.html" class="navbar-brand logo">
+						<a href="index.php" class="navbar-brand logo">
 							<img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
 						</a>
 					</div>
 					<div class="main-menu-wrapper">
 						<div class="menu-header">
-							<a href="index.html" class="menu-logo">
+							<a href="index.php" class="menu-logo">
 								<img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
 							</a>
 							<a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
 						</div>
 						<ul class="main-nav">
-							<li><a href="index.html">Home</a></li>
+							<li><a href="index.php">Trang Chủ</a></li>
 							<li class="has-submenu active">
-								<a href="#">Coaches <i class="fas fa-chevron-down"></i></a>
+								<a href="#">Sân Cầu Lông <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li class="has-submenu">
 										<a href="#">Coaches Map</a>
@@ -140,7 +140,7 @@
 								
 							</li>
 							<li class="has-submenu">
-								<a href="#">User <i class="fas fa-chevron-down"></i></a>
+								<a href="#">Người Dùng <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li><a href="user-dashboard.html">User Dashboard</a></li>
 									<li><a href="user-bookings.html">Bookings</a></li>
@@ -153,7 +153,7 @@
 								</ul>
 								
 							</li>
-							<li class="has-submenu">
+							<!-- <li class="has-submenu">
 								<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 								    <li><a href="about-us.html">About Us</a></li>
@@ -191,9 +191,9 @@
 									<li><a href="maintenance.html">Maintenance</a></li>
 									<li><a href="coming-soon.html">Coming Soon</a></li>
 								</ul>
-							</li>
+							</li> -->
 							<li class="has-submenu">
-								<a href="#">Blog <i class="fas fa-chevron-down"></i></a>
+								<a href="#">Diễn Đàn <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 								    <li><a href="blog-list.html">Blog List</a></li>
 								    <li class="has-submenu">
@@ -221,7 +221,7 @@
 									</li>
 								</ul>
 							</li>
-							<li><a href="contact-us.html">Contact Us</a></li>
+							<li><a href="contact-us.html">Liên Hệ</a></li>
 							<li class="login-link">
 								<a href="register.html">Sign Up</a>
 							</li>
@@ -233,11 +233,11 @@
 					<ul class="nav header-navbar-rht">
 						<li class="nav-item">
 							<div class="nav-link btn btn-primary log-register">
-								<a href="login.html"><span><i class="feather-users"></i></span>Login</a> / <a href="register.html">Register</a>
+								<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link btn btn-secondary" href="add-court.html"><span><i class="feather-check-circle"></i></span>List Your Court</a>
+							<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
 						</li>
 					</ul>
 				</nav>
@@ -247,13 +247,13 @@
 
 		<!--Galler Slider Section-->
 		<div class="bannergallery-section">
-		    <div class="main-gallery-slider owl-carousel owl-theme">
-                <div class="gallery-widget-item">
-				    <a href="assets/img/gallery/gallery1/gallery-01.png" data-fancybox="gallery1">
-						<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery1/gallery-01.png">
-					</a>
-				</div>	
-                <div class="gallery-widget-item">
+		    
+                <?php
+
+					include("assets/view/sancaulong/viewhinh.php");
+
+				?>
+                <!-- <div class="gallery-widget-item">
 				    <a href="assets/img/gallery/gallery1/gallery-02.png" data-fancybox="gallery1">
 						<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery1/gallery-02.png">
 					</a>
@@ -282,11 +282,8 @@
 				    <a href="assets/img/gallery/gallery1/gallery-02.png" data-fancybox="gallery1">
 						<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery1/gallery-02.png">
 					</a>
-				</div>
-		   	</div>			
-			<div class="showphotos corner-radius-10">
-				<a href="assets/img/gallery/gallery1/gallery-03.png" data-fancybox="gallery1"><i class="fa-regular fa-images"></i>More Photos</a>
-			</div>			
+				</div> -->
+		   			
 		</div>		
 		<div class="venue-info white-bg d-block">
 			<div class="container">

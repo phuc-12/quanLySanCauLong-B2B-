@@ -399,7 +399,7 @@
 							<!-- Featured Item -->
 							<?php
 
-								include("assets/view/sancaulong/sancaulong.php");
+								include("assets/view/sancaulong/viewsancau.php");
 								
 							?>
 						    <!-- <div class="featured-venues-item aos" data-aos="fade-up">

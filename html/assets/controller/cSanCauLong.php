@@ -24,6 +24,27 @@
                 return false;
             }
         }
+
+        public function getSCLBymaSan($maSan)
+        {
+            $p = new mSanCauLong();
+            $tblSCL = $p->SelectSCLBymaSan($maSan);
+            if($tblSCL)
+            {
+                if($tblSCL->num_rows>0)
+                {
+                    return $tblSCL;
+                }
+                else 
+                {
+                    return -1;
+                }
+            }
+            else 
+            {
+                return false;
+            }
+        }
     }
 
 ?>
