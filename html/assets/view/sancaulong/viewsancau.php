@@ -20,12 +20,12 @@
                 <div class="featured-venues-item aos" data-aos="fade-up">
                     <div class="listing-item mb-0">										
                         <div class="listing-img">
-                            <a href="venue-details.html">
+                            <a href="venue-details.php?maSan='.$r['maSan'].'">
                                 <img src="assets/img/venues/'.$r['hinhAnh'].'" alt="Venue">
                             </a>
                             <div class="fav-item-venues">
                                 <span class="tag tag-blue">Đang Hoạt Động</span>		
-                                <h5 class="tag tag-primary">'.$r['giaMacDinh'].'<span>/hr</span></h5>
+                                <h5 class="tag tag-primary">'.$r['giaMacDinh'].'<span>/Giờ</span></h5>
                             </div>
                         </div>										
                         <div class="listing-content">
@@ -38,10 +38,10 @@
                                 </a>
                             </div>	
                             <h3 class="listing-title">
-                                <a href="venue-details.html">'.$r['tenSan'].'</a>
+                                <a href="venue-details.php?maSan='.$r['maSan'].'">'.$r['tenSan'].'</a>
                             </h3>
                             <div class="listing-details-group">
-                                <p>Nâng cao trình độ của bạn tại sân Quang Vinh.</p>
+                                <p>'.$r['moTa'].'</p>
                                 <ul>
                                     <li>
                                         <span>
