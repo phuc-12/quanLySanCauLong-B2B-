@@ -98,80 +98,80 @@
 
 										<ul class="nav nav-tabs" id="myTab" role="tablist">
 											<li class="nav-item" role="presentation">
-												<button class="nav-link active d-flex align-items-center" id="user-tab" data-bs-toggle="tab" data-bs-target="#user" type="button" role="tab" aria-controls="user" aria-selected="true">
+												<button class="nav-link active d-flex align-items-center" id="customer-tab" data-bs-toggle="tab" data-bs-target="#customer" type="button" role="tab" aria-controls="customer" aria-selected="true">
 													<span class="d-flex justify-content-center align-items-center"></span>Khách Hàng
 												</button>
 											</li>
 											<li class="nav-item" role="presentation">
-												<button class="nav-link d-flex align-items-center" id="coach-tab" data-bs-toggle="tab" data-bs-target="#coach" type="button" role="tab" aria-controls="coach" aria-selected="false">
+												<button class="nav-link d-flex align-items-center" id="business-tab" data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab" aria-controls="business" aria-selected="false">
 													<span class="d-flex justify-content-center align-items-center"></span>Doanh Nghiệp
 												</button>
 											</li>
 										</ul>
 										<div class="tab-content" id="myTabContent">
-											<div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
+											<div class="tab-pane fade show active" id="customer" role="tabpanel" aria-labelledby="customer-tab">
 												<!-- Register Form -->
 												<form action="login.php">
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
-															<input type="text" class="form-control" placeholder="Username">
+															<input type="text" class="form-control" placeholder="Username" name="txtUsername">
 														</div>
 													</div>
 													<div class="form-group">
 													    <div class="group-img">
 															<i class="feather-mail"></i>
-															<input type="text" class="form-control" placeholder="Email">
+															<input type="text" class="form-control" placeholder="Email" name="txtEmail">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="pass-group group-img">
 															<i class="toggle-password feather-eye-off"></i>
-															<input type="password" class="form-control pass-input" placeholder="Password">
+															<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="pass-group group-img">
 															<i class="toggle-password-confirm feather-eye-off"></i>
-															<input type="password" class="form-control pass-confirm" placeholder="Confirm Password">
+															<input type="password" class="form-control pass-confirm" placeholder="Confirm Password" name="txt-rePassword">
 														</div>
 													</div>
 													
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Đăng Ký<i class="feather-arrow-right-circle ms-2"></i></button>
+													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK">Đăng Ký<i class="feather-arrow-right-circle ms-2"></i></button>
 													
 																			
 												</form>
 												<!-- /Register Form -->
 											</div>
-											<div class="tab-pane fade" id="coach" role="tabpanel" aria-labelledby="coach-tab">
+											<div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
 												<!-- Register Form -->
 												<form action="login.php">
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
-															<input type="text" class="form-control" placeholder="Username">
+															<input type="text" class="form-control" placeholder="Username" name="txtUsername">
 														</div>
 													</div>
 													<div class="form-group">
 													    <div class="group-img">
 															<i class="feather-mail"></i>
-															<input type="text" class="form-control" placeholder="Email">
+															<input type="text" class="form-control" placeholder="Email" name="txtEmail">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="pass-group group-img">
 															<i class="toggle-password feather-eye-off"></i>
-															<input type="password" class="form-control pass-input" placeholder="Password">
+															<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="pass-group group-img">
 															<i class="toggle-password-confirm feather-eye-off"></i>
-															<input type="password" class="form-control pass-confirm" placeholder="Confirm Password">
+															<input type="password" class="form-control pass-confirm" placeholder="Confirm Password" name="txt-rePassword">
 														</div>
 													</div>
 													
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit">Đăng Ký<i class="feather-arrow-right-circle ms-2"></i></button>
+													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK">Đăng Ký<i class="feather-arrow-right-circle ms-2"></i></button>
 																		
 												</form>
 												<!-- /Register Form -->
@@ -209,3 +209,11 @@
 
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:33:41 GMT -->
 </html>
+<?php
+    if(isset($_POST['guiDK'])){
+        include_once('assets/controller/cRegister.php');
+        $p = new cdangky;
+        $p -> cDK01ND($_POST['name'],$_POST['pw'],$_POST['tenname'],$_POST['dc'],$_POST['sdt'],$_POST['email']);
+    }
+
+?>
