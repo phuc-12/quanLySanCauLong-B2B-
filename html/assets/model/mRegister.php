@@ -2,7 +2,7 @@
     include_once('ketnoi.php');
     
     class mRegiter{
-        public function mRegister1User($username,$pw,$email,$trangthai,$sdt){
+        public function mRegister1User($username,$pw,$email,$trangthai,$loaiND,$sdt){
             $p = new clsKetNoi;
             $con = $p -> moketnoi();
             $loaiND = 1;

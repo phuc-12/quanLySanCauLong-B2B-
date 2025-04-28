@@ -125,6 +125,12 @@
 														</div>
 													</div>
 													<div class="form-group">
+													    <div class="group-img">
+															<i class="feather-phone"></i>
+															<input type="text" class="form-control" placeholder="phone" name="txtPhone">
+														</div>
+													</div>
+													<div class="form-group">
 														<div class="pass-group group-img">
 															<i class="toggle-password feather-eye-off"></i>
 															<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
@@ -156,6 +162,12 @@
 													    <div class="group-img">
 															<i class="feather-mail"></i>
 															<input type="text" class="form-control" placeholder="Email" name="txtEmail">
+														</div>
+													</div>
+													<div class="form-group">
+													    <div class="group-img">
+															<i class="feather-phone"></i>
+															<input type="text" class="form-control" placeholder="phone" name="txtPhone">
 														</div>
 													</div>
 													<div class="form-group">
@@ -212,8 +224,8 @@
 <?php
     if(isset($_POST['guiDK'])){
         include_once('assets/controller/cRegister.php');
-        $p = new cdangky;
-        $p -> cDK01ND($_POST['name'],$_POST['pw'],$_POST['tenname'],$_POST['dc'],$_POST['sdt'],$_POST['email']);
+        $p = new cRegister;
+        $p -> cRegister1User($_POST['username'],$_POST['password'],$_POST['email'],$_POST['trangthai'],$_POST['soDienThoai']);
     }
 
 ?>
