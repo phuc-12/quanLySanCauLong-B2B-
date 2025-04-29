@@ -110,7 +110,7 @@
 										<div class="tab-content" id="myTabContent">
 											<div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
 												<!-- Login Form -->
-												<form action="index.php">
+												<form action="index.php?$idnguoidung=">
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
