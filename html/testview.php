@@ -1,34 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+	include ("assets/controller/cLogin.php");
+	$p = new mylogin();
+?>
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="utf-8">
+<title>Untitled Document</title>
 </head>
+
 <body>
-<section class="section featured-venues">
-			<div class="container">
-				<div class="section-heading aos" data-aos="fade-up">
-					<h2><span>Địa Điểm</span> Nổi Bật</h2>
-					<p class="sub-title">Các địa điểm thể thao tiên tiến cung cấp cơ sở vật chất mới nhất, môi trường năng động và độc đáo để nâng cao hiệu suất chơi cầu lông.</p>
-				</div>
-				<div class="row">
-			        <div class="featured-slider-group ">
-			        	<div class="owl-carousel featured-venues-slider owl-theme">
-						    <?php
-                                include("assets/view/sancaulong/sancaulong.php");
-                            ?>  
-						</div>	
-					</div>
-				</div>
-
-				<!-- View More -->
-				<div class="view-all text-center aos" data-aos="fade-up">
-					<a href="listing-grid.php" class="btn btn-secondary d-inline-flex align-items-center">Xem tất cả<span class="lh-1"><i class="feather-arrow-right-circle ms-2"></i></span></a>
-				</div>
-				<!-- View More -->
-
-			</div>
-		</section>
+<form id="form1" name="form1" method="post">
+  <table width="400" border="1" align="center" cellpadding="5" cellspacing="0">
+    <tbody>
+      <tr>
+        <td colspan="2" align="center" valign="middle">Đăng nhập</td>
+      </tr>
+      <tr>
+        <td width="144" align="left" valign="middle">USERNAME:</td>
+        <td width="230" align="left" valign="middle"><input type="text" name="txtUsername" id="txtUsername"></td>
+      </tr>
+      <tr>
+        <td align="left" valign="middle">PASSWORD:</td>
+        <td align="left" valign="middle"><input type="password" name="txtPassword" id="txtPassword"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center" valign="middle"><input type="submit" name="nut" id="nut" value="Đăng nhập">
+        <input type="reset" name="reset" id="reset" value="Reset"></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+<div align="center">
+<?php
+	switch($_POST['nut'])
+	{
+		case 'Đăng nhập':
+		{
+			$user = $_REQUEST['txtUsername'];
+			$pass = $_REQUEST['txtPassword'];
+			if($user!='' and $pass!='')
+			{
+				if($p->getTKND($user,$pass)==-1)
+				{
+					echo 'Sai username hoặc passwords';
+				}
+						
+			}
+			else
+			{
+				echo 'Vui lòng nhập đầy đủ thông tin';
+			}
+			break;
+		}
+	}
+?>
+</div>
 </body>
 </html>
