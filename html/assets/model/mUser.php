@@ -9,10 +9,10 @@
             $p -> dongKetNoi($con);
             return $kq;
         }
-        public function selectAllUser($loaiND){
+        public function selectAllUser($username){
             $p = new clsKetNoi();
             $con = $p -> moKetNoi();
-            $sql = "SELECT * FROM taikhoannguoidung order by loaiNguoiDung='.$loaiND.' limit 1";
+            $sql = "SELECT * FROM taikhoannguoidung where username = '$username'" ;
             $kq = mysqli_query($con,$sql);
             $p -> dongKetNoi($con);
             return $kq;

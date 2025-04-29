@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,7 +72,7 @@
 			<div class="container wrapper no-padding">
 				<div class="row no-margin vph-100">
 					<div class="col-12 col-sm-12 col-md-12 col-lg-6 no-padding">
-						<div class="banner-bg register">
+						<!-- <div class="banner-bg register">
 							<div class="row no-margin h-100">
 								<div class="col-sm-10 col-md-10 col-lg-10 mx-auto">
 									<div class="h-100 d-flex justify-content-center align-items-center">
@@ -80,7 +83,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="col-12 col-sm-12 col-md-12 col-lg-6 no-padding">
 						<div class="dull-pg">
@@ -98,20 +101,20 @@
 
 										<ul class="nav nav-tabs" id="myTab" role="tablist">
 											<li class="nav-item" role="presentation">
-												<button class="nav-link active d-flex align-items-center" id="customer-tab" data-bs-toggle="tab" data-bs-target="#customer" type="button" role="tab" aria-controls="customer" aria-selected="true">
-													<span class="d-flex justify-content-center align-items-center"></span>Khách Hàng
-												</button>
+												<input class="nav-link active d-flex align-items-center" id="customer-tab" data-bs-toggle="tab" data-bs-target="#customer" type="button" role="tab" aria-controls="customer" aria-selected="true" name="cus" Value="Khách hàng">
+													<!-- <span class="d-flex justify-content-center align-items-center"></span>Khách Hàng -->
+												</input>
 											</li>
 											<li class="nav-item" role="presentation">
-												<button class="nav-link d-flex align-items-center" id="business-tab" data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab" aria-controls="business" aria-selected="false">
-													<span class="d-flex justify-content-center align-items-center"></span>Doanh Nghiệp
-												</button>
+												<input class="nav-link d-flex align-items-center" id="business-tab" data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab" aria-controls="business" aria-selected="false" name="bus" Value="Doanh nghiệp">
+													<!-- <span class="d-flex justify-content-center align-items-center"></span>Doanh Nghiệp -->
+												</input>
 											</li>
 										</ul>
 										<div class="tab-content" id="myTabContent">
 											<div class="tab-pane fade show active" id="customer" role="tabpanel" aria-labelledby="customer-tab">
 												<!-- Register Form -->
-												<form action="login.php">
+												<form action="register.php" method="POST">
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
@@ -143,15 +146,14 @@
 														</div>
 													</div>
 													
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK">Đăng Ký<i class="feather-arrow-right-circle ms-2"></i></button>
-													
+													<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK" value="Đăng Ký"></input>
 																			
 												</form>
 												<!-- /Register Form -->
 											</div>
 											<div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
 												<!-- Register Form -->
-												<form action="login.php">
+												<form action="register.php" method="POST">
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
@@ -183,7 +185,7 @@
 														</div>
 													</div>
 													
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK">Đăng Ký<i class="feather-arrow-right-circle ms-2"></i></button>
+													<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK" value="Đăng Ký"></input>
 																		
 												</form>
 												<!-- /Register Form -->
@@ -222,10 +224,38 @@
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:33:41 GMT -->
 </html>
 <?php
-    if(isset($_POST['guiDK'])){
-        include_once('assets/controller/cRegister.php');
-        $p = new cRegister;
-        $p -> cRegister1User($_POST['username'],$_POST['password'],$_POST['email'],$_POST['trangthai'],$_POST['sodienthoai']);
-    }
+    include('assets/controller/cRegister.php');
+	$p = new cRegister();
+	if($_REQUEST['cus'])
+	{
+		$loaiND=1;
+	}
+	elseif($_REQUEST['bus']) 
+	{
+		$loaiND=2;
+	}
+	switch($_POST['guiDK'])
+	{
+		case 'Đăng Ký':
+			{
+				$username = $_REQUEST['txtUsername'];
+				$pw = $_REQUEST['txt-rePassword'];
+				$email = $_REQUEST['txtEmail'];
+				$sdt = $_REQUEST['txtPhone'];
+				if($username!='' && $pw!='' && $email!='' && $sdt!='')
+				{
+					if($p->cRegister1User($username,$pw,$email, $loaiND,$sdt)==-1)
+					{
+						echo '<script>alert("Tai khoan da ton tai!!!")</script>';
+					}
+							
+				}
+				else
+				{
+					echo '<script>alert("Vui lòng nhập đầy đủ thông tin!!!")</script>';
+				}
+			break;
+			}
+	}
 
 ?>
