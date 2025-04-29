@@ -2,7 +2,7 @@
     include_once('../model/mRegister.php');
     include_once('../model/mUser.php');
     class cRegister{
-        public function cRegister1User($username,$pw,$email,$trangthai,$sdt,$loaiND){
+        public function cRegister1User($username,$pw,$email,$trangthai,$loaiND,$sdt){
             $pp = new mUser;
             $ktra = $pp -> selectAllUser();
             $arr = array();

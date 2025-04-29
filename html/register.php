@@ -225,7 +225,7 @@
     if(isset($_POST['guiDK'])){
         include_once('assets/controller/cRegister.php');
         $p = new cRegister;
-        $p -> cRegister1User($_POST['username'],$_POST['password'],$_POST['email'],$_POST['trangthai'],$_POST['soDienThoai']);
+        $p -> cRegister1User($_POST['username'],$_POST['password'],$_POST['email'],$_POST['trangthai'],$_POST['sodienthoai']);
     }
 
 ?>
