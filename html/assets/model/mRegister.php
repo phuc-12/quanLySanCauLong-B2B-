@@ -7,7 +7,7 @@
             $con = $p -> moketnoi();
             $loaiND = 1;
             $trangthai = 1;
-            $pw = MD5($pw);
+            // $pw = MD5($pw);
             $sql = "INSERT INTO taikhoannguoidung (`username` ,`passwords` ,`email` ,`trangThai` ,`loaiNguoiDung` ,`soDienThoai`) VALUES ('$username', '$pw', '$email', '$trangthai', '$loaiND', '$sdt')";
             $kq = mysqli_query($con,$sql);
             $p -> dongKetNoi($con);
