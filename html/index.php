@@ -227,15 +227,54 @@
 							</li>
 						</ul>
 					</div>
-					<ul class="nav header-navbar-rht">
-						<li class="nav-item">
-							<div class="nav-link btn btn-white log-register">
-								<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
-							</div>
-						</li>
-						<li class="nav-item">
+					<ul class="nav header-navbar-rht logged-in">
+						
+								<!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
+
+								<?php
+									if(isset($_REQUEST['id']))
+									{
+										echo '
+							
+											<li class="nav-item dropdown has-arrow logged-item">
+												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+													<span class="user-img">
+														<img class="rounded-circle" src="assets/img/profiles/avatar-05.jpg" width="31" alt="Darren Elder">
+													</span>
+												</a>
+												<div class="dropdown-menu dropdown-menu-end">
+													<div class="user-header">
+														<div class="avatar avatar-sm">
+															<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
+														</div>
+														<div class="user-text">
+															<h6>Henriques</h6>
+															<a href="user-profile.html" style="color:black;" class="text-profile mb-0">Go to Profile</a>
+														</div>
+													</div>
+													<p><a class="dropdown-item"  href="coach-profile.php">Settings</a></p>
+													<p><a class="dropdown-item"  href="login.php">Logout</a></p>
+												</div>
+											</li>
+											
+										';
+									}
+									else 
+									{
+										echo '
+										<li class="nav-item">
+											<div class="nav-link btn btn-white log-register">	
+												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
+										</div>
+									</li>
+									<li class="nav-item">
 							<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
 						</li>
+										';
+									}
+								?>
+							
+						
 					</ul>
 				</nav>
 			</div>

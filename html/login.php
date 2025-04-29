@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,17 +114,17 @@
 										<div class="tab-content" id="myTabContent">
 											<div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
 												<!-- Login Form -->
-												<form action="index.php">
+												<form action="login.php" method="POST">
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
-															<input type="text" class="form-control" placeholder="Username" name="txtUsername">
+															<input type="text" class="form-control" placeholder="Username" name="txtUsername" id="txtUsername">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="pass-group group-img">
 															<i class="toggle-password feather-eye-off"></i>
-															<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
+															<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword" id="txtPassword">
 														</div>
 													</div>
 													<div class="form-group d-sm-flex align-items-center justify-content-between">
@@ -130,14 +134,14 @@
 														</div>																	
 														<span><a href="forgot-password.html" class="forgot-pass">Quên mật khẩu?</a></span>
 													</div>
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap">Đăng nhập<i class="feather-arrow-right-circle ms-2"></i></button>
-																					
+													<!-- <button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap" id="btn-dangnhap">Đăng nhập<i class="feather-arrow-right-circle ms-2"></i></button> -->
+													<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap" id="btn-dangnhap" value="Đăng nhập">Đăng nhập<i class="feather-arrow-right-circle ms-2"></i></input>
 												</form>
 												<!-- /Login Form -->
 											</div>
 											<div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
 												<!-- Login Form -->
-												<form action="business-dasboard.php">
+												<form action="login.php" method="POST">
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
@@ -157,7 +161,7 @@
 														</div>																	
 														<span><a href="forgot-password.html" class="forgot-pass">Quên mật khẩu?</a></span>
 													</div>
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap">Đăng nhập<i class="feather-arrow-right-circle ms-2" ></i></button>							
+													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap" id="btn-dangnhap">Đăng nhập<i class="feather-arrow-right-circle ms-2" ></i></button>							
 												</form>
 												<!-- /Login Form -->
 											</div>
@@ -195,10 +199,57 @@
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:33:41 GMT -->
 </html>
 <?php
-    if(isset($_POST['btn-dangnhap'])){
-        include_once('assets/controller/cUser.php');
-        $p = new cUser();
-        $con = $p -> get01User($_REQUEST['txtUsername'],$_REQUEST['txtPassword']);
-    }
+    // if(isset($_POST['btn-dangnhap'])){
+    //     include_once('assets/controller/cUser.php');
+    //     $p = new cUser();
+    //     $con = $p -> get01User($_REQUEST['txtUsername'],$_REQUEST['txtPassword']);
+    // }
 
+	include("assets/controller/cLogin.php");
+	$p = new mylogin();
+
+	switch($_POST['btn-dangnhap'])
+	{
+		case 'Đăng nhập':
+		{
+			$user = $_REQUEST['txtUsername'];
+			$pass = $_REQUEST['txtPassword'];
+			if($user!='' and $pass!='')
+			{
+				if($p->getTKND($user,$pass)==-1)
+				{
+					echo '<script>alert("Sai tài khoản hoặc mật khẩu!!!")</script>';
+				}
+				else 
+				{
+					$tblTKND = $p->getTKND($user, $pass);
+					$i = mysqli_num_rows($tblTKND);
+					if($i==1)
+					{
+						while($row = mysqli_fetch_array($tblTKND))
+						{
+							$id = $row['idnguoidung'];
+							$myuser = $row['username'];
+							$mypass = $row['passwords'];
+							// $phanquyen = $row['phanquyen'];
+							
+							$_SESSION['idnguoidung']=$id;
+							$_SESSION['username']=$myuser;
+							$_SESSION['passwords']=$mypass;
+							// $_SESSION['phanquyen']=$phanquyen;
+							echo'<script language="javascript">
+							window.location="index.php?id='.$id.'";
+							</script>';
+						}
+					}
+				}
+						
+			}
+			else
+			{
+				echo '<script>alert("Vui lòng nhập đầy đủ thông tin!!!")</script>';
+			}
+			break;
+		}
+	}
 ?>
