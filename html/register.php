@@ -55,6 +55,10 @@ session_start();
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
 
+	<!-- JS -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="assets/js/register.js"></script>
+
 </head>
 
 <body>
@@ -72,7 +76,7 @@ session_start();
 			<div class="container wrapper no-padding">
 				<div class="row no-margin vph-100">
 					<div class="col-12 col-sm-12 col-md-12 col-lg-6 no-padding">
-						<!-- <div class="banner-bg register">
+						<div class="banner-bg register">
 							<div class="row no-margin h-100">
 								<div class="col-sm-10 col-md-10 col-lg-10 mx-auto">
 									<div class="h-100 d-flex justify-content-center align-items-center">
@@ -83,7 +87,7 @@ session_start();
 									</div>
 								</div>
 							</div>
-						</div> -->
+						</div>
 					</div>
 					<div class="col-12 col-sm-12 col-md-12 col-lg-6 no-padding">
 						<div class="dull-pg">
@@ -98,99 +102,106 @@ session_start();
 										<h2>Bắt đầu với Dreamsports</h2>
 										<p>Khơi dậy hành trình thể thao của bạn với DreamSports và bắt đầu ngay bây giờ.
 										</p>
+										<form action="register.php" method="POST">
+											<input type="hidden" name="loainguoidung" id="loainguoidung" value="1">
+											<ul class="nav nav-tabs" id="myTab" role="tablist">
+												<li class="nav-item" role="presentation">
+												<button class="nav-link active d-flex align-items-center" id="customer-tab"
+														data-bs-toggle="tab" data-bs-target="#customer" type="button" role="tab"
+														aria-controls="customer" aria-selected="true"
+														onclick="setLoaiNguoiDung(1)">
+													<span class="d-flex justify-content-center align-items-center"></span>Khách Hàng
+												</button>
+												</li>
+												<li class="nav-item" role="presentation">
+												<button class="nav-link d-flex align-items-center" id="business-tab"
+														data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab"
+														aria-controls="business" aria-selected="false"
+														onclick="setLoaiNguoiDung(2)">
+													<span class="d-flex justify-content-center align-items-center"></span>Doanh Nghiệp
+												</button>
+												</li>
+											</ul>
+											<div class="tab-content" id="myTabContent">
+												<div class="tab-pane fade show active" id="customer" role="tabpanel" aria-labelledby="customer-tab">
+													<!-- Register Form -->
+														<div class="form-group">
+															<div class="group-img">
+																<i class="feather-user"></i>
+																<input type="text" class="form-control" placeholder="Username" name="txtUsername">
+																<div ><span id="errUsername" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div>
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="group-img">
+																<i class="feather-mail"></i>
+																<input type="text" class="form-control" placeholder="Email" name="txtEmail">
+																<div ><span id="errEmail" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div>
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="group-img">
+																<i class="feather-phone"></i>
+																<input type="text" class="form-control" placeholder="phone" name="txtPhone">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="pass-group group-img">
+																<i class="toggle-password feather-eye-off"></i>
+																<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
+																<div ><span id="errPW" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div>
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="pass-group group-img">
+																<i class="toggle-password-confirm feather-eye-off"></i>
+																<input type="password" class="form-control pass-confirm" placeholder="Confirm Password" name="txt-rePassword">
+																<div ><span id="errRePW" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div>
+															</div>
+														</div>
+														
+														<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK" value="Đăng Ký"></input>
+																				
+													</form>
+													<!-- /Register Form -->
+												</div>
+												<div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
+														<div class="form-group">
+															<div class="group-img">
+																<i class="feather-user"></i>
+																<input type="text" class="form-control" placeholder="Username" name="txtUsername">
 
-										<ul class="nav nav-tabs" id="myTab" role="tablist">
-											<li class="nav-item" role="presentation">
-												<input class="nav-link active d-flex align-items-center" id="customer-tab" data-bs-toggle="tab" data-bs-target="#customer" type="button" role="tab" aria-controls="customer" aria-selected="true" name="cus" Value="Khách hàng">
-													<!-- <span class="d-flex justify-content-center align-items-center"></span>Khách Hàng -->
-												</input>
-											</li>
-											<li class="nav-item" role="presentation">
-												<input class="nav-link d-flex align-items-center" id="business-tab" data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab" aria-controls="business" aria-selected="false" name="bus" Value="Doanh nghiệp">
-													<!-- <span class="d-flex justify-content-center align-items-center"></span>Doanh Nghiệp -->
-												</input>
-											</li>
-										</ul>
-										<div class="tab-content" id="myTabContent">
-											<div class="tab-pane fade show active" id="customer" role="tabpanel" aria-labelledby="customer-tab">
-												<!-- Register Form -->
-												<form action="register.php" method="POST">
-												    <div class="form-group">
-													    <div class="group-img">
-															<i class="feather-user"></i>
-															<input type="text" class="form-control" placeholder="Username" name="txtUsername">
+															</div>
 														</div>
-													</div>
-													<div class="form-group">
-													    <div class="group-img">
-															<i class="feather-mail"></i>
-															<input type="text" class="form-control" placeholder="Email" name="txtEmail">
+														<div class="form-group">
+															<div class="group-img">
+																<i class="feather-mail"></i>
+																<input type="text" class="form-control" placeholder="Email" name="txtEmail">
+															</div>
 														</div>
-													</div>
-													<div class="form-group">
-													    <div class="group-img">
-															<i class="feather-phone"></i>
-															<input type="text" class="form-control" placeholder="phone" name="txtPhone">
+														<div class="form-group">
+															<div class="group-img">
+																<i class="feather-phone"></i>
+																<input type="text" class="form-control" placeholder="phone" name="txtPhone">
+															</div>
 														</div>
-													</div>
-													<div class="form-group">
-														<div class="pass-group group-img">
-															<i class="toggle-password feather-eye-off"></i>
-															<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
+														<div class="form-group">
+															<div class="pass-group group-img">
+																<i class="toggle-password feather-eye-off"></i>
+																<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
+															</div>
 														</div>
-													</div>
-													<div class="form-group">
-														<div class="pass-group group-img">
-															<i class="toggle-password-confirm feather-eye-off"></i>
-															<input type="password" class="form-control pass-confirm" placeholder="Confirm Password" name="txt-rePassword">
+														<div class="form-group">
+															<div class="pass-group group-img">
+																<i class="toggle-password-confirm feather-eye-off"></i>
+																<input type="password" class="form-control pass-confirm" placeholder="Confirm Password" name="txt-rePassword">
+															</div>
 														</div>
-													</div>
-													
-													<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK" value="Đăng Ký"></input>
-																			
-												</form>
-												<!-- /Register Form -->
+														
+														<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK" value="Đăng Ký"></input>
+												</div> 
 											</div>
-											<div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
-												<!-- Register Form -->
-												<form action="register.php" method="POST">
-												    <div class="form-group">
-													    <div class="group-img">
-															<i class="feather-user"></i>
-															<input type="text" class="form-control" placeholder="Username" name="txtUsername">
-														</div>
-													</div>
-													<div class="form-group">
-													    <div class="group-img">
-															<i class="feather-mail"></i>
-															<input type="text" class="form-control" placeholder="Email" name="txtEmail">
-														</div>
-													</div>
-													<div class="form-group">
-													    <div class="group-img">
-															<i class="feather-phone"></i>
-															<input type="text" class="form-control" placeholder="phone" name="txtPhone">
-														</div>
-													</div>
-													<div class="form-group">
-														<div class="pass-group group-img">
-															<i class="toggle-password feather-eye-off"></i>
-															<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
-														</div>
-													</div>
-													<div class="form-group">
-														<div class="pass-group group-img">
-															<i class="toggle-password-confirm feather-eye-off"></i>
-															<input type="password" class="form-control pass-confirm" placeholder="Confirm Password" name="txt-rePassword">
-														</div>
-													</div>
-													
-													<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK" value="Đăng Ký"></input>
-																		
-												</form>
-												<!-- /Register Form -->
-											</div>
-										</div>
+										</form>
 									</div>
 									<div class="bottom-text text-center">
 										<p>Đã có tài khoản? <a href="login.php">Đăng nhập!</a></p>
@@ -226,36 +237,24 @@ session_start();
 <?php
     include('assets/controller/cRegister.php');
 	$p = new cRegister();
-	if($_REQUEST['cus'])
-	{
-		$loaiND=1;
-	}
-	elseif($_REQUEST['bus']) 
-	{
-		$loaiND=2;
-	}
-	switch($_POST['guiDK'])
-	{
-		case 'Đăng Ký':
-			{
-				$username = $_REQUEST['txtUsername'];
-				$pw = $_REQUEST['txt-rePassword'];
-				$email = $_REQUEST['txtEmail'];
-				$sdt = $_REQUEST['txtPhone'];
-				if($username!='' && $pw!='' && $email!='' && $sdt!='')
-				{
-					if($p->cRegister1User($username,$pw,$email, $loaiND,$sdt)==-1)
-					{
-						echo '<script>alert("Tai khoan da ton tai!!!")</script>';
-					}
-							
-				}
-				else
-				{
-					echo '<script>alert("Vui lòng nhập đầy đủ thông tin!!!")</script>';
-				}
-			break;
-			}
-	}
+if ($_POST['guiDK'] === 'Đăng Ký') {
+    $username = $_POST['txtUsername'];
+    $pw = $_POST['txt-rePassword'];
+    $email = $_POST['txtEmail'];
+    $sdt = $_POST['txtPhone'];
+	$loaiND = isset($_POST['loainguoidung']) ? $_POST['loainguoidung'] : 1;
+
+    if ($username && $pw && $email && $sdt) {
+        $p->cRegister1User($username, $pw, $email, $loaiND, $sdt);
+    } else {
+        echo "<script>alert('Vui lòng nhập đầy đủ thông tin!!!')</script>";
+    }
+}
+
 
 ?>
+<script>
+  function setLoaiNguoiDung(value) {
+    document.getElementById('loainguoidung').value = value;
+  }
+</script>
