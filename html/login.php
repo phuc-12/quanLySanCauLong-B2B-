@@ -56,6 +56,9 @@ session_start();
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
 
+	<!-- JS -->
+	<script src="assets/js/jquery-3.7.1.min.js"></script>
+	<script src="assets/js/login.js"></script>
 </head>
 
 <body>
@@ -98,35 +101,23 @@ session_start();
 									<div class="shadow-card">
 										<h2>Xin Chào!</h2>
 										<p>Đăng Nhập Vào Tài Khoản Của Bạn</p>
-
-										<ul class="nav nav-tabs" id="myTab" role="tablist">
-											<li class="nav-item" role="presentation">
-												<button class="nav-link active d-flex align-items-center" id="customer-tab" data-bs-toggle="tab" data-bs-target="#customer" type="button" role="tab" aria-controls="customer" aria-selected="true">
-													<span class="d-flex justify-content-center align-items-center"></span> Khách hàng
-												</button>
-											</li>
-											<li class="nav-item" role="presentation">
-												<button class="nav-link d-flex align-items-center" id="business-tab" data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab" aria-controls="business" aria-selected="false">
-													<span class="d-flex justify-content-center align-items-center"></span>Doanh nghiệp
-												</button>
-											</li>
-										</ul>
 										<div class="tab-content" id="myTabContent">
 											<div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
 												<!-- Login Form -->
-
 												<form action="login.php" method="POST">
-
 												    <div class="form-group">
 													    <div class="group-img">
 															<i class="feather-user"></i>
 															<input type="text" class="form-control" placeholder="Username" name="txtUsername" id="txtUsername">
+															<div ><span id="errUsername" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div>
 														</div>
+														
 													</div>
 													<div class="form-group">
 														<div class="pass-group group-img">
 															<i class="toggle-password feather-eye-off"></i>
 															<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword" id="txtPassword">
+															<div ><span id="errPW" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div>
 														</div>
 													</div>
 													<div class="form-group d-sm-flex align-items-center justify-content-between">
@@ -137,36 +128,11 @@ session_start();
 														<span><a href="forgot-password.html" class="forgot-pass">Quên mật khẩu?</a></span>
 													</div>
 													<!-- <button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap" id="btn-dangnhap">Đăng nhập<i class="feather-arrow-right-circle ms-2"></i></button> -->
-													<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap" id="btn-dangnhap" value="Đăng nhập">Đăng nhập<i class="feather-arrow-right-circle ms-2"></i></input>
+													<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap" id="btn-dangnhap" value="Đăng nhập"></input>
 												</form>
 												<!-- /Login Form -->
 											</div>
-											<div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
-												<!-- Login Form -->
-												<form action="login.php" method="POST">
-												    <div class="form-group">
-													    <div class="group-img">
-															<i class="feather-user"></i>
-															<input type="text" class="form-control" placeholder="Username" name="txtUsername">
-														</div>
-													</div>
-													<div class="form-group">
-														<div class="pass-group group-img">
-															<i class="toggle-password feather-eye-off"></i>
-															<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
-														</div>
-													</div>
-													<div class="form-group d-sm-flex align-items-center justify-content-between">
-														<div class="form-check form-switch d-flex align-items-center justify-content-start">
-														  	<input class="form-check-input" type="checkbox" id="user-login">
-														  	<label class="form-check-label" for="user-login">Nhớ mặt khẩu</label>
-														</div>																	
-														<span><a href="forgot-password.html" class="forgot-pass">Quên mật khẩu?</a></span>
-													</div>
-													<button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap" id="btn-dangnhap">Đăng nhập<i class="feather-arrow-right-circle ms-2" ></i></button>							
-												</form>
-												<!-- /Login Form -->
-											</div>
+								
 										</div>
 									</div>
 									<div class="bottom-text text-center">
@@ -201,12 +167,6 @@ session_start();
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:33:41 GMT -->
 </html>
 <?php
-    // if(isset($_POST['btn-dangnhap'])){
-    //     include_once('assets/controller/cUser.php');
-    //     $p = new cUser();
-    //     $con = $p -> get01User($_REQUEST['txtUsername'],$_REQUEST['txtPassword']);
-    // }
-
 	include("assets/controller/cLogin.php");
 	$p = new mylogin();
 
@@ -233,8 +193,7 @@ session_start();
 							$id = $row['idnguoidung'];
 							$myuser = $row['username'];
 							$mypass = $row['passwords'];
-							// $phanquyen = $row['phanquyen'];
-							
+
 							$_SESSION['idnguoidung']=$id;
 							$_SESSION['username']=$myuser;
 							$_SESSION['passwords']=$mypass;
