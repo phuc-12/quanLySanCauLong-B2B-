@@ -65,11 +65,11 @@
 </head>
 
 <body>
-	<div id="global-loader" >
+	<!-- <div id="global-loader" >
 		<div class="loader-img">
 			<img src="assets/img/loader.png" class="img-fluid" alt="Global">
 		</div>
-	</div>
+	</div> -->
 
 	<!-- Main Wrapper -->
 	<div class="main-wrapper venue-coach-details">
@@ -250,7 +250,7 @@
 		    
                 <?php
 
-					include("assets/view/sancaulong/viewhinh.php");
+					include ("assets/view/sancaulong/viewhinh.php");
 
 				?>
                 <!-- <div class="gallery-widget-item">
@@ -298,8 +298,8 @@
 					</div>
 					<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-right">
 						<ul class="social-options float-lg-end d-sm-flex justify-content-start align-items-center">
-							<li><a href="javascript:void(0);"><i class="feather-share-2"></i>Share</a></li>
-							<li><a href="javascript:void(0);" class="favour-adds"><i class="feather-star"></i>Add to favourite</a></li>
+							<li><a href="javascript:void(0);"><i class="feather-share-2"></i>Chia sẽ</a></li>
+							<li><a href="javascript:void(0);" class="favour-adds"><i class="feather-star"></i>Thêm vào yêu thích</a></li>
 							<li class="venue-review-info d-flex justify-content-start align-items-center">
 								<span class="d-flex justify-content-center align-items-center">5.0</span>
 								<div class="review">
@@ -310,7 +310,7 @@
 										<i class="fas fa-star filled"></i>
 										<i class="fas fa-star filled"></i>
 								   </div>
-								   <p class="mb-0"><a href="javascript:;">15 Reviews</a></p>
+								   <p class="mb-0"><a href="javascript:;">15 đánh giá</a></p>
 								</div>
 								<i class="fa-regular fa-comments"></i>
 							</li>
@@ -326,8 +326,8 @@
 									<a href="javascript:void(0);" class="venue-type"><img class="img-fluid"  src="assets/img/icons/venue-type.svg" alt="Icon"></a>
 								</div>
 								<div class="ms-2">
-									<p>Venue Type</p>
-									<h6 class="mb-0">Indoor</h6>
+									<p>Loại sân</p>
+									<h6 class="mb-0">Sân trong nhà</h6>
 								</div>
 							</li>
 							<li>
@@ -335,7 +335,7 @@
 									<a href="javascript:void(0);"><img class="img-fluid"  src="assets/img/profiles/avatar-01.jpg" alt="Icon"></a>
 								</div>
 								<div class="ms-2">
-									<p>Added By</p>
+									<p>Được thêm vào bởi</p>
 									<h6 class="mb-0">Hendry Williams</h6>
 								</div>
 							</li>
@@ -343,7 +343,7 @@
 					</div>
 					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
 						<div class="d-flex float-sm-end align-items-center">
-							<p class="d-inline-block me-2 mb-0">Starts From :</p><h3 class="primary-text mb-0 d-inline-block">$150<span>/ hr</span></h3>
+							<p class="d-inline-block me-2 mb-0">Khởi điểm từ :</p><h3 class="primary-text mb-0 d-inline-block">90k<span>/ hr</span></h3>
 						</div>
 					</div>
 				</div>
@@ -358,13 +358,13 @@
 					<div class="col-12 col-sm-12 col-md-12 col-lg-8">
 						<div class="venue-options white-bg mb-4">
 							<ul class="clearfix">
-								<li class="active"><a href="#overview">Overview</a></li>
-								<li><a href="#includes">Includes</a></li>
-								<li><a href="#rules">Rules</a></li>
-								<li><a href="#amenities">Amenities</a></li>
-								<li><a href="#gallery">Gallery</a></li>
-								<li><a href="#reviews">Reviews</a></li>
-								<li><a href="#location">Locations</a></li>
+								<li class="active"><a href="#overview">Tổng Quan</a></li>
+								<li><a href="#includes">Bao Gồm</a></li>
+								<li><a href="#rules">Quy Tắc</a></li>
+								<li><a href="#amenities">Tiện Nghi</a></li>
+								<li><a href="#gallery">Phòng Trưng Bày</a></li>
+								<li><a href="#reviews">Đánh Giá</a></li>
+								<li><a href="#location">Địa Điểm</a></li>
 							</ul>
 						</div>
 
@@ -373,7 +373,7 @@
 							<div class="accordion-item mb-4" id="overview">
 							    <h4 class="accordion-header" id="panelsStayOpen-overview">
 							      	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-							        	 Overview
+							        	 Tổng Quan
 							      	</button>
 							    </h4>
 							    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-overview">
@@ -394,7 +394,7 @@
 							<div class="accordion-item mb-4" id="includes">
 							    <h4 class="accordion-header" id="panelsStayOpen-includes">
 							      	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-							        	 Includes
+							        	 Bao Gồm
 							      	</button>
 							    </h4>
 							    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-includes">
@@ -414,7 +414,7 @@
 							<div class="accordion-item mb-4" id="rules">
 							    <h4 class="accordion-header" id="panelsStayOpen-rules">
 							      	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-							        	Rules
+							        	Quy Tắc
 							      	</button>
 							    </h4>
 							    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-rules">
@@ -430,7 +430,7 @@
 							<div class="accordion-item mb-4" id="amenities">
 							    <h4 class="accordion-header" id="panelsStayOpen-amenities">
 							      	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-							        	 Amenities
+							        	 Tiện Nghi
 							      	</button>
 							    </h4>
 							    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-amenities">
@@ -448,7 +448,7 @@
 							<div class="accordion-item mb-4" id="gallery">
 							    <h4 class="accordion-header" id="panelsStayOpen-gallery">
 							      	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
-							        	 Gallery
+							        	 Phòng Trưng Bày
 							      	</button>
 							    </h4>
 							    <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-gallery">
@@ -480,7 +480,7 @@
 							    <div class="accordion-header" id="panelsStayOpen-reviews">
 							      	<div class="accordion-button d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-controls="panelsStayOpen-collapseSix">
 							        	<span class="w-75 mb-0">
-							        		 Reviews
+							        		 Đánh Giá
 							        	</span>
 							        	<a href="javascript:void(0);" class="btn btn-gradient pull-right write-review add-review" data-bs-toggle="modal" data-bs-target="#add-review">Write a review</a>
 							      	</div>
@@ -647,7 +647,7 @@
 							<div class="accordion-item" id="location">
 							    <h4 class="accordion-header" id="panelsStayOpen-location">
 							      	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
-							        	 Location
+							        	 Địa Điểm
 							      	</button>
 							    </h4>
 							    <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-location">
@@ -816,11 +816,16 @@
 			<section class="section innerpagebg">
 				<div class="container">
 			        <div class="featured-slider-group">
-			        	<h3 class="mb-40">Similar Venues</h3>
+			        	<h3 class="mb-40">Địa điểm tương tự</h3>
 			        	<div class="owl-carousel featured-venues-slider owl-theme">
 
 							<!-- Featured Item -->
-						    <div class="featured-venues-item">
+							 <?php
+
+								include("assets/view/sancaulong/viewsancau.php");
+
+							?>
+						    <!-- <div class="featured-venues-item">
 								<div class="listing-item mb-0">										
 									<div class="listing-img">
 										<a href="venue-details.html">
@@ -868,163 +873,10 @@
 										</div>	
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<!-- /Featured Item -->
 
-							<!-- Featured Item -->
-						    <div class="featured-venues-item">
-								<div class="listing-item mb-0">										
-									<div class="listing-img">
-										<a href="venue-details.html">
-											<img src="assets/img/venues/venues-02.jpg" class="img-fluid" alt="Venues">
-										</a>
-										<div class="fav-item-venues">
-											<span class="tag tag-blue">Top Rated</span>		
-											<h5 class="tag tag-primary">$200<span>/hr</span></h5>
-										</div>
-									</div>										
-									<div class="listing-content">
-										<div class="list-reviews">							
-											<div class="d-flex align-items-center">
-												<span class="rating-bg">5.0</span><span>150 Reviews</span> 
-											</div>
-											<a href="javascript:void(0)" class="fav-icon">
-												<i class="feather-heart"></i>
-											</a>
-										</div>	
-										<h3 class="listing-title">
-											<a href="venue-details.html">Badminton Academy</a>
-										</h3>
-										<div class="listing-details-group">
-											<p>Unleash your badminton potential at our premier Badminton Academy, where champions are made</p>
-											<ul>
-												<li>
-													<span>
-														<i class="feather-map-pin"></i>Sacramento, CA
-													</span>
-												</li>
-												<li>
-													<span>
-														<i class="feather-calendar"></i>Next Availablity : <span class="primary-text">15 May 2023</span>
-													</span>
-												</li>
-											</ul>
-										</div>
-										<div class="listing-button">
-											<div class="listing-venue-owner">
-												<a class="navigation">
-													<img src="assets/img/profiles/avatar-02.jpg" alt="User">Rebecca
-												</a>												
-											</div>
-											<a href="venue-details.html" class="user-book-now"><span><i class="feather-calendar me-2"></i></span>Book Now</a>
-										</div>	
-									</div>
-								</div>
-							</div>
-							<!-- /Featured Item -->
 
-							<!-- Featured Item -->
-						    <div class="featured-venues-item">
-								<div class="listing-item mb-0">										
-									<div class="listing-img">
-										<a href="venue-details.html">
-											<img src="assets/img/venues/venues-03.jpg" class="img-fluid" alt="Venues">
-										</a>
-										<div class="fav-item-venues">
-											<h5 class="tag tag-primary">$350<span>/hr</span></h5>
-										</div>
-									</div>										
-									<div class="listing-content">
-										<div class="list-reviews">							
-											<div class="d-flex align-items-center">
-												<span class="rating-bg">4.7</span><span>120 Reviews</span> 
-											</div>
-											<a href="javascript:void(0)" class="fav-icon">
-												<i class="feather-heart"></i>
-											</a>
-										</div>	
-										<h3 class="listing-title">
-											<a href="venue-details.html">Manchester Academy</a>
-										</h3>
-										<div class="listing-details-group">
-											<p>Manchester Academy: Where dreams meet excellence in sports education and training game.</p>
-											<ul>
-												<li>
-													<span>
-														<i class="feather-map-pin"></i>Guysville, OH
-													</span>
-												</li>
-												<li>
-													<span>
-														<i class="feather-calendar"></i>Next Availablity : <span class="primary-text">16 May 2023</span>
-													</span>
-												</li>
-											</ul>
-										</div>
-										<div class="listing-button">
-											<div class="listing-venue-owner">
-												<a class="navigation">
-													<img src="assets/img/profiles/avatar-03.jpg" alt="User">Andrew
-												</a>												
-											</div>
-											<a href="venue-details.html" class="user-book-now"><span><i class="feather-calendar me-2"></i></span>Book Now</a>
-										</div>	
-									</div>
-								</div>
-							</div>
-							<!-- /Featured Item -->
-
-							<!-- Featured Item -->
-						    <div class="featured-venues-item">
-								<div class="listing-item mb-0">										
-									<div class="listing-img">
-										<a href="venue-details.html">
-											<img src="assets/img/venues/venues-02.jpg" class="img-fluid" alt="Venues">
-										</a>
-										<div class="fav-item-venues">
-											<span class="tag tag-blue">Featured</span>		
-											<h5 class="tag tag-primary">$450<span>/hr</span></h5>
-										</div>
-									</div>										
-									<div class="listing-content">
-										<div class="list-reviews">							
-											<div class="d-flex align-items-center">
-												<span class="rating-bg">4.5</span><span>300 Reviews</span> 
-											</div>
-											<a href="javascript:void(0)" class="fav-icon">
-												<i class="feather-heart"></i>
-											</a>
-										</div>	
-										<h3 class="listing-title">
-											<a href="venue-details.html">ABC Sports Academy</a>
-										</h3>
-										<div class="listing-details-group">
-											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.industry's standard</p>
-											<ul>
-												<li>
-													<span>
-														<i class="feather-map-pin"></i>Little Rock, AR
-													</span>
-												</li>
-												<li>
-													<span>
-														<i class="feather-calendar"></i>Next Availablity : <span class="primary-text">17 May 2023</span>
-													</span>
-												</li>
-											</ul>
-										</div>
-										<div class="listing-button">
-											<div class="listing-venue-owner">
-												<a class="navigation">
-													<img src="assets/img/profiles/avatar-04.jpg" alt="User">Mart Sublin
-												</a>												
-											</div>
-											<a href="venue-details.html" class="user-book-now"><span><i class="feather-calendar me-2"></i></span>Book Now</a>
-										</div>	
-									</div>
-								</div>
-							</div>
-							<!-- /Featured Item -->
 
 						</div>	
 					</div>
