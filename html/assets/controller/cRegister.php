@@ -17,25 +17,28 @@
             {
                 return -1;
             }
-
-            // $arr = array();
-            // foreach($ktra as $i){
-            //     $arr[] = $i['username'];
-            // }
-            // if(in_array($username,$arr)){
-            //     echo '<script>alert("Tên đăng nhập đã tồn tại !")</script>';
-            // }else{
-            //     $p = new mRegiter;
-            //     $con = $p -> mRegister1User($username,$pw,$email,$trangthai,$loaiND,$sdt);
-            //     if($con){
-            //             echo '<script>alert("Đăng ký thành công ! Xin chào '.$username.'")</script>';
-            //             echo '<script>alert("Bạn đã có tài khoản. Đăng nhập !")</script>';
-            //             header('refresh:0,url="?dangnhap');       
-            //     }else{
-            //             echo '<script>alert("Đăng ký không thành công !")</script>';
-            //     }
-            // }
-            
-    }}
+          
+    }
+        public function getTKND($username,$pass)
+        {
+            $p = new mRegiter();
+            $tblTKND = $p->selectAllUser($username,$pass);
+            if($tblTKND)
+            {
+                if($tblTKND->num_rows>0)
+                {
+                    return $tblTKND;
+                } 
+                else 
+                {
+                    return -1;
+                }
+            } 
+            else 
+            {
+                return false;
+            }
+        }
+}
 
 ?>

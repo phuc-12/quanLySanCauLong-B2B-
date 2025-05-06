@@ -62,14 +62,15 @@
 </head>
 
 <body>
-	<div id="global-loader" >
+	<!-- <div id="global-loader" >
 		<div class="loader-img">
 			<img src="assets/img/loader.png" class="img-fluid" alt="Global">
 		</div>
-	</div>
+	</div> -->
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">
 
+		<!-- Header -->
 		<!-- Header -->
 		<header class="header header-trans">
 			<div class="container-fluid">
@@ -280,7 +281,9 @@
 			</div>
 		</header>
 		<!-- /Header -->
+		<!-- /Header -->
 
+		<!-- /Newsletter -->
 
 		<!-- Footer -->
 		

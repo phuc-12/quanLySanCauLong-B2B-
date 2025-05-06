@@ -102,7 +102,7 @@ session_start();
 										<h2>Bắt đầu với Dreamsports</h2>
 										<p>Khơi dậy hành trình thể thao của bạn với DreamSports và bắt đầu ngay bây giờ.
 										</p>
-										<form action="register.php" method="POST">
+										
 											<input type="hidden" name="loainguoidung" id="loainguoidung" value="1">
 											<ul class="nav nav-tabs" id="myTab" role="tablist">
 												<li class="nav-item" role="presentation">
@@ -123,20 +123,22 @@ session_start();
 												</li>
 											</ul>
 											<div class="tab-content" id="myTabContent">
+												
 												<div class="tab-pane fade show active" id="customer" role="tabpanel" aria-labelledby="customer-tab">
 													<!-- Register Form -->
+													<form action="register.php" method="POST">	 
 														<div class="form-group">
 															<div class="group-img">
 																<i class="feather-user"></i>
 																<input type="text" class="form-control" placeholder="Username" name="txtUsername">
-																<div ><span id="errUsername" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div>
+																<!-- <div ><span id="errUsername" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div> -->
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="group-img">
 																<i class="feather-mail"></i>
 																<input type="text" class="form-control" placeholder="Email" name="txtEmail">
-																<div ><span id="errEmail" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div>
+																<!-- <div ><span id="errEmail" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div> -->
 															</div>
 														</div>
 														<div class="form-group">
@@ -149,14 +151,14 @@ session_start();
 															<div class="pass-group group-img">
 																<i class="toggle-password feather-eye-off"></i>
 																<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
-																<div ><span id="errPW" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div>
+																<!-- <div ><span id="errPW" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div> -->
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="pass-group group-img">
 																<i class="toggle-password-confirm feather-eye-off"></i>
 																<input type="password" class="form-control pass-confirm" placeholder="Confirm Password" name="txt-rePassword">
-																<div ><span id="errRePW" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div>
+																<!-- <div ><span id="errRePW" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div> -->
 															</div>
 														</div>
 														
@@ -165,12 +167,13 @@ session_start();
 													</form>
 													<!-- /Register Form -->
 												</div>
+
 												<div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
+													<form action="register.php" method="POST">	
 														<div class="form-group">
 															<div class="group-img">
 																<i class="feather-user"></i>
 																<input type="text" class="form-control" placeholder="Username" name="txtUsername">
-
 															</div>
 														</div>
 														<div class="form-group">
@@ -199,9 +202,10 @@ session_start();
 														</div>
 														
 														<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="guiDK" value="Đăng Ký"></input>
-												</div> 
+													</form>
+													</div> 
 											</div>
-										</form>
+										
 									</div>
 									<div class="bottom-text text-center">
 										<p>Đã có tài khoản? <a href="login.php">Đăng nhập!</a></p>
@@ -237,7 +241,7 @@ session_start();
 <?php
     include('assets/controller/cRegister.php');
 	$p = new cRegister();
-if ($_POST['guiDK'] === 'Đăng Ký') {
+	if ($_POST['guiDK'] === 'Đăng Ký') {
     $username = $_POST['txtUsername'];
     $pw = $_POST['txt-rePassword'];
     $email = $_POST['txtEmail'];

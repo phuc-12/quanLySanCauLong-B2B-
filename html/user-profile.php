@@ -1,3 +1,6 @@
+<?php
+include_once("assets/model/mUser.php")
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,6 +57,7 @@
 
 </head>
 <body>
+
 	<div id="global-loader" >
 		<div class="loader-img">
 			<img src="assets/img/loader.png" class="img-fluid" alt="Global">
@@ -152,7 +156,7 @@
 										<a href="javascript:void(0);">Authentication</a>
 										<ul class="submenu">
 											<li><a href="register.html">Signup</a></li>
-											<li><a href="login.html">Signin</a></li>
+											<li><a href="login.php">Signin</a></li>
 											<li><a href="forgot-password.html">Forgot Password</a></li>
 											<li><a href="change-password.html">Reset Password</a></li>
 										</ul>
@@ -216,7 +220,7 @@
 								<a href="register.html">Sign Up</a>
 							</li>
 							<li class="login-link">
-								<a href="login.html">Sign In</a>
+								<a href="login.php">Sign In</a>
 							</li>
 						</ul>
 					</div>
@@ -311,7 +315,7 @@
 									</div>
 								</div>
 								<p><a class="dropdown-item" href="coach-profile.html">Settings</a></p>
-								<p><a class="dropdown-item" href="login.html">Logout</a></p>
+								<p><a class="dropdown-item" href="login.php">Logout</a></p>
 							</div>
 						</li>
 						<!-- /User Menu -->
@@ -404,7 +408,8 @@
 							<div class="card ">
 								<form >
 									<div class="row">
-										<div class="col-md-12">
+										<!-- img -->
+										<!-- <div class="col-md-12">
 											<div class="file-upload-text">
 												<div class="file-upload">
 													<img src="assets/img/icons/img-icon.svg" class="img-fluid" alt="Upload">
@@ -416,7 +421,7 @@
 												</div>
 												<h5>Upload a logo with a minimum size of 150 * 150 pixels (JPG, PNG, SVG).</h5>
 											</div>
-										</div>
+										</div> -->
 										<div class="col-lg-4 col-md-6">
 											<div class="input-space">
 												<label  class="form-label">Name</label>
