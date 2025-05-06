@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from dreamsports.dreamstechnologies.com/html/user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:33:05 GMT -->
+<!-- Mirrored from dreamsports.dreamstechnologies.com/html/user-profile.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:33:05 GMT -->
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -75,19 +75,19 @@
 								<span></span>
 							</span>
 						</a>
-						<a href="index.html" class="navbar-brand logo">
+						<a href="index.php" class="navbar-brand logo">
 							<img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
 						</a>
 					</div>
 					<div class="main-menu-wrapper">
 						<div class="menu-header">
-							<a href="index.html" class="menu-logo">
+							<a href="index.php" class="menu-logo">
 								<img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
 							</a>
 							<a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
 						</div>
 						<ul class="main-nav">
-							<li ><a href="index.html">Home</a></li>
+							<li ><a href="index.php">Home</a></li>
 							<li class="has-submenu ">
 								<a href="#">Coaches <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
@@ -136,7 +136,7 @@
 									<li><a href="user-chat.html">Chat</a></li>
 									<li><a href="user-invoice.html">Invoice</a></li>
 									<li><a href="user-wallet.html">Wallet</a></li>
-									<li class="active"><a href="user-profile.html">Profile Edit</a></li>
+									<li class="active"><a href="user-profile.php">Profile Edit</a></li>
 									<li><a href="user-setting-password.html">Change Password</a></li>
 									<li><a href="user-profile-othersetting.html">Other Settings</a></li>
 								</ul>
@@ -307,7 +307,7 @@
 									</div>
 									<div class="user-text">
 										<h6>Henriques</h6>
-										<a href="user-profile.html" class="text-profile mb-0">Go to Profile</a>
+										<a href="user-profile.php" class="text-profile mb-0">Go to Profile</a>
 									</div>
 								</div>
 								<p><a class="dropdown-item" href="coach-profile.html">Settings</a></p>
@@ -328,7 +328,7 @@
 			<div class="container">
 				<h1 class="text-white">User Profile</h1>
 				<ul>
-					<li><a href="index.html">Home</a></li>
+					<li><a href="index.php">Home</a></li>
 					<li >User Profile</li>
 				</ul>
 			</div>
@@ -373,7 +373,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="user-profile.html" class="active">
+									<a href="user-profile.php" class="active">
 										<img src="assets/img/icons/profile-icon.svg" alt="Icon">
 										<span>Profile Setting</span>
 									</a>
@@ -392,9 +392,9 @@
 
 				<div class="coach-court-list profile-court-list">
 					<ul class="nav">
-						<li><a class="active" href="user-profile.html">Profile</a></li>
-						<li><a href="user-setting-password.html">Change Password</a></li>
-						<li><a href="user-profile-othersetting.html">Other Settings</a></li>
+						<li><a class="active" href="user-profile.php">Profile</a></li>
+						<!-- <li><a href="user-setting-password.html">Change Password</a></li>
+						<li><a href="user-profile-othersetting.html">Other Settings</a></li> -->
 					</ul>
 				</div>
 
@@ -496,11 +496,11 @@
 		<footer class="footer">
 			<div class="container">
 				<!-- Footer Join -->
-				<div class="footer-join">
+				<!-- <div class="footer-join">
 					<h2>We Welcome Your Passion And Expertise</h2>
 					<p class="sub-title">Join our empowering sports community today and grow with us.</p>
 					<a href="register.html" class="btn btn-primary"><i class="feather-user-plus"></i> Join With Us</a>
-				</div>
+				</div> -->
 				<!-- /Footer Join -->
 			
 				<!-- Footer Top -->
@@ -724,5 +724,5 @@
 <script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="1481d7a87492a0bc11aba1ae-|49" defer></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92a5cd6dcf1b1065","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
 </body>
 
-<!-- Mirrored from dreamsports.dreamstechnologies.com/html/user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:33:05 GMT -->
+<!-- Mirrored from dreamsports.dreamstechnologies.com/html/user-profile.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:33:05 GMT -->
 </html>
