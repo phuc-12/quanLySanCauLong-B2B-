@@ -1,6 +1,6 @@
 <?php
 
-    include(__DIR__ . '/../../../controller/cSanCauLong.php');
+    include_once(__DIR__ . '/../../../controller/cSanCauLong.php');
     $p=new CSanCauLong();
     $maSan = $_REQUEST['maSan'];
     $tblSCL = $p->getSCLBymaSan($maSan);

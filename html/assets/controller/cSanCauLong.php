@@ -1,6 +1,6 @@
 <?php
 
-    include($_SERVER['DOCUMENT_ROOT'] . "/quanLySanCauLong-B2B-/html/assets/model/mSanCauLong.php");
+    include_once($_SERVER['DOCUMENT_ROOT'] . "/quanLySanCauLong-B2B-/html/assets/model/mSanCauLong.php");
 
     class CSanCauLong
     {
