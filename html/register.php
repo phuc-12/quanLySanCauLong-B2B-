@@ -56,8 +56,8 @@ session_start();
 	<link rel="stylesheet" href="assets/css/style.css">
 
 	<!-- JS -->
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-	<script src="assets/js/register.js"></script>
+	<script src="assets/js/jquery-3.7.1.min.js"></script>
+	<!-- <script src="assets/js/register.js"></script> -->
 
 </head>
 
@@ -257,4 +257,8 @@ if ($_POST['guiDK'] === 'Đăng Ký') {
   function setLoaiNguoiDung(value) {
     document.getElementById('loainguoidung').value = value;
   }
+</script>
+<script>
+
+	
 </script>
