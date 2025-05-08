@@ -1,3 +1,34 @@
+<?php 
+include_once ("assets/model/ketnoi.php");
+$p=new clsketnoi();
+$conn = $p->moketnoi();
+// Thiết lập múi giờ Việt Nam
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+
+$maSan = isset($_GET['maSan']) ? $_GET['maSan'] : 1; 
+$today = new DateTime(); 
+$dates = array();
+for ($i = 0; $i < 7; $i++) {
+    $date = new DateTime(); // luôn tạo mới để tránh vấn đề clone
+    $date->modify("+$i day");
+    $dates[] = $date->format('Y-m-d');
+}
+
+
+
+$dateRange = implode("','", $dates); 
+
+$bookingQuery = $conn->query("     
+    SELECT * FROM bookings     
+    WHERE maSan = $maSan AND ngayDat IN ('$dateRange') 
+"); 
+
+$bookings = array(); 
+while ($row = $bookingQuery->fetch_assoc()) {     
+    $bookings[$row['ngayDat']][$row['time_slot_id']] = $row; 
+} 
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -248,11 +279,28 @@
 		<!--Galler Slider Section-->
 		<div class="bannergallery-section">
 		    
-                <?php
+		<?php
 
-					include ("assets/view/sancaulong/viewhinh.php");
+			include_once("assets/controller/cChucnang.php");
+			$p=new tmdt();
 
-				?>
+			$laymasan=$_REQUEST["maSan"];
+			$layhinhanh=$p->SelectCot("SELECT hinhAnh FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
+			$laytensan=$p->SelectCot("SELECT tenSan FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
+			$laydiachi=$p->SelectCot("SELECT diaChi FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
+			$laysdt=$p->SelectCot("SELECT soDienThoai FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
+		?>
+
+		<div class="main-gallery-slider owl-carousel owl-theme">
+			<div class="gallery-widget-item">
+				<a href="assets/img/venues/<?php echo $layhinhanh ?>" data-fancybox="gallery1">
+					<img class="img-fluid" alt="Image" src="assets/img/venues/<?php echo $layhinhanh ?>">
+				</a>
+			</div>	
+		</div>			
+		<div class="showphotos corner-radius-10">
+			<a href="assets/img/venues/<?php echo $layhinhanh ?>" data-fancybox="gallery1"><i class="fa-regular fa-images"></i>More Photos</a>
+		</div>	
                 <!-- <div class="gallery-widget-item">
 				    <a href="assets/img/gallery/gallery1/gallery-02.png" data-fancybox="gallery1">
 						<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery1/gallery-02.png">
@@ -289,10 +337,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-12 col-lg-6">
-						<h1 class="d-flex align-items-center justify-content-start">Badminton Academy<span class="d-flex justify-content-center align-items-center"><i class="fas fa-check-double"></i></span></h1>
+						<h1 class="d-flex align-items-center justify-content-start"><?php echo $laytensan ?><span class="d-flex justify-content-center align-items-center"><i class="fas fa-check-double"></i></span></h1>
 						<ul class="d-sm-flex justify-content-start align-items-center">
-							<li><i class="feather-map-pin"></i>70 Bright St New York, USA</li>
-							<li><i class="feather-phone-call"></i>+3 80992 31212</li>
+							<li><i class="feather-map-pin"></i><?php echo $laydiachi ?></li>
+							<li><i class="feather-phone-call"></i><?php echo $laysdt ?></li>
 							<li><i class="feather-mail"></i><a href="https://dreamsports.dreamstechnologies.com/cdn-cgi/l/email-protection#4c3523393e212d25200c29342d213c2029622f2321"> <span class="__cf_email__" data-cfemail="b0c9dfc5c2ddd1d9dcf0d5c8d1ddc0dcd59ed3dfdd">[email&#160;protected]</span></a></li>
 						</ul>
 					</div>
@@ -358,7 +406,7 @@
 					<div class="col-12 col-sm-12 col-md-12 col-lg-8">
 						<div class="venue-options white-bg mb-4">
 							<ul class="clearfix">
-								<li class="active"><a href="#overview">Tổng Quan</a></li>
+								<li class="active"><a href="#overview">Chọn Khung Giờ</a></li>
 								<li><a href="#includes">Bao Gồm</a></li>
 								<li><a href="#rules">Quy Tắc</a></li>
 								<li><a href="#amenities">Tiện Nghi</a></li>
@@ -373,21 +421,98 @@
 							<div class="accordion-item mb-4" id="overview">
 							    <h4 class="accordion-header" id="panelsStayOpen-overview">
 							      	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-							        	 Tổng Quan
+									  Chọn Khung Giờ
 							      	</button>
 							    </h4>
 							    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-overview">
 							      	<div class="accordion-body">
-							      		<div class="text show-more-height">
-								        	<p>Badminton  Academy is a renowned sports facility situated in Sacramento, CA. With a commitment to providing high-quality services, we offer a range of amenities and equipment to support athletes in their training and development.</p>
+									  <?php
+										$thuTiengViet = array(
+											'Mon' => 'Thứ hai',
+											'Tue' => 'Thứ ba',
+											'Wed' => 'Thứ tư',
+											'Thu' => 'Thứ năm',
+											'Fri' => 'Thứ sáu',
+											'Sat' => 'Thứ bảy',
+											'Sun' => 'Chủ nhật',
+										);
+									?>
+									  <?php
+											$result = $conn->query("SELECT * FROM time_slots");
+											$i = mysqli_num_rows($result);
+											if($i > 0)
+											{
+												$timeSlots = array();
+												while ($row = mysqli_fetch_array($result)) {
+													$id = $row['id'];
+													$start_time = $row['start_time'];
+													$end_time = $row['end_time'];
+													$gia = $row['gia'];
+													$timeSlots[] = array("id"=>$id,"start_time"=>$start_time,"end_time"=>$end_time,"gia"=>$gia);
+												}
+											}
+											else 
+											{
+												echo "Không có dữ liệu";
+											}
 
+											// // Test hiển thị timeSlots
+											// foreach ($timeSlots as $slot) {
+											// 	echo substr($slot['start_time'], 0, 5) . " - " . substr($slot['end_time'], 0, 5);
+											// }
 
-											<p>Our facility is equipped with state-of-the-art features, ensuring a conducive environment for athletes to excel in their respective sports. 
-												
-												
-											<p>Whether you're a professional athlete or a sports enthusiast, Sarah Sports Academy is the ideal place to enhance your skills and achieve your goals. Contact Mart Dublin for more information and to book your next training session.</p>
-		 								</div>
-		 								<div class="show-more d align-items-center primary-text"><i class="feather-plus-circle"></i>Show More</div>
+											// // Test hiển thị dates
+											// foreach ($dates as $d) {
+											// 	echo $d . "<br>";
+											// }
+									  ?>
+										<table border="1" cellpadding="10">     
+										<thead>         
+											<tr>             
+												<th>Khung giờ</th>             
+												<?php foreach ($dates as $d): ?>  
+													<?php 
+														$dayShort = date('D', strtotime($d)); 
+														$thu = isset($thuTiengViet[$dayShort]) ? $thuTiengViet[$dayShort] : $dayShort;
+														$ngay = date('d/m', strtotime($d));
+													?>
+													<th><?php echo $thu . ' ' . $ngay; ?></th>           
+												<?php endforeach; ?>
+											</tr>
+										</thead>
+											<tbody> 
+												<?php foreach ($timeSlots as $slot): ?> 
+													<tr>                 
+														<td><?php echo substr($slot['start_time'], 0, 5) . " - " . substr($slot['end_time'], 0, 5); ?></td>                 
+														<?php foreach ($dates as $d): ?>                     
+															<?php                         
+															$now = new DateTime();
+															$slotDateTime = new DateTime("$d {$slot['start_time']}");
+															$isPast = $slotDateTime < $now;
+															$isBooked = isset($bookings[$d][$slot['id']]);                     
+															?>                     
+															<td>                         
+																<?php if ($isPast): ?>                             
+																	<span style="color:gray" title="Khung giờ đã trôi qua">Quá hạn</span>                         
+																<?php elseif ($isBooked): ?>   
+																	<?php 
+																		$ngayTao = $bookings[$d][$slot['id']]['ngayTao'];
+																	?>                          
+																	<span style="color:red" title="Đặt lúc: <?php echo $ngayTao ?>">Đã đặt</span>                         
+																<?php else: ?>                             
+																	<form method="POST" action="booking-process.php?maSan=<?php echo $maSan ?>">                                 
+																		<input type="hidden" name="maSan" value="<?php echo $maSan ?>">                                 
+																		<input type="hidden" name="time_slot_id" value="<?php echo $slot['id'] ?>">                                 
+																		<input type="hidden" name="ngayDat" value="<?php echo $d ?>">                                 
+																		<button type="submit"><?php echo $slot['gia'] / 1000 ?>K</button>                             
+																	</form>                         
+																<?php endif; ?>                     
+															</td>                 
+														<?php endforeach; ?>             
+													</tr>         
+												<?php endforeach; ?>     
+											</tbody> 
+										</table> 
 							      	</div>
 							    </div>
 							</div>
@@ -400,13 +525,13 @@
 							    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-includes">
 							      	<div class="accordion-body">
 							        	<ul class="clearfix">
-							        		<li><i class="feather-check-square"></i>Badminton Racket Unlimited</li>
-							        		<li><i class="feather-check-square"></i>Bats</li>
-							        		<li><i class="feather-check-square"></i>Hitting Machines</li>
-							        		<li><i class="feather-check-square"></i>Multiple Courts</li>
-							        		<li><i class="feather-check-square"></i>Spare Players</li>
-							        		<li><i class="feather-check-square"></i>Instant Racket</li>
-							        		<li><i class="feather-check-square"></i>Green Turfs</li>
+							        		<li><i class="feather-check-square"></i>Vợt cầu lông không giới hạn</li>
+							        		<!-- <li><i class="feather-check-square"></i>Bats</li> -->
+							        		<!-- <li><i class="feather-check-square"></i>Máy đánh cầu</li> -->
+							        		<li><i class="feather-check-square"></i>Nhiều sân</li>
+							        		<li><i class="feather-check-square"></i>Người hướng dẫn</li>
+							        		<li><i class="feather-check-square"></i>Thuê vợt nhanh chóng</li>
+							        		<li><i class="feather-check-square"></i>Sách sẽ</li>
 							        	</ul>
 							      	</div>
 							    </div>
@@ -420,9 +545,9 @@
 							    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-rules">
 							      	<div class="accordion-body">
 							        	<ul>
-							        		<li><p><i class="feather-alert-octagon"></i>Non Marking Shoes are recommended not mandatory for Badminton.</p></li>
-							        		<li><p><i class="feather-alert-octagon"></i>A maximum number of members per booking per badminton court is admissible fixed by Venue Vendors</p></li>
-							        		<li><p><i class="feather-alert-octagon"></i>No pets, no seeds, no gum, no glass, no hitting or swinging outside of the cage</p></li>
+							        		<li><p><i class="feather-alert-octagon"></i>Giày không để lại dấu được khuyến khích sử dụng nhưng không bắt buộc khi chơi cầu lông.</p></li>
+							        		<li><p><i class="feather-alert-octagon"></i>Số lượng thành viên tối đa cho mỗi lần đặt chỗ trên mỗi sân cầu lông được Nhà cung cấp địa điểm chấp nhận.</p></li>
+							        		<li><p><i class="feather-alert-octagon"></i>Không nuôi thú cưng, không hạt giống, không kẹo cao su, không thủy tinh, không đánh hoặc đu đưa bên ngoài lồng.</p></li>
 							        	</ul>
 							      	</div>
 							    </div>
@@ -436,11 +561,11 @@
 							    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-amenities">
 							      	<div class="accordion-body">
 							        	<ul class="d-md-flex justify-content-between align-items-center">
-							        		<li><i class="fa fa-check-circle" aria-hidden="true"></i>Parking</li>
-							        		<li><i class="fa fa-check-circle" aria-hidden="true"></i>Drinking Water</li>
-							        		<li><i class="fa fa-check-circle" aria-hidden="true"></i>First Aid</li>
-							        		<li><i class="fa fa-check-circle" aria-hidden="true"></i>Change Room</li>
-							        		<li><i class="fa fa-check-circle" aria-hidden="true"></i>Shower</li>
+							        		<li><i class="fa fa-check-circle" aria-hidden="true"></i>Bãi đậu xe</li>
+							        		<li><i class="fa fa-check-circle" aria-hidden="true"></i>Nước uống</li>
+							        		<li><i class="fa fa-check-circle" aria-hidden="true"></i>Sơ cứu</li>
+							        		<li><i class="fa fa-check-circle" aria-hidden="true"></i>Phòng thay đồ</li>
+							        		<li><i class="fa fa-check-circle" aria-hidden="true"></i>Vòi sen</li>
 							        	</ul>
 							      	</div>
 							    </div>
@@ -482,7 +607,7 @@
 							        	<span class="w-75 mb-0">
 							        		 Đánh Giá
 							        	</span>
-							        	<a href="javascript:void(0);" class="btn btn-gradient pull-right write-review add-review" data-bs-toggle="modal" data-bs-target="#add-review">Write a review</a>
+							        	<a href="javascript:void(0);" class="btn btn-gradient pull-right write-review add-review" data-bs-toggle="modal" data-bs-target="#add-review">Viết một đánh giá</a>
 							      	</div>
 							    </div>
 							    <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-reviews">
@@ -816,15 +941,11 @@
 			<section class="section innerpagebg">
 				<div class="container">
 			        <div class="featured-slider-group">
-			        	<h3 class="mb-40">Địa điểm tương tự</h3>
+			        	<!-- <h3 class="mb-40">Địa điểm tương tự</h3> -->
 			        	<div class="owl-carousel featured-venues-slider owl-theme">
 
 							<!-- Featured Item -->
-							 <?php
-
-								include("assets/view/sancaulong/viewsancau.php");
-
-							?>
+							
 						    <!-- <div class="featured-venues-item">
 								<div class="listing-item mb-0">										
 									<div class="listing-img">
