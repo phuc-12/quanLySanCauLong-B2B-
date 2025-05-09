@@ -68,7 +68,7 @@ $p = new mUser();
 <body>
 <?php
 $layid = $_REQUEST['id'];
-$layten = $p->laycot("select tenKH from khachhang where maKH = '$layid' limit 1");
+$layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' limit 1");
 ?>
 	<div id="global-loader" >
 		<div class="loader-img">
@@ -257,7 +257,7 @@ $layten = $p->laycot("select tenKH from khachhang where maKH = '$layid' limit 1"
 														</div>
 														<div class="user-text">
 															<h6>'.$layten.'</h6>
-															<a href="user-profile.php?idKH='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
+															<a href="user-profile.php?id='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
 														</div>
 													</div>
 													<p><a class="dropdown-item"  href="coach-profile.php">Settings</a></p>
@@ -274,10 +274,10 @@ $layten = $p->laycot("select tenKH from khachhang where maKH = '$layid' limit 1"
 											<div class="nav-link btn btn-white log-register">	
 												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
 										</div>
-									</li>
-									<li class="nav-item">
-							<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
-						</li>
+										</li>
+										<li class="nav-item">
+										<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+										</li>
 										';
 									}
 								?>

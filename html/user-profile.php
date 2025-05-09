@@ -1,5 +1,6 @@
 <?php
-include_once("assets/model/mUser.php")
+include_once("assets/model/mUser.php");
+$p = new mUser();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,12 +58,24 @@ include_once("assets/model/mUser.php")
 
 </head>
 <body>
-
-	<div id="global-loader" >
+<?php
+        $layid = $_REQUEST['id'];
+		$layten = $p->laycot("SELECT tenKH FROM khachhang WHERE idnguoidung ='$layid' LIMIT 1");
+        $laymakh=$p->laycot("select maKH from khachhang where idnguoidung = '$layid' limit 1");
+        $layemail=$p->laycot("select email from khachhang where idnguoidung = '$layid' limit 1");
+        // $layusername=$p->laycot("select username from khachhang where maKH = '$layid' limit 1");
+        $layusername = $p->laycot("SELECT username FROM taikhoannguoidung 
+                           WHERE idnguoidung = '$layid' LIMIT 1");
+        $laysdt=$p->laycot("select sodienthoai from khachhang where idnguoidung = '$layid' limit 1");
+        $laypassword=$p->laycot("select passwords from taikhoannguoidung where idnguoidung = '$layid' limit 1");
+        $laydiachi=$p->laycot("select diachi from khachhang where idnguoidung = '$layid' limit 1");
+		$layhinhanh=$p->laycot("select hinhanh from khachhang where idnguoidung = '$layid' limit 1");
+    ?>
+	<!-- <div id="global-loader" >
 		<div class="loader-img">
 			<img src="assets/img/loader.png" class="img-fluid" alt="Global">
 		</div>
-	</div>
+	</div> -->
 
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">
@@ -397,8 +410,8 @@ include_once("assets/model/mUser.php")
 				<div class="coach-court-list profile-court-list">
 					<ul class="nav">
 						<li><a class="active" href="user-profile.php">Profile</a></li>
-						<!-- <li><a href="user-setting-password.html">Change Password</a></li>
-						<li><a href="user-profile-othersetting.html">Other Settings</a></li> -->
+						<!-- <li><a href="user-setting-password.html">Change Password</a></li> -->
+						<!-- <li><a href="user-profile-othersetting.html">Other Settings</a></li> -->
 					</ul>
 				</div>
 
@@ -406,88 +419,68 @@ include_once("assets/model/mUser.php")
 					<div class="col-sm-12">
 						<div class="profile-detail-group">
 							<div class="card ">
-								<form >
-									<div class="row">
-										<!-- img -->
-										<!-- <div class="col-md-12">
-											<div class="file-upload-text">
-												<div class="file-upload">
-													<img src="assets/img/icons/img-icon.svg" class="img-fluid" alt="Upload">
-													<p>Upload Photo</p>
-													<span>
-														<i class="feather-edit-3"></i>
-														<input type="file"  id="file-input">
-													</span>
-												</div>
-												<h5>Upload a logo with a minimum size of 150 * 150 pixels (JPG, PNG, SVG).</h5>
-											</div>
-										</div> -->
-										<div class="col-lg-4 col-md-6">
-											<div class="input-space">
-												<label  class="form-label">Name</label>
-												<input type="text" class="form-control" id="name" placeholder="Enter Name">
-											</div>
+							<form method="post">
+								<!-- Hidden input để gửi id người dùng -->
+								<input type="hidden" name="idnguoidung" value="<?php echo $layid; ?>">
+
+								<div class="row">
+									<!-- Username (chỉ đọc) -->
+									<div class="col-lg-4 col-md-6">
+										<div class="input-space">
+											<label class="form-label">Username:</label>
+											<input type="text" class="form-control" value="<?php echo $layusername; ?>" name="username" style="color: #999;" readonly>
 										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="input-space">
-												<label  class="form-label">Email</label>
-												<input type="email" class="form-control" id="email" placeholder="Enter Email Address">
-											</div>
+									</div>
+
+									<!-- Họ Tên -->
+									<div class="col-lg-4 col-md-6">
+										<div class="input-space">
+											<label class="form-label">Họ Tên:</label>
+											<input type="text" class="form-control" value="<?php echo $layten; ?>" name="tenKH" style="color: #999;">
 										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="input-space">
-												<label  class="form-label">Phone Number</label>
-												<input type="text" class="form-control" id="phone" placeholder="Enter Phone Number">
-											</div>
+									</div>
+
+									<!-- Email -->
+									<div class="col-lg-4 col-md-6">
+										<div class="input-space">
+											<label class="form-label">Email:</label>
+											<input type="email" class="form-control" value="<?php echo $layemail; ?>" name="email" style="color: #999;">
 										</div>
-										<div class="col-lg-12 col-md-12">
-											<div class="info-about">
-												<label for="comments" class="form-label">Information about You</label>
-												<textarea class="form-control" id="comments" rows="3" placeholder="About"></textarea>
-											</div>
+									</div>
+
+									<!-- Số điện thoại -->
+									<div class="col-lg-4 col-md-6">
+										<div class="input-space">
+											<label class="form-label">Số Điện Thoại:</label>
+											<input type="text" class="form-control" value="<?php echo $laysdt; ?>" name="sodienthoai" style="color: #999;">
 										</div>
-										<div class="address-form-head">
-											<h4>Address</h4>
+									</div>
+
+									<!-- Địa chỉ -->
+									<div class="col-lg-12 col-md-12">
+										<div class="input-space">
+											<label class="form-label">Địa chỉ:</label>
+											<input type="text" class="form-control" value="<?php echo $laydiachi; ?>" name="diachi" style="color: #999;">
 										</div>
-										<div class="col-lg-12 col-md-12">
-											<div class="input-space">
-												<label  class="form-label">Address</label>
-												<input type="text" class="form-control" id="address" placeholder="Enter Address">
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="input-space">
-												<label  class="form-label">State</label>
-												<input type="text" class="form-control" id="state" placeholder="Enter State">
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="input-space">
-												<label  class="form-label">City</label>
-												<input type="text" class="form-control" id="city" placeholder="Enter City">
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-4">
-											<div class="input-space">
-												<label  class="form-label">Country</label>
-												<select class="select">
-													<option>Country</option>
-													<option>Texas</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="input-space mb-0">
-												<label  class="form-label">Zipcode</label>
-												<input type="text" class="form-control" id="zipcode" placeholder="Enter Zipcode">
+									</div>
+
+									<!-- Password -->
+									<div class="col-lg-4 col-md-6">
+										<div class="form-group">
+											<div class="pass-group group-img">
+												<label class="form-label">Password:</label>
+												<i class="toggle-password feather-eye-off"></i>
+												<input type="password" class="form-control pass-input" name="passwords" value="<?php echo $laypassword; ?>" style="color: #999;">
 											</div>
 										</div>
 									</div>
-								</form>
-							</div>
-							<div class="save-changes text-end">
-								<a href="javascript:;" class="btn btn-primary reset-profile">Reset</a>
-								<a href="javascript:;" class="btn btn-secondary save-profile">Save Change</a>
+								</div>
+
+								<div class="save-changes text-end">
+									<button type="reset" class="btn btn-primary save-profile">Hủy</button>
+									<button type="submit" name="btnsua" class="btn btn-primary" value="Cập Nhật">Cập nhật</button>
+								</div>
+							</form>
 							</div>
 						</div>
 					</div>
@@ -727,7 +720,52 @@ include_once("assets/model/mUser.php")
 	<script src="assets/js/script.js" type="1481d7a87492a0bc11aba1ae-text/javascript"></script>
 
 <script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="1481d7a87492a0bc11aba1ae-|49" defer></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92a5cd6dcf1b1065","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
-</body>
 
+<?php
+error_reporting(1);        
+
+if (isset($_REQUEST['btnsua'])) {
+
+    $idnguoidung = isset($_REQUEST['idnguoidung']) ? $_REQUEST['idnguoidung'] : '';
+    $tenKH = isset($_REQUEST['tenKH']) ? $_REQUEST['tenKH'] : '';
+    $username = isset($_REQUEST['username']) ? $_REQUEST['username'] : '';
+    $password = isset($_REQUEST['passwords']) ? $_REQUEST['passwords'] : '';
+    $email = isset($_REQUEST['email']) ? $_REQUEST['email'] : '';
+    $diachi = isset($_REQUEST['diachi']) ? $_REQUEST['diachi'] : '';
+    $sdt = isset($_REQUEST['sodienthoai']) ? $_REQUEST['sodienthoai'] : '';
+
+    if($idnguoidung != '' && $tenKH != '' && $username != '' && $password != '' && $email != '' && $sdt != '' && $diachi != '') {
+        $pass = md5($password);
+
+        $sql = "
+            UPDATE khachhang k
+            JOIN taikhoannguoidung t ON k.idnguoidung = t.idnguoidung
+            SET 
+                k.tenKH = '$tenKH',
+                k.email = '$email',
+                k.soDienThoai = '$sdt',
+                k.diachi = '$diachi',
+                t.passwords = '$pass'
+            WHERE k.idnguoidung = '$idnguoidung'
+        ";
+
+        if ($p->themxoasua($sql) == 1) {
+            echo '<script>alert("Cập nhật thành công");</script>';
+        } else {
+            echo '<script>alert("Không có thay đổi hoặc cập nhật thất bại!");</script>';
+        }
+
+        echo '<script>window.location="user-profile.php?id='.$idnguoidung.'";</script>';
+    } else {
+        echo '<script>alert("Vui lòng điền đầy đủ thông tin!");</script>';
+    }
+}
+?>
+
+
+
+
+
+</body>
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/user-profile.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:33:05 GMT -->
 </html>

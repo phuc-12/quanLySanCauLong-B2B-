@@ -91,7 +91,7 @@ session_start();
 					</div>
 					<div class="col-12 col-sm-12 col-md-12 col-lg-6 no-padding">
 						<div class="dull-pg">
-							<div class="row no-margin vph-100 d-flex align-items-center justify-content-center">
+							<div class="row no-margin vph-100 d-flex align-items-center justify-content-center">	
 								<div class="col-sm-10 col-md-10 col-lg-10 mx-auto">
 									<header class="text-center">
 										<a href="index.html">
@@ -127,24 +127,28 @@ session_start();
 												<div class="tab-pane fade show active" id="customer" role="tabpanel" aria-labelledby="customer-tab">
 													<!-- Register Form -->
 													<form action="register.php" method="POST">	 
-														<div class="form-group">
+													<div class="form-group">
 															<div class="group-img">
 																<i class="feather-user"></i>
 																<input type="text" class="form-control" placeholder="Username" name="txtUsername">
-																<!-- <div ><span id="errUsername" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div> -->
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="group-img">
+																<i class="feather-user"></i>
+																<input type="text" class="form-control" placeholder="Họ Tên" name="txtKH">
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="group-img">
 																<i class="feather-mail"></i>
 																<input type="text" class="form-control" placeholder="Email" name="txtEmail">
-																<!-- <div ><span id="errEmail" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div> -->
 															</div>
 														</div>
 														<div class="form-group">
 															<div class="group-img">
 																<i class="feather-phone"></i>
-																<input type="text" class="form-control" placeholder="phone" name="txtPhone">
+																<input type="text" class="form-control" placeholder="Số điện thoại" name="txtPhone">
 															</div>
 														</div>
 														<div class="form-group">
@@ -178,6 +182,12 @@ session_start();
 														</div>
 														<div class="form-group">
 															<div class="group-img">
+																<i class="feather-user"></i>
+																<input type="text" class="form-control" placeholder="Họ Tên" name="txtKH">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="group-img">
 																<i class="feather-mail"></i>
 																<input type="text" class="form-control" placeholder="Email" name="txtEmail">
 															</div>
@@ -185,7 +195,7 @@ session_start();
 														<div class="form-group">
 															<div class="group-img">
 																<i class="feather-phone"></i>
-																<input type="text" class="form-control" placeholder="phone" name="txtPhone">
+																<input type="text" class="form-control" placeholder="Số điện thoại" name="txtPhone">
 															</div>
 														</div>
 														<div class="form-group">
@@ -244,12 +254,14 @@ session_start();
 	if ($_POST['guiDK'] === 'Đăng Ký') {
     $username = $_POST['txtUsername'];
     $pw = $_POST['txt-rePassword'];
+	$tenKH = $_POST['txtKH'];
     $email = $_POST['txtEmail'];
     $sdt = $_POST['txtPhone'];
 	$loaiND = isset($_POST['loainguoidung']) ? $_POST['loainguoidung'] : 1;
 
-    if ($username && $pw && $email && $sdt) {
-        $p->cRegister1User($username, $pw, $email, $loaiND, $sdt);
+    if ($username && $tenKH && $pw && $email && $sdt) {
+        $p->cRegister1User($username, $tenKH,$pw, $email, $loaiND, $sdt);
+		
     } else {
         echo "<script>alert('Vui lòng nhập đầy đủ thông tin!!!')</script>";
     }
