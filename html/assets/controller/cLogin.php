@@ -4,25 +4,21 @@
 
     class mylogin 
     {
-        public function getTKND($user,$pass)
+        public function getTKND($user, $pass)
         {
             $p = new mTKND();
-            $tblTKND = $p->SelectTKND($user,$pass);
-            if($tblTKND)
-            {
-                if($tblTKND->num_rows>0)
-                {
+            $tblTKND = $p->SelectTKND($user, $pass);
+
+            if ($tblTKND) {
+                if ($tblTKND->num_rows > 0) {
                     return $tblTKND;
-                } 
-                else 
-                {
-                    return -1;
+                } else {
+                    return -1; // không có tài khoản phù hợp
                 }
-            } 
-            else 
-            {
-                return false;
+            } else {
+                return false; // lỗi kết nối
             }
         }
+
     }
 ?>

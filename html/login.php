@@ -167,50 +167,59 @@ session_start();
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:33:41 GMT -->
 </html>
 <?php
-	include("assets/controller/cLogin.php");
-	$p = new mylogin();
+session_start();
+include("assets/controller/cLogin.php");
 
-	switch($_POST['btn-dangnhap'])
-	{
-		case 'Đăng nhập':
-		{
-			$user = $_REQUEST['txtUsername'];
-			$pass = $_REQUEST['txtPassword'];
-			if($user!='' and $pass!='')
-			{
-				if($p->getTKND($user,$pass)==-1)
-				{
-					echo '<script>alert("Sai tài khoản hoặc mật khẩu!!!")</script>';
-				}
-				else 
-				{
-					$tblTKND = $p->getTKND($user, $pass);
-					$i = mysqli_num_rows($tblTKND);
-					if($i==1)
-					{
-						while($row = mysqli_fetch_array($tblTKND))
-						{
-							$id = $row['idnguoidung'];
-							$myuser = $row['username'];
-							$mypass = $row['passwords'];
+$p = new mylogin();
 
-							$_SESSION['idnguoidung']=$id;
-							$_SESSION['username']=$myuser;
-							$_SESSION['passwords']=$mypass;
-							// $_SESSION['phanquyen']=$phanquyen;
-							echo'<script language="javascript">
-							window.location="index.php?id='.$id.'";
-							</script>';
-						}
-					}
-				}
-						
-			}
-			else
-			{
-				echo '<script>alert("Vui lòng nhập đầy đủ thông tin!!!")</script>';
-			}
-			break;
-		}
-	}
+if (isset($_POST['btn-dangnhap']) && $_POST['btn-dangnhap'] == 'Đăng nhập') {
+    $user = trim($_POST['txtUsername']);
+    $pass = trim($_POST['txtPassword']);
+
+    // $pass = md5($pass);
+
+    if (!empty($user) && !empty($pass)) {
+        $tblTKND = $p->getTKND($user, $pass);
+
+        if ($tblTKND === false) {
+            echo '<script>alert("Lỗi kết nối CSDL!")</script>';
+        } elseif ($tblTKND == -1) {
+            echo '<script>alert("Sai tài khoản hoặc mật khẩu!")</script>';
+        } else {
+            $row = $tblTKND->fetch_assoc();
+
+            $_SESSION['idnguoidung'] = $row['idnguoidung'];
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['passwords'] = $row['passwords'];
+            $_SESSION['loainguoidung'] = $row['loainguoidung'];
+
+            $id = $row['idnguoidung'];
+			var_dump($row['loainguoidung']);
+            $role = isset($row['loainguoidung']) ? intval($row['loainguoidung']) : 0;
+			
+            switch ($role) {
+                case 1:
+				echo '<script>alert("Chào mừng khách hàng!")</script>';
+				echo '<script>window.location="index.php?id=' . $id . '";</script>';
+				break;
+			case 2:
+				echo '<script>alert("Chào mừng doanh nghiệp!")</script>';
+				echo '<script>window.location="business-dashboard.php?id=' . $id . '";</script>';
+				break;
+			case 3:
+				echo '<script>alert("Chào mừng admin!")</script>';
+				echo '<script>window.location="admin-dashboard.php?id=' . $id . '";</script>';
+				break;
+			default:
+				echo '<script>alert("Phân quyền không hợp lệ! Vai trò hiện tại: ' . $role . '")</script>';
+				break;
+            }
+        }
+    } else {
+        echo '<script>alert("Vui lòng nhập đầy đủ thông tin!")</script>';
+    }
+}
 ?>
+
+
+
