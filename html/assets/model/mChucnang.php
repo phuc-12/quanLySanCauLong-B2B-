@@ -20,6 +20,10 @@
 				}
 				
 			}
+			else 
+			{
+				echo "Không có kết quả";
+			}
 			return $trave;
 				
 		}

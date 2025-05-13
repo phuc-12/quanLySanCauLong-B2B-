@@ -289,6 +289,8 @@ while ($row = $bookingQuery->fetch_assoc()) {
 			$laytensan=$p->SelectCot("SELECT tenSan FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laydiachi=$p->SelectCot("SELECT diaChi FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laysdt=$p->SelectCot("SELECT soDienThoai FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
+			$laygiamacdinh=$p->SelectCot("SELECT giaMacDinh FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
+			$laygiagiovang=$p->SelectCot("SELECT giaGioVang FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 		?>
 
 		<div class="main-gallery-slider owl-carousel owl-theme">
@@ -504,7 +506,17 @@ while ($row = $bookingQuery->fetch_assoc()) {
 																		<input type="hidden" name="maSan" value="<?php echo $maSan ?>">                                 
 																		<input type="hidden" name="time_slot_id" value="<?php echo $slot['id'] ?>">                                 
 																		<input type="hidden" name="ngayDat" value="<?php echo $d ?>">                                 
-																		<button type="submit"><?php echo $slot['gia'] / 1000 ?>K</button>                             
+																		<button type="submit">
+																		<?php 
+																			$startTime = $slot['start_time']; // VD: "15:30:00"
+																			if ($startTime >= '05:00:00' && $startTime < '16:00:00') {
+																				echo $laygiamacdinh; // Giá thường
+																			} elseif ($startTime >= '16:00:00' && $startTime <= '23:59:59') {
+																				echo $laygiagiovang; // Giờ vàng
+																			}
+																		?> K
+
+																		</button>                             
 																	</form>                         
 																<?php endif; ?>                     
 															</td>                 
@@ -801,59 +813,60 @@ while ($row = $bookingQuery->fetch_assoc()) {
 								<span class="icon-bg"><img class="img-fluid" alt="Icon" src="assets/img/icons/head-calendar.svg"></span>
 							</div>
 							<div>
-								<h4>Availability</h4>
-								<p class="mb-0">Check availability on your convenient time</p>
+								<h4>Khả dụng</h4>
+								<p class="mb-0">Kiểm tra tình trạng phòng trống vào thời gian thuận tiện của bạn</p>
 							</div>
 						</div>
 						<div class="white-bg book-court">
-							<h4 class="border-bottom">Book A Court</h4>
-							<h5 class="d-inline-block">Badminton Academy,</h5><p class="d-inline-block"> available Now</p>
+							<h4 class="border-bottom">Đặt sân trực tiếp</h4>
+							<h5 class="d-inline-block"><?php echo $laytensan ?></h5><p class="d-inline-block">, có sẵn ngay bây giờ</p>
 							<ul class="d-sm-flex align-items-center justify-content-evenly">
 								<li>
-									<h3 class="d-inline-block primary-text">$150</h3><span>/hr</span>
-									<p>up to 1 guests</p>
+									<h3 class="d-inline-block primary-text"><?php echo $laygiamacdinh ?></h3><span>/hr</span>
+									<p>Giá Mặc Định</p>
 								</li>
 								<li>
 									<span><i class="feather-plus"></i></span>
 								</li>
 								<li>
-									<h4 class="d-inline-block primary-text">$5</h4><span>/hr</span>
-									<p>each additional guest <br>up to 4 guests max</p>
+									<h4 class="d-inline-block primary-text"><?php echo $laygiagiovang ?></h4><span>/hr</span>
+									<p>Giá Giờ Vàng</p>
 								</li>
 							</ul>
-							<div class="d-grid btn-block mt-3">
+							<!-- <div class="d-grid btn-block mt-3">
 								<a href="coach-details.html" class="btn btn-secondary d-inline-flex justify-content-center align-items-center"><i class="feather-calendar"></i>Book Now</a>
-							</div>
+							</div> -->
 						</div>
+						
 						<div class="white-bg">
-							<h4 class="border-bottom">Request for Availability</h4>
+							<h4 class="border-bottom">Yêu cầu thông tin</h4>
 							<form>
 								<div class="mb-10">
-									<label for="name" class="form-label">Name</label>
-		  							<input type="text" class="form-control" id="name" placeholder="Enter Name">
+									<label for="name" class="form-label">Họ tên</label>
+		  							<input type="text" class="form-control" id="name" placeholder="Nhập họ tên">
 								</div>
 								<div class="mb-10">
 								  	<label for="email" class="form-label">Email</label>
-		  							<input type="email" class="form-control" id="email" placeholder="Enter Email Address">
+		  							<input type="email" class="form-control" id="email" placeholder="Nhập địa chỉ email">
 								</div>
 								<div class="mb-10">
-									<label for="name" class="form-label">Phone Number</label>
-		  							<input type="text" class="form-control" id="phonenumber" placeholder="Enter Phone Number">
+									<label for="name" class="form-label">Số điện thoại</label>
+		  							<input type="text" class="form-control" id="phonenumber" placeholder="Nhập số điện thoại">
 								</div>
 								<div class="mb-10">
-									<label for="date" class="form-label">Date</label>
+									<label for="date" class="form-label">Ngày đặt</label>
 									<div class="form-icon">
-										<input type="text" class="form-control datetimepicker" placeholder="Select Date" id="date">
+										<input type="text" class="form-control datetimepicker" placeholder="Chọn ngày" id="date">
 										<span class="cus-icon">
 											<i class="feather-calendar"></i>
 										</span>
 									</div>
 								</div>
 								<div class="mb-10">
-									<label for="comments" class="form-label">Details</label>
-									<textarea class="form-control" id="comments" rows="3" placeholder="Enter Comments"></textarea>
+									<label for="comments" class="form-label">Chi tiết</label>
+									<textarea class="form-control" id="comments" rows="3" placeholder="Nhập ghi chú"></textarea>
 								</div>
-								<div class="">
+								<!-- <div class="">
 									<label class="form-label">Number of Guests</label>
 									<div class="input-group">
 										<input type="number" class="form-control" value="1" readonly>
@@ -861,12 +874,12 @@ while ($row = $bookingQuery->fetch_assoc()) {
 										<input type="number" class="form-control" value="3" readonly>
 										<input type="number" class="form-control" value="4" readonly>
 									</div>
-								</div>
+								</div> -->
 								<div class="form-check d-flex justify-content-start align-items-center policy">
 									<div class="d-inline-block">
 										<input class="form-check-input" type="checkbox" value="" id="policy" checked>
 									</div>
-									<label class="form-check-label" for="policy">By clicking 'Send Request', I agree to Dreamsport Privacy Policy and Terms of Use</label>
+									<label class="form-check-label" for="policy">Bằng cách nhấp vào 'Gửi yêu cầu', tôi đồng ý với Chính sách bảo mật và Điều khoản sử dụng của Dreamsport</label>
 								</div>
 								<div class="d-grid btn-block">
 									<a href="javascript:;" class="btn btn-secondary d-inline-flex justify-content-center align-items-center">Send Request<i class="feather-arrow-right-circle ms-1"></i></a>
