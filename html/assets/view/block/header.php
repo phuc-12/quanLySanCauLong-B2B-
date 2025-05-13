@@ -62,15 +62,14 @@
 </head>
 
 <body>
-	<!-- <div id="global-loader" >
+	<div id="global-loader" >
 		<div class="loader-img">
 			<img src="assets/img/loader.png" class="img-fluid" alt="Global">
 		</div>
-	</div> -->
+	</div>
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">
 
-		<!-- Header -->
 		<!-- Header -->
 		<header class="header header-trans">
 			<div class="container-fluid">
@@ -221,10 +220,10 @@
 							</li>
 							<li><a href="contact-us.html">Liên Hệ</a></li>
 							<li class="login-link">
-								<a href="register.php">Sign Up</a>
+								<a href="../../../register.php">Sign Up</a>
 							</li>
 							<li class="login-link">
-								<a href="login.html">Sign In</a>
+								<a href="../../../login.php">Sign In</a>
 							</li>
 						</ul>
 					</div>
@@ -240,21 +239,21 @@
 											<li class="nav-item dropdown has-arrow logged-item">
 												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
 													<span class="user-img">
-														<img class="rounded-circle" src="assets/img/profiles/avatar-05.jpg" width="31" alt="Darren Elder">
+														<img class="rounded-circle" src="../../img/profiles/avatar-05.jpg" width="31" alt="Darren Elder">
 													</span>
 												</a>
 												<div class="dropdown-menu dropdown-menu-end">
 													<div class="user-header">
 														<div class="avatar avatar-sm">
-															<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
+															<img src="../../img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
 														</div>
 														<div class="user-text">
-															<h6>Henriques</h6>
-															<a href="user-profile.php" style="color:black;" class="text-profile mb-0">Go to Profile</a>
+															<h6>'.$layten.'</h6>
+															<a href="../../../user-profile.php?id='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
 														</div>
 													</div>
-													<p><a class="dropdown-item"  href="coach-profile.php">Settings</a></p>
-													<p><a class="dropdown-item"  href="login.php">Logout</a></p>
+													<p><a class="dropdown-item"  href="../../../user-profile.php">Settings</a></p>
+													<p><a class="dropdown-item"  href="../../../login.php">Logout</a></p>
 												</div>
 											</li>		
 											
@@ -265,12 +264,12 @@
 										echo '
 										<li class="nav-item">
 											<div class="nav-link btn btn-white log-register">	
-												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
+												<a href="../../../login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="../../../register.php">Đăng Ký</a>
 										</div>
-									</li>
-									<li class="nav-item">
-							<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
-						</li>
+										</li>
+										<li class="nav-item">
+										<a class="nav-link btn btn-secondary" href="../../../add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+										</li>
 										';
 									}
 								?>
@@ -281,9 +280,7 @@
 			</div>
 		</header>
 		<!-- /Header -->
-		<!-- /Header -->
 
-		<!-- /Newsletter -->
 
 		<!-- Footer -->
 		

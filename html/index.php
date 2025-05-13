@@ -157,45 +157,6 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 								</ul>
 								
 							</li>
-							<!-- <li class="has-submenu">
-								<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-								    <li><a href="about-us.html">About Us</a></li>
-								    <li><a href="our-teams.html">Our Team</a></li>
-								    <li><a href="services.html">Services</a></li>
-								    <li><a href="events.html">Events</a></li>
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Authentication</a>
-										<ul class="submenu">
-											<li><a href="register.php">Signup</a></li>
-											<li><a href="login.html">Signin</a></li>
-											<li><a href="forgot-password.html">Forgot Password</a></li>
-											<li><a href="change-password.html">Reset Password</a></li>
-										</ul>
-									</li>
-									
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Error Page</a>
-										<ul class="submenu">
-											<li><a href="error-404.html">404 Error</a></li>
-										</ul>
-									</li>
-									<li><a href="pricing.html">Pricing</a></li>
-									<li><a href="faq.html">FAQ</a></li>
-									<li><a href="gallery.html">Gallery</a></li>
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Testimonials</a>
-										<ul class="submenu">
-											<li><a href="testimonials.html">Testimonials</a></li>
-											<li><a href="testimonials-carousel.html">Testimonials Carousel</a></li>
-										</ul>
-									</li>
-									<li><a href="terms-condition.html">Terms & Conditions</a></li>
-									<li><a href="privacy-policy.html">Privacy Policy</a></li>			
-									<li><a href="maintenance.html">Maintenance</a></li>
-									<li><a href="coming-soon.html">Coming Soon</a></li>
-								</ul>
-							</li> -->
 							<li class="has-submenu">
 								<a href="#">Diễn Đàn <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
@@ -568,174 +529,6 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 		</section>
 		<!-- /Convenient -->
 
-		<!-- Featured Coaches -->
-		<!-- <section class="section featured-section">
-			<div class="container">
-				<div class="section-heading aos" data-aos="fade-up">
-					<h2>Featured <span>Coaches</span></h2>
-					<p class="sub-title">Uplift your badminton game with our featured coaches, personalized instruction, and expertise to achieve your goals.</p>
-				</div>
-				<div class="row">
-			        <div class="featured-slider-group aos" data-aos="fade-up">
-			        	<div class="owl-carousel featured-coache-slider owl-theme"> -->
-
-							<!-- Featured Item -->
-							<!-- <div class="featured-venues-item">
-								<div class="listing-item mb-0">										
-									<div class="listing-img">
-										<a href="coach-detail.html">
-											<img src="assets/img/profiles/user-01.jpg" alt="User">
-										</a>
-										<div class="fav-item-venues">
-											<span class="tag tag-blue">Rookie</span>	
-											<div class="list-reviews coche-star">
-												<a href="javascript:void(0)" class="fav-icon">
-													<i class="feather-heart"></i>
-												</a>
-											</div>
-										</div>
-										<div class="hour-list">
-											<h5 class="tag tag-primary">From $250 <span>/hr</span></h5>
-										</div>
-									</div>										
-									<div class="listing-content list-coche-content">
-										<span>4 Lessons</span>
-										<h3><a href="coach-detail.html">Kevin Anderson</a></h3>
-										<a href="coach-details.html"><i class="feather-arrow-right"></i></a>
-										<a href="coach-details.html" class="icon-hover"><i class="feather-calendar"></i></a>
-									</div>
-								</div>
-							</div> -->
-							<!-- /Featured Item -->
-
-							<!-- Featured Item -->
-							<!-- <div class="featured-venues-item">
-								<div class="listing-item mb-0">										
-									<div class="listing-img">
-										<a href="coach-detail.html">
-											<img src="assets/img/profiles/user-02.jpg" alt="User">
-										</a>
-										<div class="fav-item-venues">
-											<span class="tag tag-blue">Intermediate</span>	
-											<div class="list-reviews coche-star">
-												<a href="javascript:void(0)" class="fav-icon">
-													<i class="feather-heart"></i>
-												</a>
-											</div>
-										</div>
-										<div class="hour-list">
-											<h5 class="tag tag-primary">From $150 <span>/hr</span></h5>
-										</div>
-									</div>										
-									<div class="listing-content list-coche-content">
-										<span>3 Lessons</span>
-										<h3><a href="coach-detail.html">Harry Richardson</a></h3>
-										<a href="coach-details.html"><i class="feather-arrow-right"></i></a>
-										<a href="coach-details.html" class="icon-hover"><i class="feather-calendar"></i></a>
-									</div>
-								</div>
-							</div> -->
-							<!-- /Featured Item -->
-
-							<!-- Featured Item -->
-							<!-- <div class="featured-venues-item">
-								<div class="listing-item mb-0">										
-									<div class="listing-img">
-										<a href="coach-detail.html">
-											<img src="assets/img/profiles/user-03.jpg" alt="User">
-										</a>
-										<div class="fav-item-venues">
-											<span class="tag tag-blue">Professional</span>	
-											<div class="list-reviews coche-star">
-												<a href="javascript:void(0)" class="fav-icon">
-													<i class="feather-heart"></i>
-												</a>
-											</div>
-										</div>
-										<div class="hour-list">
-											<h5 class="tag tag-primary">From $350 <span>/hr</span></h5>
-										</div>
-									</div>										
-									<div class="listing-content list-coche-content">
-										<span>2 Lessons</span>
-										<h3><a href="coach-detail.html">Evon Raddick</a></h3>
-										<a href="coach-details.html"><i class="feather-arrow-right"></i></a>
-										<a href="coach-details.html" class="icon-hover"><i class="feather-calendar"></i></a>
-									</div>
-								</div>
-							</div> -->
-							<!-- /Featured Item -->
-
-							<!-- Featured Item -->
-							<!-- <div class="featured-venues-item">
-								<div class="listing-item mb-0">										
-									<div class="listing-img">
-										<a href="coach-detail.html">
-											<img src="assets/img/profiles/user-04.jpg" alt="User">
-										</a>
-										<div class="fav-item-venues">
-											<span class="tag tag-blue">Rookie</span>	
-											<div class="list-reviews coche-star">
-												<a href="javascript:void(0)" class="fav-icon">
-													<i class="feather-heart"></i>
-												</a>
-											</div>
-										</div>
-										<div class="hour-list">
-											<h5 class="tag tag-primary">From $250 <span>/hr</span></h5>
-										</div>
-									</div>										
-									<div class="listing-content list-coche-content">
-										<span>4 Lessons</span>
-										<h3><a href="coach-detail.html">Angela Roudrigez</a></h3>
-										<a href="coach-details.html"><i class="feather-arrow-right"></i></a>
-										<a href="coach-details.html" class="icon-hover"><i class="feather-calendar"></i></a>
-									</div>
-								</div>
-							</div> -->
-							<!-- /Featured Item -->
-
-							<!-- Featured Item -->
-							<!-- <div class="featured-venues-item">
-								<div class="listing-item mb-0">										
-									<div class="listing-img">
-										<a href="coach-detail.html">
-											<img src="assets/img/profiles/user-02.jpg" alt="User">
-										</a>
-										<div class="fav-item-venues">
-											<span class="tag tag-blue">Intermediate</span>	
-											<div class="list-reviews coche-star">
-												<a href="javascript:void(0)" class="fav-icon">
-													<i class="feather-heart"></i>
-												</a>
-											</div>
-										</div>
-										<div class="hour-list">
-											<h5 class="tag tag-primary">From $150 <span>/hr</span></h5>
-										</div>
-									</div>										
-									<div class="listing-content list-coche-content">
-										<span>4 Lessons</span>
-										<h3><a href="coach-detail.html">Harry Richardson</a></h3>
-										<a href="coach-details.html"><i class="feather-arrow-right"></i></a>
-										<a href="coach-details.html" class="icon-hover"><i class="feather-calendar"></i></a>
-									</div>
-								</div>
-							</div> -->
-							<!-- /Featured Item -->
-
-						<!-- </div>
-					</div>
-				</div>
-				<div class="view-all text-center aos" data-aos="fade-up">
-					<a href="coaches-list.html" class="btn btn-secondary d-inline-flex align-items-center">
-						View All Coaches  <span class="lh-1"><i class="feather-arrow-right-circle ms-2"></i></span>
-					</a>
-				</div>
-			</div>
-		</section> -->
-		<!-- /Featured Coaches -->
-
 		<!-- Journey -->
 		<section class="section journey-section">
 			<div class="container">
@@ -886,75 +679,6 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 			</div>
 		</section>
 		<!-- Group Coaching -->
-
-		<!-- Earn Money -->
-		<!-- <section class="section earn-money">
-			<div class="cock-img cock-position">
-				<div class="cock-img-one ">
-					<img src="assets/img/icons/cock-01.svg" alt="Icon">
-				</div>
-				<div class="cock-img-two">
-					<img src="assets/img/icons/cock-02.svg" alt="Icon">
-				</div>
-				<div class="cock-circle">
-					<img src="assets/img/bg/cock-shape.png" alt="Icon">
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="private-venue aos" data-aos="fade-up">
-							<div class="convenient-btns become-owner " role="tablist">
-								<a href="javascript:void(0);" class="btn btn-secondary become-venue d-inline-flex align-items-center nav-link active" id="nav-Recent-tab" data-bs-toggle="tab" data-bs-target="#nav-Recent"  role="tab" aria-controls="nav-Recent" aria-selected="true">
-									Become A Venue Member
-								</a>
-								<a href="javascript:void(0);" class="btn btn-primary become-coche d-inline-flex align-items-center nav-link" id="nav-RecentCoaching-tab" data-bs-toggle="tab" data-bs-target="#nav-RecentCoaching"  role="tab" aria-controls="nav-RecentCoaching" aria-selected="false">
-									Become A Coach
-								</a>
-							</div>
-							<div class="tab-content">
-								<div class="tab-pane fade show active" id="nav-Recent" role="tabpanel" aria-labelledby="nav-Recent-tab" tabindex="0">
-									<h2>Earn Money Renting Out Your Private Coaches On Dreamsports</h2>
-									<p>Join our network of private facility owners, offering rentals to local players, coaches, and teams.</p>
-									<div class="earn-list">
-										<ul>
-											<li><i class="fa-solid fa-circle-check "></i>$1,000,000 liability insurance									</li>
-											<li><i class="fa-solid fa-circle-check "></i>Build of Trust</li>
-											<li><i class="fa-solid fa-circle-check "></i>Protected Environment for Your Activities									</li>
-										</ul>
-									</div>
-									<div class="convenient-btns">
-										<a href="register.php" class="btn btn-secondary d-inline-flex align-items-center">
-											<span class="lh-1"><i class="feather-user-plus me-2"></i></span>Join With Us 
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="tab-content">
-								<div class="tab-pane fade show " id="nav-RecentCoaching" role="tabpanel" aria-labelledby="nav-Recent-tab" tabindex="0">
-									<h2>Earn Money Renting Out Your Private Coaches On Dreamsports</h2>
-									<p>Join our network of private facility owners, offering rentals to local players, coaches, and teams.</p>
-									<div class="earn-list">
-										<ul>
-											<li><i class="fa-solid fa-circle-check "></i>$1,000,000 liability insurance									</li>
-											<li><i class="fa-solid fa-circle-check "></i>Build of Trust</li>
-											<li><i class="fa-solid fa-circle-check "></i>Protected Environment for Your Activities									</li>
-										</ul>
-									</div>
-									<div class="convenient-btns">
-										<a href="register.php" class="btn btn-secondary d-inline-flex align-items-center">
-											<span class="lh-1"><i class="feather-user-plus me-2"></i></span>Join With Us 
-										</a>
-									</div>
-								</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</section> -->
-		<!-- /Earn Money -->
 
 		<!-- Best Services -->
 		<section class="section best-services">
@@ -1944,18 +1668,18 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 												<select class="select">
 													<option>English (US)</option>
 													<option>UK</option>
-													<option>Japan</option>
+													<option>Vietnamese</option>
 												</select>
 											</div>
 										</li>
 										<li class="nav-item dropdown">
-											<div class="lang-select">
+											<!-- <div class="lang-select">
 												<span class="select-icon"></span>
 												<select class="select">
 													<option>$ USD</option>
 													<option>$ Euro</option>
 												</select>				
-											</div>	
+											</div>	 -->
 										</li>
 									</ul>
 								</div>

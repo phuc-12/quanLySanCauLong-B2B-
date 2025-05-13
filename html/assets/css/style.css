@@ -48,6 +48,10 @@ Version      : 1.0
 40. Add Court
 
 ========================================*/
+/* admin */
+/* ===== SIDEBAR CHUNG ===== */
+
+/* ======================================== */
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap");
 .add-court .venue-options ul, .appointment-info ul, .css-equal-content, .css-equal-heights {
   display: flex;

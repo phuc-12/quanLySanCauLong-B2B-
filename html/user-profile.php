@@ -81,7 +81,7 @@ $p = new mUser();
 	<div class="main-wrapper">
 
 		<!-- Header -->
-		<header class="header header-sticky">
+		<header class="header header-trans">
 			<div class="container-fluid">
 				<nav class="navbar navbar-expand-lg header-nav">
 					<div class="navbar-header">
@@ -93,20 +93,20 @@ $p = new mUser();
 							</span>
 						</a>
 						<a href="index.php" class="navbar-brand logo">
-							<img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
+							<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
 						</a>
 					</div>
 					<div class="main-menu-wrapper">
 						<div class="menu-header">
-							<a href="index.php" class="menu-logo">
+							<a href="index.html" class="menu-logo">
 								<img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
 							</a>
 							<a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
 						</div>
 						<ul class="main-nav">
-							<li ><a href="index.php">Home</a></li>
-							<li class="has-submenu ">
-								<a href="#">Coaches <i class="fas fa-chevron-down"></i></a>
+							<li class="active"><a href="index.php">Trang Chủ</a></li>
+							<li class="has-submenu">
+								<a href="#">Sân Cầu Lông <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li class="has-submenu">
 										<a href="#">Coaches Map</a>
@@ -134,7 +134,7 @@ $p = new mUser();
 											<li><a href="venue-details.html">Venue Details</a></li>
 										</ul>
 									</li>
-									<li ><a href="coach-dashboard.html">Coach Dashboard</a></li>
+									<li><a href="coach-dashboard.html">Coach Dashboard</a></li>
 									<li><a href="all-court.html">Coach Courts</a></li>
 									<li><a href="add-court.html">List Your Court</a></li>
 									<li><a href="coach-chat.html">Chat</a></li>
@@ -145,61 +145,22 @@ $p = new mUser();
 								</ul>
 								
 							</li>
-							<li class="has-submenu active">
-								<a href="#">User <i class="fas fa-chevron-down"></i></a>
+							<li class="has-submenu">
+								<a href="#">Người Dùng <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li><a href="user-dashboard.html">User Dashboard</a></li>
-									<li ><a href="user-bookings.html">Bookings</a></li>
+									<li><a href="user-bookings.html">Bookings</a></li>
 									<li><a href="user-chat.html">Chat</a></li>
 									<li><a href="user-invoice.html">Invoice</a></li>
 									<li><a href="user-wallet.html">Wallet</a></li>
-									<li class="active"><a href="user-profile.php">Profile Edit</a></li>
+									<li><a href="user-profile.php">Profile Edit</a></li>
 									<li><a href="user-setting-password.html">Change Password</a></li>
 									<li><a href="user-profile-othersetting.html">Other Settings</a></li>
 								</ul>
 								
 							</li>
 							<li class="has-submenu">
-								<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-								    <li><a href="about-us.html">About Us</a></li>
-								    <li><a href="services.html">Services</a></li>
-								    <li><a href="events.html">Events</a></li>
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Authentication</a>
-										<ul class="submenu">
-											<li><a href="register.html">Signup</a></li>
-											<li><a href="login.php">Signin</a></li>
-											<li><a href="forgot-password.html">Forgot Password</a></li>
-											<li><a href="change-password.html">Reset Password</a></li>
-										</ul>
-									</li>
-									
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Error Page</a>
-										<ul class="submenu">
-											<li><a href="error-404.html">404 Error</a></li>
-										</ul>
-									</li>
-									<li><a href="pricing.html">Pricing</a></li>
-									<li><a href="faq.html">FAQ</a></li>
-									<li><a href="gallery.html">Gallery</a></li>
-									<li><a href="our-teams.html">Our Team</a></li>
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Testimonials</a>
-										<ul class="submenu">
-											<li><a href="testimonials.html">Testimonials</a></li>
-											<li><a href="testimonials-carousel.html">Testimonials Carousel</a></li>
-										</ul>
-									</li>
-									<li><a href="terms-condition.html">Terms & Conditions</a></li>
-									<li><a href="privacy-policy.html">Privacy Policy</a></li>			
-									<li><a href="maintenance.html">Maintenance</a></li>
-									<li><a href="coming-soon.html">Coming Soon</a></li>
-								</ul>
-							</li>
-							<li class="has-submenu">
-								<a href="#">Blog <i class="fas fa-chevron-down"></i></a>
+								<a href="#">Diễn Đàn <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 								    <li><a href="blog-list.html">Blog List</a></li>
 								    <li class="has-submenu">
@@ -228,110 +189,62 @@ $p = new mUser();
 									<li><a href="blog-carousel.html">Blog Carousel</a></li>
 								</ul>
 							</li>
-							<li><a href="contact-us.html">Contact Us</a></li>
+							<li><a href="contact-us.html">Liên Hệ</a></li>
 							<li class="login-link">
-								<a href="register.html">Sign Up</a>
+								<a href="register.php">Sign Up</a>
 							</li>
 							<li class="login-link">
-								<a href="login.php">Sign In</a>
+								<a href="login.html">Sign In</a>
 							</li>
 						</ul>
 					</div>
 					<ul class="nav header-navbar-rht logged-in">
-						<li class="nav-item">
-							<a class="nav-link" href="coaches-grid.html"><i class="feather-search"></i></a>
-						</li>
-						<!-- Notifications -->
-						<li class="nav-item dropdown noti-nav">
-							<a href="listing-grid.html" class="dropdown-toggle nav-link position-relative" data-bs-toggle="dropdown">
-								<i class="feather-bell"></i> <span class="alert-bg"></span>
-							</a>
-							<div class="dropdown-menu notifications dropdown-menu-end ">
-								<div class="topnav-dropdown-header">
-									<span class="notification-title">Notifications</span>
-								</div>
-								<div class="noti-content">
-									<ul class="notification-list">
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<span class="avatar">
-														<img class="avatar-img" src="assets/img/profiles/avatar-01.jpg" alt="User">
-													</span>
-													<div class="media-body">
-														<h6>Travis Tremble <span class="notification-time">18.30 PM</span></h6>
-														<p class="noti-details">Sent a amount of $210 for his Appointment  <span class="noti-title">Mr.Ruby perin </span></p>
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<span class="avatar">
-														<img class="avatar-img" src="assets/img/profiles/avatar-02.jpg" alt="User">
-													</span>
-													<div class="media-body">
-														<h6>Travis Tremble <span class="notification-time">12 Min Ago</span></h6>
-														<p class="noti-details"> has booked her appointment to  <span class="noti-title">Mr. Hendry Watt</span></p>
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<div class="avatar">
-														<img class="avatar-img" src="assets/img/profiles/avatar-03.jpg" alt="User">
-													</div>
-													<div class="media-body">
-														<h6>Travis Tremble <span class="notification-time">6 Min Ago</span></h6>
-														<p class="noti-details"> Sent a amount  $210 for his Appointment   <span class="noti-title">Mr.Maria Dyen</span></p>
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<div class="avatar avatar-sm">
-														<img class="avatar-img" src="assets/img/profiles/avatar-04.jpg" alt="User">
-													</div>
-													<div class="media-body">
-														<h6>Travis Tremble <span class="notification-time">8.30 AM</span></h6>
-														<p class="noti-details"> Send a message to his doctor</p>
-													</div>
-												</div>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</li>
-						<!-- /Notifications -->
+						
+								<!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
-						<!-- User Menu -->
-						<li class="nav-item dropdown has-arrow logged-item">
-							<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-								<span class="user-img">
-									<img class="rounded-circle" src="assets/img/profiles/avatar-05.jpg" width="31" alt="Darren Elder">
-								</span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end">
-								<div class="user-header">
-									<div class="avatar avatar-sm">
-										<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
-									</div>
-									<div class="user-text">
-										<h6>Henriques</h6>
-										<a href="user-profile.php" class="text-profile mb-0">Go to Profile</a>
-									</div>
-								</div>
-								<p><a class="dropdown-item" href="coach-profile.html">Settings</a></p>
-								<p><a class="dropdown-item" href="login.php">Logout</a></p>
-							</div>
-						</li>
-						<!-- /User Menu -->
+								<?php
+									if(isset($_REQUEST['id']))
+									{
+										echo '
+							
+											<li class="nav-item dropdown has-arrow logged-item">
+												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+													<span class="user-img">
+														<img class="rounded-circle" src="assets/img/profiles/avatar-05.jpg" width="31" alt="Darren Elder">
+													</span>
+												</a>
+												<div class="dropdown-menu dropdown-menu-end">
+													<div class="user-header">
+														<div class="avatar avatar-sm">
+															<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
+														</div>
+														<div class="user-text">
+															<h6>'.$layten.'</h6>
+															<a href="user-profile.php?id='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
+														</div>
+													</div>
+													<p><a class="dropdown-item"  href="coach-profile.php">Settings</a></p>
+													<p><a class="dropdown-item"  href="login.php">Logout</a></p>
+												</div>
+											</li>		
+											
+										';
+									}
+									else 
+									{
+										echo '
+										<li class="nav-item">
+											<div class="nav-link btn btn-white log-register">	
+												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
+										</div>
+										</li>
+										<li class="nav-item">
+										<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+										</li>
+										';
+									}
+								?>
+							
 						
 					</ul>
 				</nav>
