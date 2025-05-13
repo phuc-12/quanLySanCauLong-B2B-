@@ -5,7 +5,7 @@
         public function mRegister1User($username, $pw, $email, $loaiND, $sdt) {
             $p = new clsKetNoi;
             $con = $p->moketnoi();
-            $pw = md5($pw);
+            // $pw = md5($pw);
             $trangthai = 1;
         
             $sql = "INSERT INTO taikhoannguoidung (`username`, `passwords`, `email`, `trangthai`, `loainguoidung`, `sodienthoai`)

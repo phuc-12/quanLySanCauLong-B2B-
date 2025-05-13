@@ -103,7 +103,7 @@ session_start();
 										<p>Khơi dậy hành trình thể thao của bạn với DreamSports và bắt đầu ngay bây giờ.
 										</p>
 										
-											<input type="hidden" name="loainguoidung" id="loainguoidung" value="1">
+											
 											<ul class="nav nav-tabs" id="myTab" role="tablist">
 												<li class="nav-item" role="presentation">
 												<button class="nav-link active d-flex align-items-center" id="customer-tab"
@@ -126,7 +126,8 @@ session_start();
 												
 												<div class="tab-pane fade show active" id="customer" role="tabpanel" aria-labelledby="customer-tab">
 													<!-- Register Form -->
-													<form action="register.php" method="POST">	 
+													<form action="register.php" method="POST">
+													<input type="hidden" name="loainguoidung" id="loainguoidung" value="1">
 													<div class="form-group">
 															<div class="group-img">
 																<i class="feather-user"></i>
@@ -174,6 +175,7 @@ session_start();
 
 												<div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
 													<form action="register.php" method="POST">	
+														<input type="hidden" name="loainguoidung" id="loainguoidung" value="2">
 														<div class="form-group">
 															<div class="group-img">
 																<i class="feather-user"></i>
@@ -273,8 +275,4 @@ session_start();
   function setLoaiNguoiDung(value) {
     document.getElementById('loainguoidung').value = value;
   }
-</script>
-<script>
-
-	
 </script>

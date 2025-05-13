@@ -4,21 +4,25 @@
 
     class mTKND
     {
-        public function SelectTKND($user,$pass)
+        public function SelectTKND($user, $pass)
         {
             $p = new clsketnoi();
             $conn = $p->moketnoi();
-            if($conn)
-            {
-                $sql = "SELECT * FROM taikhoannguoidung WHERE username = '$user' AND passwords = '$pass' LIMIT 1";
-                $tblTKND = $conn->query($sql);
+            if ($conn) {
+                // $user =(, $user);
+                // $pass = mysqli_real_escape_string($conn, $pass);
+
+                $sql = "SELECT idnguoidung, username, passwords, loainguoidung FROM taikhoannguoidung WHERE username = '$user' AND passwords = '$pass' LIMIT 1";
+                $result = $conn->query($sql);
+                if (!$result) {
+                    die("Lỗi câu truy vấn: " . $conn->error);
+                }
                 $p->dongketnoi($conn);
-                return $tblTKND;
-            }
-            else 
-            {
+                return $result;
+            } else {
                 return false;
             }
         }
+
     }
 ?>
