@@ -1,7 +1,7 @@
 <?php
 error_reporting(1);
 include_once("../../model/mUser.php");
-$p = new mUser();
+$k = new mUser();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,10 +63,15 @@ $p = new mUser();
 </head>
 
 <body>
-    <?php
+<?php
 $layid = $_REQUEST['id'];
-$layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' limit 1");
-$laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
+$laymaND=$k->laycot("select idnguoidung from taikhoannguoidung  limit 1");
+
+$layten = $k->laycot("SELECT tenDN FROM doanhnghiep LIMIT 1");
+$laymaDN=$k->laycot("select maDN from doanhnghiep  limit 1");
+$layemail=$k->laycot("select email from doanhnghiep  limit 1");
+$laysdt=$k->laycot("select sodienthoai from doanhnghiep  limit 1");
+$laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
 ?>
     <!-- <div id="global-loader" >
 		<div class="loader-img">
@@ -193,13 +198,13 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
 									</a>
 								</li> -->
                                 <li>
-                                    <a href="customer.php?id=<?php echo $layid ?>" >
+                                    <a href="../admin/customer.php?id=<?php echo $layid ?>" >
                                         <i class="fa fa-address-card-o" style="font-size: 29px;"></i>
                                         <br><span>Khách Hàng</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="business.php?id=<?php echo $layid ?>"class="active">
+                                    <a href="../admin/business.php?id=<?php echo $layid ?>"class="active">
                                         <img src="../../img/icons/chat-icon.svg" alt="Icon">
                                         <span>Doanh Nghiệp</span>
                                     </a>
@@ -244,72 +249,99 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
             <div class="col-md-9">
                 <div id="ds_all">
                     <div style="width: 100%; height: 60px; padding: 10px; border-bottom: 0.5px solid #E5E5E5;">
-                        <p style="font-size: 20px; float: left;"><b>DANH SÁCH DOANH NGHIỆP</b></p>
+                        <p style="font-size: 20px; float: left;"><b>DOANH NGHIỆP</b></p>
                     </div>
 
-                    <!-- Tabs -->
-                    <div style="display: flex; gap: 20px; margin-bottom: 20px;">
-                        <!-- <button class="nav-link active" onclick="showTab('khachhang')"
-                            style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
-											text-align: center; border-radius: 5px; text-decoration: none;border: 0; font-weight: 700; display: inline-block;">Doanh Nghiệp</button> -->
-                        <button class="nav-link" onclick="showTab('doanhnghiep')" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
-											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">Doanh Nghiệp</button>
+                    <a href="../admin/business.php?<?php echo $layid ?>" class="fa fa-angle-left" style="padding: 10px 0;height: 45px; width: 45px; background-color: #097E52; color: white; 
+											text-align: center; border-radius: 10px; text-decoration: none; border: 0; font-weight: 700; display: inline-block; margin: 5px;"></a>
+                    <h3>THÔNG TIN DOANH NGHIỆP</h3>
+                    <form method="post" enctype="multipart/form-data" name="form1" id="form1" style="width: 100%;">
+                        <table style="margin:0; height: 500px;" style="width: 50%; float:left;">
+                            <tr>
+                                <td style="width: 150px;"><label for="maDN">Mã Doanh Nghiệp:</label></td>
+                                <td><input type="input" class="form-control" size="200" id="maDN" value="<?php echo $laymaDN;?>" name="maDN" readonly></td>
+                                <!-- <td style="width: 200px;"><span id="errMaNV" class="err text-danger"></span></td> -->
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;"><label for="tenDN">Tên Doanh Nghiệp:</label></td>
+                                <td><input type="input" class="form-control" size="200" id="tenDN" value="<?php echo $layten;?>" name="tenDN"></td>
+                                <td style="width: 200px;"><span id="errHoTen" class="err text-danger"></span></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;"><label for="diaChi">Địa Chỉ:</label></td>
+                                <td><input type="input" class="form-control" size="200" id="diaChi" value="<?php echo $laydiachi;?>" name="diaChi"></td>
+                                <td style="width: 200px;"><span id="errNgaySinh" class="err text-danger"></span></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;"><label for="soDienThoai">Số Điện Thoại:</label></td>
+                                <td><input type="input" class="form-control" size="200" id="soDienThoai" value="<?php echo $laysdt;?>" name="soDienThoai"></td>
+                                <td style="width: 200px;"><span id="errHoTen" class="err text-danger"></span></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;"><label for="email">Email</label></td>
+                                <td><input type="input" class="form-control" size="200" id="email" value="<?php echo $layemail;?>" name="email"></td>
+                                <td style="width: 200px;"><span id="errNgaySinh" class="err text-danger"></span></td>
+                            </tr>
 
-                    </div>
+                            <tr>
+                                <td colspan=2 style="text-align:right;">
+                                    <input type="submit" name="btnsua" id="btnsua" value="Cập Nhật" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
+											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
+                                    <a href="../admin/business.php<?php echo $layid ?>" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
+											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">Hủy</a>
+                                </td>
 
-                    <!-- Bảng doanh nghiệp -->
-                    <div id="tab-doanhnghiep">
-                        <?php  
-						error_reporting(0);
-						include_once("../../controller/cUser.php");
-						$p = new CUser();
-						$tblDN = $p->getALLDNTop5();
+                                
+                            </tr>
+                        </table>
+                        <?php
+                        error_reporting(1);
+                        include_once("../../model/mUser.php");
 
-						if (!$tblDN) {
-							echo 'Không kết nối được';
-						} elseif ($tblDN == -1) {
-							echo 'Chưa có dữ liệu doanh nghiệp';
-						} else {
-						?>
-                        <div style="padding-right: 20px;">
-							<table class="table table-striped" style="background-color: white;">
-								<thead class="table-dark">
-									<tr style="text-align: center;">
-										<th>STT</th>
-										<th>Tên Doanh Nghiệp</th>
-										<th>Điện Thoại</th>
-										<th>Địa chỉ</th>
-										<th>Email</th>
-										<th>Hành Động</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php
-									$dem = 1;
-									while ($r = $tblDN->fetch_assoc()) {
-										echo '<tr style="text-align: center;">';
-										echo '<td>' . $dem . '</td>';
-										echo '<td>' . $r['tenDN'] . '</td>';
-										echo '<td>' . $r['soDienThoai'] . '</td>';
-										echo '<td>' . $r['diaChi'] . '</td>';
-										echo '<td>' . $r['email'] . '</td>';
-										echo '<td>
-                                            <form method="post" onsubmit="return confirmDelete();">
-                                                <input type="hidden" name="id" value="'.$r['maDN'].'">
-                                                <input type="submit" name="btnxoa" value="XÓA" class="btn btn-danger btn-sm" style="padding: 10px 0;height: 45px; width: 120px; background-color: red; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
-												<a href="../doanhnghiep/view_updateDN.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
-											</form>  
-                                        </td>';
-										echo '</tr>';
-										$dem++;
-									}
-									?>
-								</tbody>
-							</table>
-						</div>
-                        <?php } ?>
+                        if($_REQUEST['id']!='')
+                        {
+                            switch($_REQUEST['btnsua'])
+                            {
+                                case 'Cập Nhật':
+                                {
+                                    $maDN=$_REQUEST['maDN'];
+                                    $tenDN=$_REQUEST['tenDN'];
+                                    $diaChi=$_REQUEST['diaChi'];
+                                    $email=$_REQUEST['email'];
+                                    $soDienThoai=$_REQUEST['soDienThoai'];
+                                    if($maDN!='')
+                                    {
+                                        if($k->themxoasua("UPDATE doanhnghiep SET tenDN = '$tenDN',diaChi = '$diaChi',soDienThoai = '$soDienThoai',email = '$email'  WHERE maDN = '$maDN' LIMIT 1")==1)
+                                        {
+                                            echo'<script language="javascript">
+                                            alert("Cập nhật thành công");	
+                                            </script>';
+                                        }
+                                        echo'<script language="javascript">
+                                        window.location="view_updateDN.php?id='.$maDN.'";
+                                        </script>';
+                                        
+                                    }
+                                    else
+                                    {
+                                        echo'<script language="javascript">
+                                            alert("Vui lòng chọn doanh nghiệp");	
+                                            </script>';
+                                    }
+                                    break;
+                                }
 
-                    </div>
+                            }
+                        } 
+                        else 
+                        {
+                            echo'<script language="javascript">
+                            alert("Vui lòng chọn nhân viên");	
+                            window.location="../admin/business.php";
+                            </script>';
+                        }
+                    ?>
+                </form>
                 </div>
             </div>
         </div>
@@ -345,33 +377,10 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
         data-cf-beacon='{"rayId":"92a5cd62af4a1a5b","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}'
         crossorigin="anonymous"></script>
 
-    <div>
-        <?php
-        include('../../model/mUser.php');
-        $k = new mUser();
-
-            if (isset($_POST['btnxoa']) && isset($_POST['id'])) {
-            $maXoa = $_POST['id'];
-            $sql = "DELETE FROM doanhnghiep WHERE maDN='$maXoa' LIMIT 1";
-
-            $con = $k->connect();
-            if ($con->query($sql) === TRUE) {
-                echo '<script>alert("Xóa doanh nghiệp thành công"); window.location="customer.php";</script>';
-            } else {
-                echo 'Lỗi khi xóa: ' . $con->error;
-            }
-        }
-        ?>
-
-    </div>
     </div>
 
 </body>
-<script>
-function confirmDelete() {
-    return confirm("Bạn có chắc chắn muốn xóa khách hàng này?");
-}
-</script>
+
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/user-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:32:23 GMT -->
 
-</html>
+</html> 
