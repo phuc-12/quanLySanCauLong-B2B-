@@ -33,15 +33,16 @@
 			$con->set_charset("utf8"); // Thiết lập UTF-8 nếu cần
 			return $con;
 		}
-        public function themxoasua($sql)
-		{
-			$link = $this->connect();
-			if($link->query($sql) === TRUE) {
-				return 1;
-			} else {
-				return 0;
-			}
-		}
+        public function themxoasua($sql) {
+            $con = $this->connect();  
+            $result = mysqli_query($con, $sql);
+            if ($result) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
 
         public function laycot($sql)
 		{
@@ -55,6 +56,95 @@
 				}
 			}
 			return $trave;
+		}
+		
+		public function selectCountCus()
+		{
+			$p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "SELECT COUNT(*) as total FROM taikhoannguoidung where loainguoidung =1";
+                $tblKH = $con->query($str);
+                $result = $tblKH->fetch_assoc(); // Lấy kết quả đếm
+                $p->dongketnoi($con);
+                return $result['total']; // Trả về số lượng
+            } else {
+                return false;
+            }
+		}
+		public function selectCountBus()
+		{
+			$p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "SELECT COUNT(*) as total FROM taikhoannguoidung where loainguoidung =2";
+                $tblDN = $con->query($str);
+                $result = $tblDN->fetch_assoc(); // Lấy kết quả đếm
+                $p->dongketnoi($con);
+                return $result['total']; // Trả về số lượng
+            } else {
+                return false;
+            }
+		}
+        public function SelectAllKHTop5() {
+            $p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "select * from khachhang limit 5";
+                $tblKH = $con->query($str);
+                $p->dongketnoi($con);
+                return $tblKH;
+            }else{
+                return false;
+            }
+        }
+        public function SelectAllDNTop5() {
+            $p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "select * from doanhnghiep limit 5";
+                $tblDN = $con->query($str);
+                $p->dongketnoi($con);
+                return $tblDN;
+            }else{
+                return false;
+            }
+        }
+        public function SelectAllLKHByIDKH($txt)
+		{
+			$p =  new clsKetNoi();
+			$con = $p->moketnoi();
+			if($con)
+			{
+                $str = "SELECT loaiKH FROM khachhang WHERE maKH = '$txt'";
+				$result = $con->query($str);
+				$p->dongketnoi($con);
+				return $result;
+			}
+			else
+			{
+				return false;
+			}
+		}
+        public function SelectAllLDNByIDDN($txt)
+		{
+			$p =  new clsKetNoi();
+			$con = $p->moketnoi();
+			if($con)
+			{
+                $str = "SELECT loaiKH FROM khachhang WHERE maKH = '$txt'";
+				$result = $con->query($str);
+				$p->dongketnoi($con);
+				return $result;
+			}
+			else
+			{
+				return false;
+			}
 		}
     }
 

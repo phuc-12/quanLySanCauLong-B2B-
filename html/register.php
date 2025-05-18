@@ -201,6 +201,12 @@ session_start();
 															</div>
 														</div>
 														<div class="form-group">
+															<div class="group-img">
+																<i class="feather-phone"></i>
+																<input type="text" class="form-control pass-input" name="txtDiaChi" placeholder="Địa chỉ">
+															</div>
+														</div>
+														<div class="form-group">
 															<div class="pass-group group-img">
 																<i class="toggle-password feather-eye-off"></i>
 																<input type="password" class="form-control pass-input" placeholder="Password" name="txtPassword">
@@ -253,21 +259,23 @@ session_start();
 <?php
     include('assets/controller/cRegister.php');
 	$p = new cRegister();
-	if ($_POST['guiDK'] === 'Đăng Ký') {
-    $username = $_POST['txtUsername'];
-    $pw = $_POST['txt-rePassword'];
-	$tenKH = $_POST['txtKH'];
-    $email = $_POST['txtEmail'];
-    $sdt = $_POST['txtPhone'];
-	$loaiND = isset($_POST['loainguoidung']) ? $_POST['loainguoidung'] : 1;
 
-    if ($username && $tenKH && $pw && $email && $sdt) {
-        $p->cRegister1User($username, $tenKH,$pw, $email, $loaiND, $sdt);
-		
-    } else {
-        echo "<script>alert('Vui lòng nhập đầy đủ thông tin!!!')</script>";
-    }
-}
+	if ($_POST['guiDK'] === 'Đăng Ký') {
+		$username = $_POST['txtUsername'];
+		$pw = $_POST['txt-rePassword'];
+		$tenKH = $_POST['txtKH'];
+		$email = $_POST['txtEmail'];
+		$sdt = $_POST['txtPhone'];
+		$loaiND = isset($_POST['loainguoidung']) ? $_POST['loainguoidung'] : 1;
+		$diaChi = isset($_POST['txtDiaChi']) ? $_POST['txtDiaChi'] : "";
+
+		if ($username && $tenKH && $pw && $email && $sdt) {
+			$p->cRegister1User($username, $tenKH, $pw, $email, $loaiND, $sdt, $diaChi);
+		} else {
+			echo "<script>alert('Vui lòng nhập đầy đủ thông tin!!!')</script>";
+		}
+	}
+
 
 
 ?>

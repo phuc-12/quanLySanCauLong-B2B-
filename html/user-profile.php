@@ -648,8 +648,7 @@ if (isset($_REQUEST['btnsua'])) {
     $sdt = isset($_REQUEST['sodienthoai']) ? $_REQUEST['sodienthoai'] : '';
 
     if($idnguoidung != '' && $tenKH != '' && $username != '' && $password != '' && $email != '' && $sdt != '' && $diachi != '') {
-        $pass = md5($password);
-
+        
         $sql = "
             UPDATE khachhang k
             JOIN taikhoannguoidung t ON k.idnguoidung = t.idnguoidung
@@ -658,7 +657,7 @@ if (isset($_REQUEST['btnsua'])) {
                 k.email = '$email',
                 k.soDienThoai = '$sdt',
                 k.diachi = '$diachi',
-                t.passwords = '$pass'
+                t.passwords = '$password'
             WHERE k.idnguoidung = '$idnguoidung'
         ";
 
