@@ -2,6 +2,7 @@
 include_once('../model/mUser.php');
 class CUser
 {
+    //count customer
     public function getCountCus()
         {
             $p = new mUser();
@@ -17,6 +18,7 @@ class CUser
             }
             
         }
+    //count business
     public function getCountBus()
         {
             $p = new mUser();
@@ -32,7 +34,53 @@ class CUser
             }
             
         }
-
+    //count requirement
+    public function getCountReq()
+        {
+            $p = new mUser();
+            $tblReq = $p->selectCountReq();
+            if($tblReq){ 
+                if($tblReq>0){
+                    return $tblReq;
+                }else{
+                    return -1; //không có dữ liệu trong bảng
+                }
+            }else{
+                return false;
+            }
+            
+        }
+    public function getCountReqAccept()
+        {
+            $p = new mUser();
+            $tblReq = $p->selectCountReqAccept();
+            if($tblReq){ 
+                if($tblReq>0){
+                    return $tblReq;
+                }else{
+                    return -1; //không có dữ liệu trong bảng
+                }
+            }else{
+                return false;
+            }
+            
+        }
+    public function getCountReqRefuse()
+        {
+            $p = new mUser();
+            $tblReq = $p->selectCountReqRefuse();
+            if($tblReq){ 
+                if($tblReq>0){
+                    return $tblReq;
+                }else{
+                    return -1; //không có dữ liệu trong bảng
+                }
+            }else{
+                return false;
+            }
+            
+        }
+    //cus top5
     public function getALLKHTop5()
         {
             $p = new mUser();
@@ -48,6 +96,7 @@ class CUser
             }
             
         }
+    //bus top5
     public function getALLDNTop5()
         {
             $p = new mUser();
@@ -63,6 +112,53 @@ class CUser
             }
             
         }
+    //requirement
+    public function getALLReq()
+        {
+            $p = new mUser();
+            $tblReq = $p->SelectAllReq();
+            if($tblReq){ 
+                if($tblReq>0){
+                    return $tblReq;
+                }else{
+                    return -1; //không có dữ liệu trong bảng
+                }
+            }else{
+                return false;
+            }
+            
+        }
+    public function getReqAccept()
+        {
+            $p = new mUser();
+            $tblReq = $p->SelectAllReqAccept();
+            if($tblReq){ 
+                if($tblReq>0){
+                    return $tblReq;
+                }else{
+                    return -1; //không có dữ liệu trong bảng
+                }
+            }else{
+                return false;
+            }
+            
+        }
+    public function getReqRefuse()
+        {
+            $p = new mUser();
+            $tblReq = $p->SelectAllReqRefuse();
+            if($tblReq){ 
+                if($tblReq>0){
+                    return $tblReq;
+                }else{
+                    return -1; //không có dữ liệu trong bảng
+                }
+            }else{
+                return false;
+            }
+            
+        }
+    
     public function GetLKHByIDKH($txt)
 		{
 			$p = new mUser();

@@ -70,11 +70,11 @@ $p = new mUser();
 	$layid = $_REQUEST['id'];
 	$layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' limit 1");
 	?>
-    <div id="global-loader">
+    <!-- <div id="global-loader">
         <div class="loader-img">
             <img src="assets/img/loader.png" class="img-fluid" alt="Global">
         </div>
-    </div>
+    </div> -->
 
     <!-- Main Wrapper -->
     <div class="main-wrapper">
@@ -149,7 +149,7 @@ $p = new mUser();
 										</li>
 										';
 									}
-								?>
+						?>
                     </ul>
                 </nav>
             </div>
@@ -179,13 +179,13 @@ $p = new mUser();
                                 <li>
                                     <a href="admin-dashboard.php?id=<?php echo $layid ?>" class="active">
                                         <img src="assets/img/icons/dashboard-icon.svg" alt="Icon">
-                                        <span>Tổng Quan</span>
+                                        <span>TỔNG QUAN</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="assets/view/doanhnghiep/view__YeuCauHD.php?id=<?php echo $layid ?>">
+                                    <a href="assets/view/admin/requirement.php?id=<?php echo $layid ?>">
                                         <img src="assets/img/icons/booking-icon.svg" alt="Icon">
-                                        <span>Yêu Cầu Hoạt Động</span>
+                                        <span>YÊU CẦU HOẠT ĐỘNG</span>
                                     </a>
                                 </li>
                                 <!-- <li>
@@ -197,13 +197,13 @@ $p = new mUser();
                                 <li>
                                     <a href="assets/view/admin/customer.php?id=<?php echo $layid ?>">
                                         <i class="fa fa-address-card-o" style="font-size: 29px;"></i>
-                                        <br><span>Khách Hàng</span>
+                                        <br><span>KHÁCH HÀNG</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="assets/view/admin/business.php?id=<?php echo $layid ?>">
                                         <img src="assets/img/icons/chat-icon.svg" alt="Icon">
-                                        <span>Doanh Nghiệp</span>
+                                        <span>DOANH NGHIỆP</span>
                                     </a>
                                 </li>
 

@@ -65,13 +65,17 @@ $k = new mUser();
 <body>
 <?php
 $layid = $_REQUEST['id'];
-$laymaND=$k->laycot("select idnguoidung from taikhoannguoidung  limit 1");
+$layMaYC=$k->laycot("select maYeuCau from yeucauhoatdong  limit 1");
+$layTenSan=$k->laycot("select tenSan from yeucauhoatdong  limit 1");
+$laySoLuongSan=$k->laycot("select soLuongSan from yeucauhoatdong  limit 1");
+$layGioMoCua=$k->laycot("select gioMoCua from yeucauhoatdong  limit 1");
+$layGiaMacDinh=$k->laycot("select giaMacDinh from yeucauhoatdong  limit 1");
+$layGiaGioVang=$k->laycot("select giaGioVang from yeucauhoatdong  limit 1");
+$layDiaChi=$k->laycot("select diaChi from yeucauhoatdong  limit 1");
+$layHinhAnh=$k->laycot("select hinhAnhSan from yeucauhoatdong  limit 1");
+$layCCCD=$k->laycot("select CCCD from yeucauhoatdong  limit 1");
+$layTenChuSan=$k->laycot("select tenChuSan from yeucauhoatdong  limit 1");
 
-$layten = $k->laycot("SELECT tenDN FROM doanhnghiep LIMIT 1");
-$laymaDN=$k->laycot("select maDN from doanhnghiep  limit 1");
-$layemail=$k->laycot("select email from doanhnghiep  limit 1");
-$laysdt=$k->laycot("select sodienthoai from doanhnghiep  limit 1");
-$laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
 ?>
     <!-- <div id="global-loader" >
 		<div class="loader-img">
@@ -112,11 +116,10 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
 
                         <!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
-                        <?php
+                       <?php
 									if(isset($_REQUEST['id']))
 									{
 										echo '
-							
 											<li class="nav-item dropdown has-arrow logged-item">
 												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
 													<span class="user-img">
@@ -144,15 +147,15 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
 										echo '
 										<li class="nav-item">
 											<div class="nav-link btn btn-white log-register">	
-												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="../../../register.php">Đăng Ký</a>
+												<a href="../../../login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="../../../register.php">Đăng Ký</a>
 										</div>
 										</li>
 										<li class="nav-item">
-										<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+										<a class="nav-link btn btn-secondary" href="../../../add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
 										</li>
 										';
 									}
-								?>
+						?>
                     </ul>
                 </nav>
             </div>
@@ -163,7 +166,7 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
         <section class="breadcrumb breadcrumb-list mb-0">
             <span class="primary-right-round"></span>
             <div class="container">
-                <h1 class="text-white">QUẢN LÝ DOANH NGHIỆP</h1>
+                <h1 class="text-white">QUẢN LÝ YÊU CẦU</h1>
                 <!-- <ul>
 					<li><a href="index.html">Home</a></li>
 					<li >User Dashboard</li>
@@ -182,13 +185,13 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
                                 <li>
                                     <a href="../../../admin-dashboard.php?id=<?php echo $layid ?>">
                                         <img src="../../img/icons/dashboard-icon.svg" alt="Icon">
-                                        <span>Tổng Quan</span>
+                                        <span>TỔNG QUAN</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="user-bookings.html">
+                                    <a href="view__YeuCauHD.php?id=<?php echo $layid ?>"class="active">
                                         <img src="../../img/icons/booking-icon.svg" alt="Icon">
-                                        <span>My Bookings</span>
+                                        <span>YÊU CẦU HOẠT ĐỘNG</span>
                                     </a>
                                 </li>
                                 <!-- <li>
@@ -200,13 +203,13 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
                                 <li>
                                     <a href="../admin/customer.php?id=<?php echo $layid ?>" >
                                         <i class="fa fa-address-card-o" style="font-size: 29px;"></i>
-                                        <br><span>Khách Hàng</span>
+                                        <br><span>KHÁCH HÀNG</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../admin/business.php?id=<?php echo $layid ?>"class="active">
+                                    <a href="../admin/business.php?id=<?php echo $layid ?>">
                                         <img src="../../img/icons/chat-icon.svg" alt="Icon">
-                                        <span>Doanh Nghiệp</span>
+                                        <span>DOANH NGHIỆP</span>
                                     </a>
                                 </li>
 
@@ -228,18 +231,34 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
                         <h2 style="font-size: 20px; float: left; padding-left: 30px;">THỐNG KÊ SỐ LIỆU</h2>
                         <!-- <a href="#ds_food" class="btn btn-outline-secondary" style="float:right;">Tất cả</a> -->
                     </div>
-                    <div style="padding: 50px; width: 100%; height: 150px; border-bottom: 1px solid #E5E5E5;">
+                    <div style="padding: 30px; width: 100%; height: 150px; border-bottom: 1px solid #E5E5E5;">
                         <div>
                             <i class="fa fa-address-card-o" style="font-size: 25px;"></i>
-                            <h4 style="width: 190px; height: 30px; float: left;"><span>TỔNG SỐ LƯỢNG</span><br><br>
+                            <h4 style="width: 190px; height: 40px; float: left;"><span>TỔNG SỐ LƯỢNG</span><br><br>
                                 <span style="color:red; margin-right: 20px;">
                                     <?php
 										include_once("../../controller/cUser.php");
 										$p = new CUser();
-										$countKH = $p->getCountBus();
-										echo $countKH;
+										$countReq = $p->getCountReq();
+										echo $countReq;
 									?>
-                                </span>DOANH NGHIỆP<br>
+                                </span>YÊU CẦU<br>
+                                <span style="color:red; margin-right: 20px;">
+                                    <?php
+										include_once("../../controller/cUser.php");
+										$p = new CUser();
+										$countReq = $p->getCountReqAccept();
+										echo $countReq;
+									?>
+                                </span>ĐÃ DUYỆT<br>
+                                <span style="color:red; margin-right: 20px;">
+                                    <?php
+										include_once("../../controller/cUser.php");
+										$p = new CUser();
+										$countReq = $p->getCountReqRefuse();
+										echo $countReq;
+									?>
+                                </span>TỪ CHỐI<br>
                             </h4>
                         </div>
                     </div>
@@ -249,83 +268,133 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
             <div class="col-md-9">
                 <div id="ds_all">
                     <div style="width: 100%; height: 60px; padding: 10px; border-bottom: 0.5px solid #E5E5E5;">
-                        <p style="font-size: 20px; float: left;"><b>DOANH NGHIỆP</b></p>
+                        <p style="font-size: 20px; float: left;"><b>YÊU CẦU</b></p>
                     </div>
 
-                    <a href="../admin/business.php?<?php echo $layid ?>" class="fa fa-angle-left" style="padding: 10px 0;height: 45px; width: 45px; background-color: #097E52; color: white; 
+                    <a href="../admin/requirement.php?id=<?php echo $layid ?>" class="fa fa-angle-left" style="padding: 10px 0;height: 45px; width: 45px; background-color: #097E52; color: white; 
 											text-align: center; border-radius: 10px; text-decoration: none; border: 0; font-weight: 700; display: inline-block; margin: 5px;"></a>
-                    <h3>THÔNG TIN DOANH NGHIỆP</h3>
+                    <h3>THÔNG TIN YÊU CẦU</h3>
                     <form method="post" enctype="multipart/form-data" name="form1" id="form1" style="width: 100%;">
                         <table style="margin:0; height: 500px;" style="width: 50%; float:left;">
                             <tr>
-                                <td style="width: 150px;"><label for="maDN">Mã Doanh Nghiệp:</label></td>
-                                <td><input type="input" class="form-control" size="200" id="maDN" value="<?php echo $laymaDN;?>" name="maDN" readonly></td>
+                                <td style="width: 150px;"><label for="maYeuCau">Mã Yêu Cầu:</label></td>
+                                <td><input type="input" class="form-control" size="76" id="maYeuCau" value="<?php echo $layid;?>" name="maYeuCau" readonly></td>
                                 <!-- <td style="width: 200px;"><span id="errMaNV" class="err text-danger"></span></td> -->
                             </tr>
                             <tr>
-                                <td style="width: 150px;"><label for="tenDN">Tên Doanh Nghiệp:</label></td>
-                                <td><input type="input" class="form-control" size="200" id="tenDN" value="<?php echo $layten;?>" name="tenDN"></td>
-                                <td style="width: 200px;"><span id="errHoTen" class="err text-danger"></span></td>
+                                <td style="width: 150px;"><label for="tenSan">Tên Sân:</label></td>
+                                <td><input type="input" class="form-control" size="76" id="tenSan" value="<?php echo $layTenSan;?>" name="tenSan" readonly></td>
+                                <!-- <td style="width: 200px;"><span id="errHoTen" class="err text-danger"></span></td> -->
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;"><label for="soLuongSan">Số Lượng Sân:</label></td>
+                                <td><input type="input" class="form-control" size="76" id="soLuongSan" value="<?php echo $laySoLuongSan;?>" name="soLuongSan"readonly></td>
+                                <!-- <td style="width: 200px;"><span id="errNgaySinh" class="err text-danger"></span></td> -->
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;"><label for="	gioMoCua">Giờ Mở Cửa:</label></td>
+                                <td><input type="input" class="form-control" size="76" id="	gioMoCua" value="<?php echo $layGioMoCua;?>" name="	gioMoCua"readonly></td>
+                                <!-- <td style="width: 200px;"><span id="errHoTen" class="err text-danger"></span></td> -->
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;"><label for="giaMacDinh">Giá Mặc Định</label></td>
+                                <td><input type="input" class="form-control" size="76" id="giaMacDinh" value="<?php echo $layGiaMacDinh;?>" name="giaMacDinh"readonly></td>
+                                <!-- <td style="width: 200px;"><span id="errNgaySinh" class="err text-danger"></span></td> -->
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;"><label for="giaGioVang">Giá Giờ Vàng:</label></td>
+                                <td><input type="input" class="form-control" size="76" id="giaGioVang" value="<?php echo $layGiaGioVang;?>" name="tenDgiaGioVangN"readonly></td>
+                                <!-- <td style="width: 200px;"><span id="errHoTen" class="err text-danger"></span></td> -->
                             </tr>
                             <tr>
                                 <td style="width: 150px;"><label for="diaChi">Địa Chỉ:</label></td>
-                                <td><input type="input" class="form-control" size="200" id="diaChi" value="<?php echo $laydiachi;?>" name="diaChi"></td>
-                                <td style="width: 200px;"><span id="errNgaySinh" class="err text-danger"></span></td>
+                                <td><input type="input" class="form-control" size="76" id="diaChi" value="<?php echo $layDiaChi;?>" name="diaChi"readonly></td>
+                                <!-- <td style="width: 200px;"><span id="errNgaySinh" class="err text-danger"></span></td> -->
                             </tr>
                             <tr>
-                                <td style="width: 150px;"><label for="soDienThoai">Số Điện Thoại:</label></td>
-                                <td><input type="input" class="form-control" size="200" id="soDienThoai" value="<?php echo $laysdt;?>" name="soDienThoai"></td>
-                                <td style="width: 200px;"><span id="errHoTen" class="err text-danger"></span></td>
+                                <td style="width: 150px;"><label for="tenChuSan">Tên Chủ Sân:</label></td>
+                                <td><input type="input" class="form-control" size="76" id="tenChuSan" value="<?php echo $layTenChuSan;?>" name="tenChuSan"readonly></td>
+                                <!-- <td style="width: 200px;"><span id="errHoTen" class="err text-danger"></span></td> -->
                             </tr>
                             <tr>
-                                <td style="width: 150px;"><label for="email">Email</label></td>
-                                <td><input type="input" class="form-control" size="200" id="email" value="<?php echo $layemail;?>" name="email"></td>
-                                <td style="width: 200px;"><span id="errNgaySinh" class="err text-danger"></span></td>
+                                <td style="width: 150px;"><label for="CCCD">CCCD</label></td>
+                                <td><input type="input" class="form-control" size="76" id="CCCD" value="<?php echo $layCCCD;?>" name="CCCD"readonly></td>
+                                <!-- <td style="width: 200px;"><span id="errNgaySinh" class="err text-danger"></span></td> -->
                             </tr>
+                            <!-- <tr>
+                                <td style="width: 400px; height: 400px; position: absolute; top: 500px; right: 150px; background-color: black;"><label for="hinhAnhSan">Hình Ảnh:</label></td>
+                                <td><img src="../../img/venues/<?php echo $layHinhAnh?>" alt="" style="width: 100%; height: 100%;"></td>
+                                
+                            </tr> -->
 
                             <tr>
                                 <td colspan=2 style="text-align:right;">
-                                    <input type="submit" name="btnsua" id="btnsua" value="Cập Nhật" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
+                                    <input type="submit" name="btn" id="btnsubmit" value="Phê Duyệt" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
 											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
-                                    <a href="../admin/business.php<?php echo $layid ?>" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
-											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">Hủy</a>
+                                    <input type="submit" name="btn" id="btnrefuse" value="Từ Chối" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
+											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;"> 
                                 </td>
 
                                 
                             </tr>
                         </table>
+                        <div style="width: 400px; height: 400px; position: absolute; top: 510px; right: 150px; background-color: black;">
+                            <img src="../../img/venues/<?php echo $layHinhAnh?>" alt="" style="width: 100%; height: 100%;">
+                            
+                        </div>
                         <?php
                         error_reporting(1);
                         include_once("../../model/mUser.php");
-
+                        $k = new mUser();
                         if($_REQUEST['id']!='')
                         {
-                            switch($_REQUEST['btnsua'])
+                            switch($_REQUEST['btn'])
                             {
-                                case 'Cập Nhật':
+                                case 'Phê Duyệt':
                                 {
-                                    $maDN=$_REQUEST['maDN'];
-                                    $tenDN=$_REQUEST['tenDN'];
-                                    $diaChi=$_REQUEST['diaChi'];
-                                    $email=$_REQUEST['email'];
-                                    $soDienThoai=$_REQUEST['soDienThoai'];
-                                    if($maDN!='')
+                                    $maYeuCau=$_REQUEST['maYeuCau'];
+                                    if($maYeuCau!='')
                                     {
-                                        if($k->themxoasua("UPDATE doanhnghiep SET tenDN = '$tenDN',diaChi = '$diaChi',soDienThoai = '$soDienThoai',email = '$email'  WHERE maDN = '$maDN' LIMIT 1")==1)
+                                        if($k->themxoasua("UPDATE yeucauhoatdong SET trangThai = 'Phê Duyệt' WHERE maYeuCau = '$maYeuCau' LIMIT 1")==1)
                                         {
                                             echo'<script language="javascript">
-                                            alert("Cập nhật thành công");	
+                                            alert("Phê duyệt thành công");
+                                            window.location="view_YeuCauHD.php?id='.$maYeuCau.'";	
                                             </script>';
                                         }
                                         echo'<script language="javascript">
-                                        window.location="view_updateDN.php?id='.$maDN.'";
+                                        window.location="view_YeuCauHD.php?id='.$maYeuCau.'";
                                         </script>';
                                         
                                     }
                                     else
                                     {
                                         echo'<script language="javascript">
-                                            alert("Vui lòng chọn doanh nghiệp");	
+                                            alert("Lỗi");	
+                                            </script>';
+                                    }
+                                    break;
+                                }
+                                case 'Từ Chối':
+                                {
+                                    $maYeuCau=$_REQUEST['maYeuCau'];
+                                    if($maYeuCau!='')
+                                    {
+                                        if($k->themxoasua("UPDATE yeucauhoatdong SET trangThai = 'Từ chối' WHERE maYeuCau = '$maYeuCau' LIMIT 1")==1)
+                                        {
+                                            echo'<script language="javascript">
+                                            alert("Từ chối yêu cầu");	
+                                            </script>';
+                                        }
+                                        echo'<script language="javascript">
+                                        window.location="view_YeuCauHD.php?id='.$maYeuCau.'";
+                                        </script>';
+                                        
+                                    }
+                                    else
+                                    {
+                                        echo'<script language="javascript">
+                                            alert("Lỗi");	
                                             </script>';
                                     }
                                     break;
@@ -336,8 +405,8 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
                         else 
                         {
                             echo'<script language="javascript">
-                            alert("Vui lòng chọn nhân viên");	
-                            window.location="../admin/business.php";
+                            alert("Vui lòng chọn hợp đồng");	
+                            window.location="../admin/requirement.php";
                             </script>';
                         }
                     ?>

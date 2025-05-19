@@ -116,7 +116,6 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
 									if(isset($_REQUEST['id']))
 									{
 										echo '
-							
 											<li class="nav-item dropdown has-arrow logged-item">
 												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
 													<span class="user-img">
@@ -144,15 +143,15 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
 										echo '
 										<li class="nav-item">
 											<div class="nav-link btn btn-white log-register">	
-												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="../../../register.php">Đăng Ký</a>
+												<a href="../../../login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="../../../register.php">Đăng Ký</a>
 										</div>
 										</li>
 										<li class="nav-item">
-										<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+										<a class="nav-link btn btn-secondary" href="../../../add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
 										</li>
 										';
 									}
-								?>
+						?>
                     </ul>
                 </nav>
             </div>
@@ -163,7 +162,7 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
         <section class="breadcrumb breadcrumb-list mb-0">
             <span class="primary-right-round"></span>
             <div class="container">
-                <h1 class="text-white">QUẢN LÝ YÊU CẦU</h1>
+                <h1 class="text-white">QUẢN LÝ DOANH NGHIỆP</h1>
                 <!-- <ul>
 					<li><a href="index.html">Home</a></li>
 					<li >User Dashboard</li>
@@ -182,13 +181,13 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
                                 <li>
                                     <a href="../../../admin-dashboard.php?id=<?php echo $layid ?>">
                                         <img src="../../img/icons/dashboard-icon.svg" alt="Icon">
-                                        <span>Tổng Quan</span>
+                                        <span>TỔNG QUAN</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="view__YeuCauHD.php?id=<?php echo $layid ?>"class="active">
                                         <img src="../../img/icons/booking-icon.svg" alt="Icon">
-                                        <span>Yêu Cầu Hoạt Động</span>
+                                        <span>YÊU CẦU HOẠT ĐỘNG</span>
                                     </a>
                                 </li>
                                 <!-- <li>
@@ -200,13 +199,13 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
                                 <li>
                                     <a href="../admin/customer.php?id=<?php echo $layid ?>" >
                                         <i class="fa fa-address-card-o" style="font-size: 29px;"></i>
-                                        <br><span>Khách Hàng</span>
+                                        <br><span>KHÁCH HÀNG</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../admin/business.php?id=<?php echo $layid ?>">
+                                    <a href="../admin/business.php?id=<?php echo $layid ?>"class="active">
                                         <img src="../../img/icons/chat-icon.svg" alt="Icon">
-                                        <span>Doanh Nghiệp</span>
+                                        <span>DOANH NGHIỆP</span>
                                     </a>
                                 </li>
 

@@ -111,7 +111,6 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
 									if(isset($_REQUEST['id']))
 									{
 										echo '
-							
 											<li class="nav-item dropdown has-arrow logged-item">
 												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
 													<span class="user-img">
@@ -139,15 +138,15 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
 										echo '
 										<li class="nav-item">
 											<div class="nav-link btn btn-white log-register">	
-												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="../../../register.php">Đăng Ký</a>
+												<a href="../../../login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="../../../register.php">Đăng Ký</a>
 										</div>
 										</li>
 										<li class="nav-item">
-										<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+										<a class="nav-link btn btn-secondary" href="../../../add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
 										</li>
 										';
 									}
-								?>
+						?>
                     </ul>
                 </nav>
             </div>
@@ -177,13 +176,13 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
                                 <li>
                                     <a href="../../../admin-dashboard.php?id=<?php echo $layid ?>">
                                         <img src="../../img/icons/dashboard-icon.svg" alt="Icon">
-                                        <span>Tổng Quan</span>
+                                        <span>TỔNG QUAN</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="user-bookings.html">
+                                    <a href="requirement.php?id=<?php echo $layid ?>">
                                         <img src="../../img/icons/booking-icon.svg" alt="Icon">
-                                        <span>My Bookings</span>
+                                        <span>YÊU CẦU HOẠT ĐỘNG</span>
                                     </a>
                                 </li>
                                 <!-- <li>
@@ -195,13 +194,13 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
                                 <li>
                                     <a href="customer.php?id=<?php echo $layid ?>" >
                                         <i class="fa fa-address-card-o" style="font-size: 29px;"></i>
-                                        <br><span>Khách Hàng</span>
+                                        <br><span>KHÁCH HÀNG</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="business.php?id=<?php echo $layid ?>"class="active">
                                         <img src="../../img/icons/chat-icon.svg" alt="Icon">
-                                        <span>Doanh Nghiệp</span>
+                                        <span>DOANH NGHIỆP</span>
                                     </a>
                                 </li>
 
@@ -231,8 +230,8 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
                                     <?php
 										include_once("../../controller/cUser.php");
 										$p = new CUser();
-										$countKH = $p->getCountBus();
-										echo $countKH;
+										$countDN = $p->getCountBus();
+										echo $countDN;
 									?>
                                 </span>DOANH NGHIỆP<br>
                             </h4>
@@ -297,7 +296,7 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
                                             <form method="post" onsubmit="return confirmDelete();">
                                                 <input type="hidden" name="id" value="'.$r['maDN'].'">
                                                 <input type="submit" name="btnxoa" value="XÓA" class="btn btn-danger btn-sm" style="padding: 10px 0;height: 45px; width: 120px; background-color: red; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
-												<a href="../doanhnghiep/view_updateDN.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
+												<a href="../chucnang_admin/view_updateDN.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
 											</form>  
                                         </td>';
 										echo '</tr>';
