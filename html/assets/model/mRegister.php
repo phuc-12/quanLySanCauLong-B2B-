@@ -25,7 +25,7 @@
         public function mRegister1KH($tenKH, $sdt, $email, $idnguoidung) {
             $p = new clsKetNoi;
             $con = $p->moketnoi();
-            $loaiKH = '1';
+            $loaiKH = 'Vãng lai';
         
             $sql = "INSERT INTO khachhang (`tenKH`, `loaiKH`, `soDienThoai`, `email`, `idnguoidung`)
                     VALUES ('$tenKH', '$loaiKH', '$sdt', '$email', '$idnguoidung')";
@@ -37,8 +37,6 @@
         public function mRegister1DN($tenDN,$diaChi, $sdt, $email, $idnguoidung) {
             $p = new clsKetNoi;
             $con = $p->moketnoi();
-            
-        
             $sql = "INSERT INTO doanhnghiep (`tenDN`, `diaChi`, `soDienThoai`, `email`, `idnguoidung`)
                     VALUES ('$tenDN', '$diaChi', '$sdt', '$email', '$idnguoidung')";
             $kq = mysqli_query($con, $sql);

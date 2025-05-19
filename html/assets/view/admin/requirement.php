@@ -65,7 +65,8 @@ $p = new mUser();
 <body>
     <?php
 $layid = $_REQUEST['id'];
-$layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' limit 1");
+$layYCAccept = $p->laycot("select trangThai from yeucauhoatdong where trangThai = '$layid' limit 1");
+$layYCRefuse = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' limit 1");
 ?>
     <!-- <div id="global-loader" >
 		<div class="loader-img">
@@ -156,7 +157,7 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
         <section class="breadcrumb breadcrumb-list mb-0">
             <span class="primary-right-round"></span>
             <div class="container">
-                <h1 class="text-white">QUẢN LÝ KHÁCH HÀNG</h1>
+                <h1 class="text-white">QUẢN LÝ YÊU CẦU</h1>
                 <!-- <ul>
 					<li><a href="index.html">Home</a></li>
 					<li >User Dashboard</li>
@@ -179,7 +180,7 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="requirement.php?id=<?php echo $layid ?>">
+                                    <a href="requirement.php?id=<?php echo $layid ?>" class="active">
                                         <img src="../../img/icons/booking-icon.svg" alt="Icon">
                                         <span>YÊU CẦU HOẠT ĐỘNG</span>
                                     </a>
@@ -191,7 +192,7 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 									</a>
 								</li> -->
                                 <li>
-                                    <a href="customer.php?id=<?php echo $layid ?>" class="active">
+                                    <a href="customer.php?id=<?php echo $layid ?>">
                                         <i class="fa fa-address-card-o" style="font-size: 29px;"></i>
                                         <br><span>KHÁCH HÀNG</span>
                                     </a>
@@ -217,22 +218,38 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
             <!-- navbar -->
             <div class="col-md-3">
                 <div class="thongKe_KH" style="border-radius: 10px;">
-                    <div style="width: 100%; height: 60px; padding: 10px; border-bottom: 0.5px solid #E5E5E5;">
+                    <div style="width: 100%; height: 40px; padding: 10px; border-bottom: 0.5px solid #E5E5E5;">
                         <h2 style="font-size: 20px; float: left; padding-left: 30px;">THỐNG KÊ SỐ LIỆU</h2>
                         <!-- <a href="#ds_food" class="btn btn-outline-secondary" style="float:right;">Tất cả</a> -->
                     </div>
-                    <div style="padding: 50px; width: 100%; height: 150px; border-bottom: 1px solid #E5E5E5;">
+                    <div style="padding: 30px; width: 100%; height: 150px; border-bottom: 1px solid #E5E5E5;">
                         <div>
                             <i class="fa fa-address-card-o" style="font-size: 25px;"></i>
-                            <h4 style="width: 190px; height: 30px; float: left;"><span>TỔNG SỐ LƯỢNG</span><br><br>
+                            <h4 style="width: 190px; height: 40px; float: left;"><span>TỔNG SỐ LƯỢNG</span><br><br>
                                 <span style="color:red; margin-right: 20px;">
                                     <?php
 										include_once("../../controller/cUser.php");
 										$p = new CUser();
-										$countKH = $p->getCountCus();
-										echo $countKH;
+										$countReq = $p->getCountReq();
+										echo $countReq;
 									?>
-                                </span>KHÁCH HÀNG<br>
+                                </span>YÊU CẦU<br>
+                                <span style="color:red; margin-right: 20px;">
+                                    <?php
+										include_once("../../controller/cUser.php");
+										$p = new CUser();
+										$countReq = $p->getCountReqAccept();
+										echo $countReq;
+									?>
+                                </span>ĐÃ DUYỆT<br>
+                                <span style="color:red; margin-right: 20px;">
+                                    <?php
+										include_once("../../controller/cUser.php");
+										$p = new CUser();
+										$countReq = $p->getCountReqRefuse();
+										echo $countReq;
+									?>
+                                </span>TỪ CHỐI<br>
                             </h4>
                         </div>
                     </div>
@@ -242,31 +259,33 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
             <div class="col-md-9">
                 <div id="ds_all">
                     <div style="width: 100%; height: 60px; padding: 10px; border-bottom: 0.5px solid #E5E5E5;">
-                        <p style="font-size: 20px; float: left;"><b>DANH SÁCH KHÁCH HÀNG</b></p>
+                        <p style="font-size: 20px; float: left;"><b>DANH SÁCH YÊU CẦU</b></p>
                     </div>
 
                     <!-- Tabs -->
                     <div style="display: flex; gap: 20px; margin-bottom: 20px;">
-                        <button class="nav-link active" onclick="showTab('khachhang')"
+                        <button class="nav-link active" onclick="showTab('requirement')"
                             style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
-											text-align: center; border-radius: 5px; text-decoration: none;border: 0; font-weight: 700; display: inline-block;">Khách Hàng</button>
-                        <!-- <button class="nav-link" onclick="showTab('doanhnghiep')" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
-											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">Doanh Nghiệp</button> -->
+											text-align: center; border-radius: 5px; text-decoration: none;border: 0; font-weight: 700; display: inline-block;">Yêu Cầu</button>
+                        <button class="nav-link" onclick="showTab('accept')" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
+											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">Đã Duyệt</button>
+                        <button class="nav-link" onclick="showTab('refuse')" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
+											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">Từ Chối</button>
 
                     </div>
 
-                    <!-- Bảng Khách Hàng -->
-                    <div id="tab-khachhang">
+                    <!-- Bảng Yêu Cầu Chờ Duyệt -->
+                    <div id="tab-requirement">
                         <?php  
 						error_reporting(0);
 						include_once("../../controller/cUser.php");
 						$p = new CUser();
-						$tblKH = $p->getALLKHTop5();
+						$tblReq = $p->getALLReq();
 
-						if (!$tblKH) {
+						if (!$tblReq) {
 							echo 'Không kết nối được';
-						} elseif ($tblKH == -1) {
-							echo 'Chưa có dữ liệu Khách Hàng';
+						} elseif ($tblReq == -1) {
+							echo 'Chưa có dữ liệu phiếu yêu cầu';
 						} else {
 						?>
                         <div style="padding-right: 20px; ">
@@ -274,43 +293,150 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
                                 <thead class="table-dark">
 									<tr style="text-align: center;">
 										<th>STT</th>
-										<th>Tên Khách Hàng</th>
-										<th>Điện Thoại</th>
+										<th>Mã Yêu Cầu</th>
+										<th>Tên Sân</th>
+										<th>Tên Chủ Sân</th>
+										<th>Số Lượng Sân</th>
 										<th>Địa chỉ</th>
-										<th>Email</th>
-										<th>Loại Khách Hàng</th>
+										<th>Trạng Thái</th>
 										<th>Hành Động</th>
 									</tr>
 								</thead>
                                 <tbody>
                                     <?php
                                     $dem = 1;
-                                    while ($r = $tblKH->fetch_assoc()) {
+                                    while ($r = $tblReq->fetch_assoc()) {
                                         echo '<tr style="text-align: center;">';
-                                        echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$dem.'</a></td>';
-                                        echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$r['tenKH'].'</a></td>';
-                                        echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$r['soDienThoai'].'</a></td>';
-                                        echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$r['diaChi'].'</a></td>';
-                                        echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$r['email'].'</a></td>';
-
-                                        $rs = $p->GetLKHByIDKH($r['maKH']);
-                                        if ($rs && $rs->num_rows > 0) {
-                                            $row = $rs->fetch_assoc();
-                                            // if($row['loaiKH']==1)
-                                            // {
-
-                                            // }
-                                            // elseif($row['loaiKH']==2)
-                                            echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$row['loaiKH'].'</a></td>';
-                                        } else {
-                                            echo '<td>Không xác định</td>';
-                                        }
-                                        // FORM XÓA cho từng dòng
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$dem.'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['maYeuCau'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['tenSan'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['tenChuSan'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['soLuongSan'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['diaChi'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;"><b>'.$r['trangThai'].'</b></a></td>';
+                                        
                                         echo '<td>
-                                            <form method="post" onsubmit="return confirmDelete();">
-                                                <input type="hidden" name="id" value="'.$r['maKH'].'">
-                                                <input type="submit" name="btnxoa" value="XÓA" class="btn btn-danger btn-sm" style="padding: 10px 0;height: 45px; width: 120px; background-color: red; color: white; 
-											    text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
+                                            <form method="post" >
+                                                <input type="hidden" name="id" value="'.$r['maYeuCau'].'">
+                                                
+                                                <a href="../chucnang_admin/view_YeuCauHD.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
+                                            </form>  
+                                        </td>';
+                                        echo '</tr>';
+                                        $dem++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                                  
+                        </div>
+                        <?php } ?>
+
+                    </div>
+                    <!-- Bảng Đã Duyệt-->
+                    <div id="tab-accept">
+                        <?php  
+						error_reporting(0);
+						include_once("../../controller/cUser.php");
+						$p = new CUser();
+						$tblReq = $p->getReqAccept();
+
+						if (!$tblReq) {
+							echo 'Không kết nối được';
+						} elseif ($tblReq == -1) {
+							echo 'Chưa có dữ liệu phiếu yêu cầu';
+						} else {
+						?>
+                        <div style="padding-right: 20px; ">
+                            <table class="table table-striped" style="background-color: white; ">
+                                <thead class="table-dark">
+									<tr style="text-align: center;">
+										<th>STT</th>
+										<th>Mã Yêu Cầu</th>
+										<th>Tên Sân</th>
+										<th>Tên Chủ Sân</th>
+										<th>Số Lượng Sân</th>
+										<th>Địa chỉ</th>
+										<th>Trạng Thái</th>
+										<th>Hành Động</th>
+									</tr>
+								</thead>
+                                <tbody>
+                                    <?php
+                                    $dem = 1;
+                                    while ($r = $tblReq->fetch_assoc()) {
+                                        echo '<tr style="text-align: center;">';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$dem.'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['maYeuCau'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['tenSan'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['tenChuSan'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['soLuongSan'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['diaChi'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;"><b>'.$r['trangThai'].'</b></a></td>';
+                                        
+                                        echo '<td>
+                                            <form method="post" >
+                                                <input type="hidden" name="id" value="'.$r['maYeuCau'].'">
+                                                
+                                                <a href="../chucnang_admin/view_YeuCauHD.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
+                                            </form>  
+                                        </td>';
+                                        echo '</tr>';
+                                        $dem++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                                  
+                        </div>
+                        <?php } ?>
+
+                    </div>
+                    <!-- Bảng Từ Chối -->
+                    <div id="tab-refuse">
+                        <?php  
+						error_reporting(0);
+						include_once("../../controller/cUser.php");
+						$p = new CUser();
+						$tblReq = $p->getReqRefuse();
+
+						if (!$tblReq) {
+							echo 'Không kết nối được';
+						} elseif ($tblReq == -1) {
+							echo 'Chưa có dữ liệu phiếu yêu cầu';
+						} else {
+						?>
+                        <div style="padding-right: 20px; ">
+                            <table class="table table-striped" style="background-color: white; ">
+                                <thead class="table-dark">
+									<tr style="text-align: center;">
+										<th>STT</th>
+										<th>Mã Yêu Cầu</th>
+										<th>Tên Sân</th>
+										<th>Tên Chủ Sân</th>
+										<th>Số Lượng Sân</th>
+										<th>Địa chỉ</th>
+										<th>Trạng Thái</th>
+										<th>Hành Động</th>
+									</tr>
+								</thead>
+                                <tbody>
+                                    <?php
+                                    $dem = 1;
+                                    while ($r = $tblReq->fetch_assoc()) {
+                                        echo '<tr style="text-align: center;">';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$dem.'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['maYeuCau'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['tenSan'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['tenChuSan'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['soLuongSan'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['diaChi'].'</a></td>';
+                                        echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;"><b>'.$r['trangThai'].'</b></a></td>';
+                                        
+                                        echo '<td>
+                                            <form method="post"">
+                                                <input type="hidden" name="id" value="'.$r['maYeuCau'].'">
+                                                <a href="../chucnang_admin/view_YeuCauHD.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
                                             </form>  
                                         </td>';
                                         echo '</tr>';
@@ -360,34 +486,25 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
         data-cf-beacon='{"rayId":"92a5cd62af4a1a5b","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}'
         crossorigin="anonymous"></script>
-
-    <div>
-        <?php
-        include('../../model/mUser.php');
-        $k = new mUser();
-
-            if (isset($_POST['btnxoa']) && isset($_POST['id'])) {
-            $maXoa = $_POST['id'];
-            $sql = "DELETE FROM khachhang WHERE maKH='$maXoa' LIMIT 1";
-
-            $con = $k->connect();
-            if ($con->query($sql) === TRUE) {
-                echo '<script>alert("Xóa khách hàng thành công"); window.location="customer.php";</script>';
-            } else {
-                echo 'Lỗi khi xóa: ' . $con->error;
-            }
-        }
-        ?>
-
     </div>
-    </div>
-
 </body>
-<script>
-function confirmDelete() {
-    return confirm("Bạn có chắc chắn muốn xóa khách hàng này?");
-}
-</script>
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/user-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:32:23 GMT -->
+<script>
+function showTab(tabId) {
+    document.getElementById('tab-requirement').style.display = 'none';
+    document.getElementById('tab-accept').style.display = 'none';
+    document.getElementById('tab-refuse').style.display = 'none';
+
+    document.getElementById('tab-' + tabId).style.display = 'block';
+
+    let buttons = document.querySelectorAll('.nav-link');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+}
+window.onload = function () {
+    showTab('requirement'); // hiển thị tab mặc định khi load
+};
+</script>
+
 
 </html>

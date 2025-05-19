@@ -57,7 +57,7 @@
 			}
 			return $trave;
 		}
-		
+		//Count customer
 		public function selectCountCus()
 		{
 			$p = new clsKetNoi();
@@ -73,6 +73,7 @@
                 return false;
             }
 		}
+        //Count business
 		public function selectCountBus()
 		{
 			$p = new clsKetNoi();
@@ -88,6 +89,53 @@
                 return false;
             }
 		}
+        //Count requirement
+		public function selectCountReq()
+		{
+			$p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "SELECT COUNT(*) as total FROM yeucauhoatdong";
+                $tblDN = $con->query($str);
+                $result = $tblDN->fetch_assoc(); // Lấy kết quả đếm
+                $p->dongketnoi($con);
+                return $result['total']; // Trả về số lượng
+            } else {
+                return false;
+            }
+		}
+		public function selectCountReqAccept()
+		{
+			$p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "SELECT COUNT(*) as total FROM yeucauhoatdong where trangThai='Phê Duyệt'";
+                $tblDN = $con->query($str);
+                $result = $tblDN->fetch_assoc(); // Lấy kết quả đếm
+                $p->dongketnoi($con);
+                return $result['total']; // Trả về số lượng
+            } else {
+                return false;
+            }
+		}
+		public function selectCountReqRefuse()
+		{
+			$p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "SELECT COUNT(*) as total FROM yeucauhoatdong where trangThai='Từ Chối'";
+                $tblDN = $con->query($str);
+                $result = $tblDN->fetch_assoc(); // Lấy kết quả đếm
+                $p->dongketnoi($con);
+                return $result['total']; // Trả về số lượng
+            } else {
+                return false;
+            }
+		}
+        //customer top 5
         public function SelectAllKHTop5() {
             $p = new clsKetNoi();
             $con = $p->moketnoi();
@@ -101,6 +149,7 @@
                 return false;
             }
         }
+        //business top 5
         public function SelectAllDNTop5() {
             $p = new clsKetNoi();
             $con = $p->moketnoi();
@@ -110,6 +159,48 @@
                 $tblDN = $con->query($str);
                 $p->dongketnoi($con);
                 return $tblDN;
+            }else{
+                return false;
+            }
+        }
+        //requirement
+        public function SelectAllReq() {
+            $p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "select * from yeucauhoatdong where trangThai='Chờ Phê Duyệt'";
+                $tblReq = $con->query($str);
+                $p->dongketnoi($con);
+                return $tblReq;
+            }else{
+                return false;
+            }
+        }
+        //accept
+        public function SelectAllReqAccept() {
+            $p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "select * from yeucauhoatdong where trangThai='Phê Duyệt'";
+                $tblReq = $con->query($str);
+                $p->dongketnoi($con);
+                return $tblReq;
+            }else{
+                return false;
+            }
+        }
+        //accept
+        public function SelectAllReqRefuse() {
+            $p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "select * from yeucauhoatdong where trangThai='Từ Chối'";
+                $tblReq = $con->query($str);
+                $p->dongketnoi($con);
+                return $tblReq;
             }else{
                 return false;
             }
@@ -130,22 +221,7 @@
 				return false;
 			}
 		}
-        public function SelectAllLDNByIDDN($txt)
-		{
-			$p =  new clsKetNoi();
-			$con = $p->moketnoi();
-			if($con)
-			{
-                $str = "SELECT loaiKH FROM khachhang WHERE maKH = '$txt'";
-				$result = $con->query($str);
-				$p->dongketnoi($con);
-				return $result;
-			}
-			else
-			{
-				return false;
-			}
-		}
+        
     }
 
 ?>
