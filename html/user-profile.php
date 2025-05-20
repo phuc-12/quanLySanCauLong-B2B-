@@ -275,14 +275,13 @@ $p = new mUser();
 								<li>
 									<a href="user-dashboard.html">
 										<img src="assets/img/icons/dashboard-icon.svg" alt="Icon">
-										<span>Dashboard</span>
+										<span>Tổng Quan</span>
 									</a>
 								</li>
-								
 								<li>
 									<a href="user-profile.php" class="active">
 										<img src="assets/img/icons/profile-icon.svg" alt="Icon">
-										<span>Profile Setting</span>
+										<span>Thiết Lập Hồ Sơ</span>
 									</a>
 								</li>
 							</ul>
@@ -299,7 +298,7 @@ $p = new mUser();
 
 				<div class="coach-court-list profile-court-list">
 					<ul class="nav">
-						<li><a class="active" href="user-profile.php">Profile</a></li>
+						<li><a class="active" href="user-profile.php">Hồ Sơ</a></li>
 						<!-- <li><a href="user-setting-password.html">Change Password</a></li> -->
 						<!-- <li><a href="user-profile-othersetting.html">Other Settings</a></li> -->
 					</ul>
@@ -317,7 +316,7 @@ $p = new mUser();
 									<!-- Username (chỉ đọc) -->
 									<div class="col-lg-4 col-md-6">
 										<div class="input-space">
-											<label class="form-label">Username:</label>
+											<label class="form-label">Tên Tài Khoản:</label>
 											<input type="text" class="form-control" value="<?php echo $layusername; ?>" name="username" style="color: #999;" readonly>
 										</div>
 									</div>
@@ -358,7 +357,7 @@ $p = new mUser();
 									<div class="col-lg-4 col-md-6">
 										<div class="form-group">
 											<div class="pass-group group-img">
-												<label class="form-label">Password:</label>
+												<label class="form-label">Mật Khẩu:</label>
 												<i class="toggle-password feather-eye-off"></i>
 												<input type="password" class="form-control pass-input" name="passwords" value="<?php echo $laypassword; ?>" style="color: #999;">
 											</div>
@@ -623,7 +622,7 @@ if (isset($_REQUEST['btnsua'])) {
     $email = isset($_REQUEST['email']) ? $_REQUEST['email'] : '';
     $diachi = isset($_REQUEST['diachi']) ? $_REQUEST['diachi'] : '';
     $sdt = isset($_REQUEST['sodienthoai']) ? $_REQUEST['sodienthoai'] : '';
-
+	
     if($idnguoidung != '' && $tenKH != '' && $username != '' && $password != '' && $email != '' && $sdt != '' && $diachi != '') {
         
         $sql = "
