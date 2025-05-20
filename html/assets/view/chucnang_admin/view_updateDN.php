@@ -185,7 +185,7 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="view__YeuCauHD.php?id=<?php echo $layid ?>"class="active">
+                                    <a href="view__YeuCauHD.php?id=<?php echo $layid ?>">
                                         <img src="../../img/icons/booking-icon.svg" alt="Icon">
                                         <span>YÊU CẦU HOẠT ĐỘNG</span>
                                     </a>
@@ -251,7 +251,7 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
                         <p style="font-size: 20px; float: left;"><b>DOANH NGHIỆP</b></p>
                     </div>
 
-                    <a href="../admin/business.php?<?php echo $layid ?>" class="fa fa-angle-left" style="padding: 10px 0;height: 45px; width: 45px; background-color: #097E52; color: white; 
+                    <a href="../admin/business.php?id=<?php echo $layid ?>" class="fa fa-angle-left" style="padding: 10px 0;height: 45px; width: 45px; background-color: #097E52; color: white; 
 											text-align: center; border-radius: 10px; text-decoration: none; border: 0; font-weight: 700; display: inline-block; margin: 5px;"></a>
                     <h3>THÔNG TIN DOANH NGHIỆP</h3>
                     <form method="post" enctype="multipart/form-data" name="form1" id="form1" style="width: 100%;">
