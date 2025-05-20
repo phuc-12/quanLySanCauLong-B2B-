@@ -27,6 +27,11 @@ $bookings = array();
 while ($row = $bookingQuery->fetch_assoc()) {     
     $bookings[$row['ngayDat']][$row['time_slot_id']] = $row; 
 } 
+
+error_reporting(0);
+session_start();
+$idnguoidung = $_SESSION['idnguoidung'];
+
 ?> 
 
 <!DOCTYPE html>
@@ -94,7 +99,38 @@ while ($row = $bookingQuery->fetch_assoc()) {
 	<link rel="stylesheet" href="assets/css/style.css">
 
 </head>
+<style>
+        table.fixed-table {
+            min-width: 1000px;
+            border-collapse: collapse;
+        }
 
+        table.fixed-table th,
+        table.fixed-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        thead th {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 2;
+        }
+
+        .sticky-col {
+            position: sticky;
+            left: 0;
+            background-color: white;
+            z-index: 3;
+        }
+
+        thead .sticky-col {
+            z-index: 4; /* để cột đầu của thead nổi hơn */
+        }
+</style>
 <body>
 	<!-- <div id="global-loader" >
 		<div class="loader-img">
@@ -228,7 +264,7 @@ while ($row = $bookingQuery->fetch_assoc()) {
 								<!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
 								<?php
-									if(isset($_REQUEST['id']))
+									if($idnguoidung != "")
 									{
 										echo '
 							
@@ -292,6 +328,8 @@ while ($row = $bookingQuery->fetch_assoc()) {
 			$laysdt=$p->SelectCot("SELECT soDienThoai FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laygiamacdinh=$p->SelectCot("SELECT giaMacDinh FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laygiagiovang=$p->SelectCot("SELECT giaGioVang FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
+			$laymakh=$p->SelectCot("SELECT maKH FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
+			// $_SESSION['maKH'] = $laymakh;
 		?>
 
 		<div class="main-gallery-slider owl-carousel owl-theme">
@@ -459,73 +497,69 @@ while ($row = $bookingQuery->fetch_assoc()) {
 												echo "Không có dữ liệu";
 											}
 
-											// // Test hiển thị timeSlots
-											// foreach ($timeSlots as $slot) {
-											// 	echo substr($slot['start_time'], 0, 5) . " - " . substr($slot['end_time'], 0, 5);
-											// }
-
-											// // Test hiển thị dates
-											// foreach ($dates as $d) {
-											// 	echo $d . "<br>";
-											// }
 									  ?>
-										<table border="1" cellpadding="10">     
-										<thead>         
-											<tr>             
-												<th>Khung giờ</th>             
-												<?php foreach ($dates as $d): ?>  
-													<?php 
-														$dayShort = date('D', strtotime($d)); 
-														$thu = isset($thuTiengViet[$dayShort]) ? $thuTiengViet[$dayShort] : $dayShort;
-														$ngay = date('d/m', strtotime($d));
-													?>
-													<th><?php echo $thu . ' ' . $ngay; ?></th>           
-												<?php endforeach; ?>
-											</tr>
-										</thead>
-											<tbody> 
-												<?php foreach ($timeSlots as $slot): ?> 
-													<tr>                 
-														<td><?php echo substr($slot['start_time'], 0, 5) . " - " . substr($slot['end_time'], 0, 5); ?></td>                 
-														<?php foreach ($dates as $d): ?>                     
-															<?php                         
-															$now = new DateTime();
-															$slotDateTime = new DateTime("$d {$slot['start_time']}");
-															$isPast = $slotDateTime < $now;
-															$isBooked = isset($bookings[$d][$slot['id']]);                     
-															?>                     
-															<td>                         
-																<?php if ($isPast): ?>                             
-																	<span style="color:gray" title="Khung giờ đã trôi qua">Quá hạn</span>                         
-																<?php elseif ($isBooked): ?>   
-																	<?php 
-																		$ngayTao = $bookings[$d][$slot['id']]['ngayTao'];
-																	?>                          
-																	<span style="color:red" title="Đặt lúc: <?php echo $ngayTao ?>">Đã đặt</span>                         
-																<?php else: ?>                             
-																	<form method="POST" action="booking-process.php?maSan=<?php echo $maSan ?>">                                 
-																		<input type="hidden" name="maSan" value="<?php echo $maSan ?>">                                 
-																		<input type="hidden" name="time_slot_id" value="<?php echo $slot['id'] ?>">                                 
-																		<input type="hidden" name="ngayDat" value="<?php echo $d ?>">                                 
-																		<button type="submit">
-																		<?php 
-																			$startTime = $slot['start_time']; // VD: "15:30:00"
-																			if ($startTime >= '05:00:00' && $startTime < '16:00:00') {
-																				echo $laygiamacdinh; // Giá thường
-																			} elseif ($startTime >= '16:00:00' && $startTime <= '23:59:59') {
-																				echo $laygiagiovang; // Giờ vàng
-																			}
-																		?> K
-
-																		</button>                             
-																	</form>                         
-																<?php endif; ?>                     
+										<div style="max-height: 500px; overflow-y: auto;">
+											<table class="fixed-table">
+												<thead>
+													<tr>
+														<th class="sticky-col">Khung giờ</th>
+														<?php foreach ($dates as $d): ?>  
+															<?php 
+																$dayShort = date('D', strtotime($d)); 
+																$thu = isset($thuTiengViet[$dayShort]) ? $thuTiengViet[$dayShort] : $dayShort;
+																$ngay = date('d/m', strtotime($d));
+															?>
+															<th><?php echo $thu . ' ' . $ngay; ?></th>           
+														<?php endforeach; ?>
+													</tr>
+												</thead>
+												<tbody>
+													<?php foreach ($timeSlots as $slot): ?> 
+														<tr>
+															<td class="sticky-col">
+																<?php echo substr($slot['start_time'], 0, 5) . " - " . substr($slot['end_time'], 0, 5); ?>
 															</td>                 
-														<?php endforeach; ?>             
-													</tr>         
-												<?php endforeach; ?>     
-											</tbody> 
-										</table> 
+															<?php foreach ($dates as $d): ?>                     
+																<?php                         
+																$now = new DateTime();
+																$slotDateTime = new DateTime("$d {$slot['start_time']}");
+																$isPast = $slotDateTime < $now;
+																$isBooked = isset($bookings[$d][$slot['id']]);                     
+																?>                     
+																<td>                         
+																	<?php if ($isPast): ?>                             
+																		<span style="color:gray" title="Khung giờ đã trôi qua">Quá hạn</span>                         
+																	<?php elseif ($isBooked): ?>   
+																		<?php 
+																			$ngayTao = $bookings[$d][$slot['id']]['ngayTao'];
+																		?>                          
+																		<span style="color:red" title="Đặt lúc: <?php echo $ngayTao ?>">Đã Chọn</span>                         
+																	<?php else: ?>                             
+																		<form method="POST" action="booking-process.php?maSan=<?php echo $maSan ?>">   
+																			<input type="hidden" name="maKH" value="<?php echo $laymakh; ?>">                               
+																			<input type="hidden" name="maSan" value="<?php echo $maSan ?>">                                 
+																			<input type="hidden" name="time_slot_id" value="<?php echo $slot['id'] ?>">                                 
+																			<input type="hidden" name="ngayDat" value="<?php echo $d ?>">                                 
+																			<button type="submit">
+																			<?php 
+																				$startTime = $slot['start_time'];
+																				if ($startTime >= '05:00:00' && $startTime < '16:00:00') {
+																					echo $laygiamacdinh;
+																				} elseif ($startTime >= '16:00:00' && $startTime <= '23:59:59') {
+																					echo $laygiagiovang;
+																				}
+																			?> K
+																			</button>                             
+																		</form>                         
+																	<?php endif; ?>                     
+																</td>                 
+															<?php endforeach; ?>
+														</tr>
+													<?php endforeach; ?>
+												</tbody>
+											</table>
+										</div>
+
 							      	</div>
 							    </div>
 							</div>
@@ -838,21 +872,48 @@ while ($row = $bookingQuery->fetch_assoc()) {
 								<a href="coach-details.html" class="btn btn-secondary d-inline-flex justify-content-center align-items-center"><i class="feather-calendar"></i>Book Now</a>
 							</div> -->
 						</div>
+						<?php
 						
+							$laytenkh=$p->SelectCot("SELECT tenKH FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
+							$layemail=$p->SelectCot("SELECT email FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
+							$laysodienthoai=$p->SelectCot("SELECT soDienThoai FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
+						
+						?>
 						<div class="white-bg">
-							<h4 class="border-bottom">Yêu cầu thông tin</h4>
+							<h4 class="border-bottom">Thông tin đặt sân</h4>
 							<form>
 								<div class="mb-10">
+									<label for="name" class="form-label">Giờ đặt</label>
+									<div>
+										<table style="border: 1px solid grey; width: 100%;">
+											<thead>
+												<tr style="border: 1px solid grey">
+													<td style="border: 1px solid grey" align="center"><b>STT</b></td>
+													<td style="border: 1px solid grey" align="center"><b>Bắt đầu</b></td>
+													<td style="border: 1px solid grey" align="center"><b>Kết thúc</b></td>
+													<td style="border: 1px solid grey" align="center"><b>Giá</b></td>
+													<td style="border: 1px solid grey" align="center"></td>
+												</tr>
+											</thead>
+											<tbody>
+												<?php
+													include_once("assets/view/sancaulong/viewgiochon.php");
+												?>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="mb-10">
 									<label for="name" class="form-label">Họ tên</label>
-		  							<input type="text" class="form-control" id="name" placeholder="Nhập họ tên">
+		  							<input type="text" class="form-control" id="name" value="<?php echo $laytenkh ?>">
 								</div>
 								<div class="mb-10">
 								  	<label for="email" class="form-label">Email</label>
-		  							<input type="email" class="form-control" id="email" placeholder="Nhập địa chỉ email">
+		  							<input type="email" class="form-control" id="email" value="<?php echo $layemail ?>">
 								</div>
 								<div class="mb-10">
 									<label for="name" class="form-label">Số điện thoại</label>
-		  							<input type="text" class="form-control" id="phonenumber" placeholder="Nhập số điện thoại">
+		  							<input type="text" class="form-control" id="phonenumber" value="<?php echo $laysodienthoai ?>">
 								</div>
 								<div class="mb-10">
 									<label for="date" class="form-label">Ngày đặt</label>
@@ -864,7 +925,7 @@ while ($row = $bookingQuery->fetch_assoc()) {
 									</div>
 								</div>
 								<div class="mb-10">
-									<label for="comments" class="form-label">Chi tiết</label>
+									<label for="comments" class="form-label">Ghi chú</label>
 									<textarea class="form-control" id="comments" rows="3" placeholder="Nhập ghi chú"></textarea>
 								</div>
 								<!-- <div class="">
@@ -883,12 +944,12 @@ while ($row = $bookingQuery->fetch_assoc()) {
 									<label class="form-check-label" for="policy">Bằng cách nhấp vào 'Gửi yêu cầu', tôi đồng ý với Chính sách bảo mật và Điều khoản sử dụng của Dreamsport</label>
 								</div>
 								<div class="d-grid btn-block">
-									<a href="javascript:;" class="btn btn-secondary d-inline-flex justify-content-center align-items-center">Send Request<i class="feather-arrow-right-circle ms-1"></i></a>
+									<a href="javascript:;" class="btn btn-secondary d-inline-flex justify-content-center align-items-center">Gửi Yêu Cầu<i class="feather-arrow-right-circle ms-1"></i></a>
 								</div>
 							</form>
 						</div>
 						<div class="white-bg cage-owner-info">
-							<h4 class="border-bottom">Cage Owner Details</h4>
+							<h4 class="border-bottom">Chi Tiết Chủ Sân</h4>
 							<div class="d-flex justify-content-start align-items-center">
 								<div class="profile-pic">
 									<a href="javascript:void(0);"><img class="img-fluid" alt="User" src="assets/img/profiles/avatar-05.jpg"></a>
