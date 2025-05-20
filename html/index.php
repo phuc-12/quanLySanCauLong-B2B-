@@ -1,6 +1,9 @@
 <?php
 include_once("assets/model/mUser.php");
 $p = new mUser();
+session_start();
+// error_reporting(0);
+$_SESSION['idnguoidung'] = $_REQUEST['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
