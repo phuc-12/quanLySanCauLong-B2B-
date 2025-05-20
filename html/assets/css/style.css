@@ -720,6 +720,8 @@ ul li {
   min-width: 202px;
   display: inline-flex;
 }
+
+
 .btn-load:hover {
   background: #192335;
   border-color: #192335;
@@ -2616,11 +2618,11 @@ div#global-loader {
     width: 100%;
   }
 }
-.hero-section .section-search .search-box .search-input label {
-  font-weight: 500;
-  color: #192335;
-  margin-bottom: 6px;
-}
+  .hero-section .section-search .search-box .search-input label {
+    font-weight: 500;
+    color: #192335;
+    margin-bottom: 6px;
+  }
 .hero-section .section-search .search-box .search-input.line {
   margin-right: 15px;
   margin-left: 10px;

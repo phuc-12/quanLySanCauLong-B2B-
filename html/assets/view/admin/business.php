@@ -108,7 +108,7 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
                         <!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
                         <?php
-									if(isset($_REQUEST['id']))
+									if(isset($_REQUEST['id']) || isset($_REQUEST['maDN']))
 									{
 										echo '
 											<li class="nav-item dropdown has-arrow logged-item">
@@ -258,56 +258,9 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
 
                     <!-- Bảng doanh nghiệp -->
                     <div id="tab-doanhnghiep">
-                        <?php  
-						error_reporting(0);
-						include_once("../../controller/cUser.php");
-						$p = new CUser();
-						$tblDN = $p->getALLDNTop5();
-
-						if (!$tblDN) {
-							echo 'Không kết nối được';
-						} elseif ($tblDN == -1) {
-							echo 'Chưa có dữ liệu doanh nghiệp';
-						} else {
-						?>
-                        <div style="padding-right: 20px;">
-							<table class="table table-striped" style="background-color: white;">
-								<thead class="table-dark">
-									<tr style="text-align: center;">
-										<th>STT</th>
-										<th>Tên Doanh Nghiệp</th>
-										<th>Điện Thoại</th>
-										<th>Địa chỉ</th>
-										<th>Email</th>
-										<th>Hành Động</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php
-									$dem = 1;
-									while ($r = $tblDN->fetch_assoc()) {
-										echo '<tr style="text-align: center;">';
-										echo '<td>' . $dem . '</td>';
-										echo '<td>' . $r['tenDN'] . '</td>';
-										echo '<td>' . $r['soDienThoai'] . '</td>';
-										echo '<td>' . $r['diaChi'] . '</td>';
-										echo '<td>' . $r['email'] . '</td>';
-										echo '<td>
-                                            <form method="post" onsubmit="return confirmDelete();">
-                                                <input type="hidden" name="id" value="'.$r['maDN'].'">
-                                                <input type="submit" name="btnxoa" value="XÓA" class="btn btn-danger btn-sm" style="padding: 10px 0;height: 45px; width: 120px; background-color: red; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
-												<a href="../chucnang_admin/view_updateDN.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
-											</form>  
-                                        </td>';
-										echo '</tr>';
-										$dem++;
-									}
-									?>
-								</tbody>
-							</table>
-						</div>
-                        <?php } ?>
-
+                        <?php 
+                            include_once("../doanhnghiep/view_business.php");
+                        ?>
                     </div>
                 </div>
             </div>
@@ -346,20 +299,35 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
 
     <div>
         <?php
-        include('../../model/mUser.php');
+        include_once('../../model/mUser.php');
         $k = new mUser();
-
-            if (isset($_POST['btnxoa']) && isset($_POST['id'])) {
-            $maXoa = $_POST['id'];
-            $sql = "DELETE FROM doanhnghiep WHERE maDN='$maXoa' LIMIT 1";
-
-            $con = $k->connect();
-            if ($con->query($sql) === TRUE) {
-                echo '<script>alert("Xóa doanh nghiệp thành công"); window.location="customer.php";</script>';
-            } else {
-                echo 'Lỗi khi xóa: ' . $con->error;
-            }
-        }
+        switch ($_POST['btnxoa'])
+                    {
+                        case 'XÓA':
+                        {
+                            if(isset($_REQUEST['id']))
+                            {
+                                $maXoa = $_REQUEST['id'];
+                                if($k->themxoasua("DELETE FROM doanhnghiep WHERE maDN = '$maXoa' LIMIT 1")==1)
+                                {
+                                    echo'<script language="javascript">
+                                        alert("Xóa doanh nghiệp thành công");	
+                                        </script>';
+                                }
+                                
+                                echo'<script language="javascript">
+                                        window.location="business.php?id='.$layid.'";
+                                        </script>';
+                            }
+                            else 
+                            {
+                                echo'<script language="javascript">
+                                    alert("Vui lòng chọn doanh nghiệp cần xóa");	
+                                    </script>';
+                            }
+                            break;
+                        }
+                    }
         ?>
 
     </div>
@@ -368,7 +336,7 @@ $laymaDN=$p->laycot("select maDN from doanhnghiep limit 1");
 </body>
 <script>
 function confirmDelete() {
-    return confirm("Bạn có chắc chắn muốn xóa khách hàng này?");
+    return confirm("Bạn có chắc chắn muốn xóa doanh nghiệp này?");
 }
 </script>
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/user-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:32:23 GMT -->

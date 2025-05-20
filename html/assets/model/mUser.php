@@ -64,7 +64,7 @@
             $con = $p->moketnoi();
             $con->set_charset('utf8');
             if($con){
-                $str = "SELECT COUNT(*) as total FROM taikhoannguoidung where loainguoidung =1";
+                $str = "SELECT COUNT(*) as total FROM khachhang";
                 $tblKH = $con->query($str);
                 $result = $tblKH->fetch_assoc(); // Lấy kết quả đếm
                 $p->dongketnoi($con);
@@ -80,7 +80,7 @@
             $con = $p->moketnoi();
             $con->set_charset('utf8');
             if($con){
-                $str = "SELECT COUNT(*) as total FROM taikhoannguoidung where loainguoidung =2";
+                $str = "SELECT COUNT(*) as total FROM doanhnghiep";
                 $tblDN = $con->query($str);
                 $result = $tblDN->fetch_assoc(); // Lấy kết quả đếm
                 $p->dongketnoi($con);

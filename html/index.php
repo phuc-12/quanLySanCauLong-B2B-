@@ -30,6 +30,8 @@ $_SESSION['idnguoidung'] = $_REQUEST['id'];
 	<meta name="twitter:image" content="assets/img/meta-image.jpg">
 	<meta name="twitter:image:alt" content="DreamSports">
 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<meta property="og:url" content="https://dreamsports.dreamguystech.com/">
 	<meta property="og:title" content="DreamSports -  Booking Coaches, Venue for tournaments, Court Rental template">
 	<meta property="og:description" content="Elevate your badminton business with Dream Sports template. Empower coaches & players, optimize court performance and unlock industry-leading success for your brand.">
@@ -65,6 +67,7 @@ $_SESSION['idnguoidung'] = $_REQUEST['id'];
 
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/chatbox.css">
 
 </head>
 
@@ -282,7 +285,7 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 									<form action="coaches-grid.php"> 
 										<div class="search-input line">
 											<div class="form-group mb-0">
-												<label>Tìm Kiếm</label>
+												<!-- <label>Tìm Kiếm</label> -->
 												<select class="select">
 													<option>Sân Cầu</option>
 													<option>...</option>
@@ -291,7 +294,7 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 										</div>
 										<div class="search-input">
 											<div class="form-group mb-0">
-												<label>Vị trí</label>
+												<!-- <label>Vị trí</label> # -->
 												<select class="form-control select">				
 													<option value="">Chọn Khu Vực</option>
 													<option>Gò Vấp</option>
@@ -1697,7 +1700,39 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 			
 		</footer>
 		<!-- /Footer -->
-
+		<!-- chatbox -->
+		<div class="chatbox">
+			<input type="checkbox" id="click">
+			<label for="click">
+			<i class="fab fa-facebook-messenger"></i>
+			<i class="fas fa-times"></i>
+			</label>
+			<div class="wrapper">
+				<div class="head-text">
+					Bắt đầu chat? - Online
+				</div>
+				<div class="chat-box">
+					<div class="desc-text">
+					Điền đầy đủ để bắt đầu chat.
+					</div>
+					<form action="#">
+					<div class="field">
+						<input type="text" placeholder="Tên bạn" required>
+					</div>
+					<div class="field">
+						<input type="email" placeholder="Email" required>
+					</div>
+					<div class="field textarea">
+						<textarea cols="30" rows="10" placeholder="Yêu cầu của bạn là gì?" required></textarea>
+					</div>
+					<div class="field">
+						<button type="submit">Bắt Đầu</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /chatbox -->
 	</div>
 	<!-- /Main Wrapper -->
 
@@ -1708,6 +1743,8 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 		</svg>
 	</div>
 	<!-- scrollToTop end -->
+
+	
 
 	<!-- jQuery -->
 	<script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.7.1.min.js" type="e4c26da156d9fccf88a221dd-text/javascript"></script>

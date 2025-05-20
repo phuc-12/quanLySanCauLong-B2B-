@@ -279,30 +279,6 @@ $p = new mUser();
 									</a>
 								</li>
 								<li>
-									<a href="user-bookings.html" >
-										<img src="assets/img/icons/booking-icon.svg" alt="Icon">
-										<span>Lịch Đặt</span>
-									</a>
-								</li>
-								<li>
-									<a href="user-chat.html">
-										<img src="assets/img/icons/chat-icon.svg" alt="Icon">
-										<span>Trò Chuyện</span>
-									</a>
-								</li>
-								<li>
-									<a href="user-invoice.html" >
-										<img src="assets/img/icons/invoice-icon.svg" alt="Icon">
-										<span>Hóa Đơn</span>
-									</a>
-								</li>
-								<!-- <li>
-									<a href="user-wallet.html" >
-										<img src="assets/img/icons/wallet-icon.svg" alt="Icon">
-										<span>Wallet</span>
-									</a>
-								</li> -->
-								<li>
 									<a href="user-profile.php" class="active">
 										<img src="assets/img/icons/profile-icon.svg" alt="Icon">
 										<span>Thiết Lập Hồ Sơ</span>

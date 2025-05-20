@@ -107,7 +107,7 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
                         <!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
                         <?php
-									if(isset($_REQUEST['id']))
+									if(isset($_REQUEST['id']) || isset($_REQUEST['maKH']))
 									{
 										echo '
 											<li class="nav-item dropdown has-arrow logged-item">
@@ -247,82 +247,21 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 
                     <!-- Tabs -->
                     <div style="display: flex; gap: 20px; margin-bottom: 20px;">
-                        <button class="nav-link active" onclick="showTab('khachhang')"
-                            style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
-											text-align: center; border-radius: 5px; text-decoration: none;border: 0; font-weight: 700; display: inline-block;">Khách Hàng</button>
+                        <span style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
+											text-align: center; border-radius: 5px; text-decoration: none;border: 0; font-weight: 700; display: inline-block;">Khách Hàng</span>
                         <!-- <button class="nav-link" onclick="showTab('doanhnghiep')" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
 											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">Doanh Nghiệp</button> -->
-
+                        <div class="form-xoa" style="float: right;">
+                            
+                        </div>
                     </div>
 
                     <!-- Bảng Khách Hàng -->
                     <div id="tab-khachhang">
-                        <?php  
-						error_reporting(0);
-						include_once("../../controller/cUser.php");
-						$p = new CUser();
-						$tblKH = $p->getALLKHTop5();
-
-						if (!$tblKH) {
-							echo 'Không kết nối được';
-						} elseif ($tblKH == -1) {
-							echo 'Chưa có dữ liệu Khách Hàng';
-						} else {
-						?>
-                        <div style="padding-right: 20px; ">
-                            <table class="table table-striped" style="background-color: white; ">
-                                <thead class="table-dark">
-									<tr style="text-align: center;">
-										<th>STT</th>
-										<th>Tên Khách Hàng</th>
-										<th>Điện Thoại</th>
-										<th>Địa chỉ</th>
-										<th>Email</th>
-										<th>Loại Khách Hàng</th>
-										<th>Hành Động</th>
-									</tr>
-								</thead>
-                                <tbody>
-                                    <?php
-                                    $dem = 1;
-                                    while ($r = $tblKH->fetch_assoc()) {
-                                        echo '<tr style="text-align: center;">';
-                                        echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$dem.'</a></td>';
-                                        echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$r['tenKH'].'</a></td>';
-                                        echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$r['soDienThoai'].'</a></td>';
-                                        echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$r['diaChi'].'</a></td>';
-                                        echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$r['email'].'</a></td>';
-
-                                        $rs = $p->GetLKHByIDKH($r['maKH']);
-                                        if ($rs && $rs->num_rows > 0) {
-                                            $row = $rs->fetch_assoc();
-                                            // if($row['loaiKH']==1)
-                                            // {
-
-                                            // }
-                                            // elseif($row['loaiKH']==2)
-                                            echo '<td><a href="?id='.$r['maKH'].'" style="text-decoration:none; color: black;">'.$row['loaiKH'].'</a></td>';
-                                        } else {
-                                            echo '<td>Không xác định</td>';
-                                        }
-                                        // FORM XÓA cho từng dòng
-                                        echo '<td>
-                                            <form method="post" onsubmit="return confirmDelete();">
-                                                <input type="hidden" name="id" value="'.$r['maKH'].'">
-                                                <input type="submit" name="btnxoa" value="XÓA" class="btn btn-danger btn-sm" style="padding: 10px 0;height: 45px; width: 120px; background-color: red; color: white; 
-											    text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
-                                            </form>  
-                                        </td>';
-                                        echo '</tr>';
-                                        $dem++;
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                                  
-                        </div>
-                        <?php } ?>
-
+                        <?php 
+                            include_once("../khachhang/view_customer.php");
+                        ?>
+                        
                     </div>
                 </div>
             </div>
@@ -363,21 +302,38 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 
     <div>
         <?php
-        include('../../model/mUser.php');
+        include_once('../../model/mUser.php');
         $k = new mUser();
 
-            if (isset($_POST['btnxoa']) && isset($_POST['id'])) {
-            $maXoa = $_POST['id'];
-            $sql = "DELETE FROM khachhang WHERE maKH='$maXoa' LIMIT 1";
-
-            $con = $k->connect();
-            if ($con->query($sql) === TRUE) {
-                echo '<script>alert("Xóa khách hàng thành công"); window.location="customer.php";</script>';
-            } else {
-                echo 'Lỗi khi xóa: ' . $con->error;
-            }
-        }
+        switch ($_POST['btnxoa'])
+                    {
+                        case 'XÓA':
+                        {
+                            if(isset($_REQUEST['id']))
+                            {
+                                $maXoa = $_REQUEST['id'];
+                                if($k->themxoasua("DELETE FROM khachhang WHERE maKH = '$maXoa' LIMIT 1")==1)
+                                {
+                                    echo'<script language="javascript">
+                                        alert("Xóa khách hàng thành công");	
+                                        </script>';
+                                }
+                                
+                                echo'<script language="javascript">
+                                        window.location="customer.php?id='.$layid.'";
+                                        </script>';
+                            }
+                            else 
+                            {
+                                echo'<script language="javascript">
+                                    alert("Vui lòng chọn khách hàng cần xóa");	
+                                    </script>';
+                            }
+                            break;
+                        }
+                    }
         ?>
+
 
     </div>
     </div>
