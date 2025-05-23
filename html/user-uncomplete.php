@@ -1,3 +1,10 @@
+<?php
+
+	session_start();
+	$_SESSION['maKH']=$_REQUEST['maKH'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +81,7 @@
 	<div class="main-wrapper">
 
 		<!-- Header -->
-		<header class="header header-sticky">
+		<header class="header header-trans">
 			<div class="container-fluid">
 				<nav class="navbar navbar-expand-lg header-nav">
 					<div class="navbar-header">
@@ -85,8 +92,8 @@
 								<span></span>
 							</span>
 						</a>
-						<a href="index.html" class="navbar-brand logo">
-							<img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
+						<a href="index.php" class="navbar-brand logo">
+							<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
 						</a>
 					</div>
 					<div class="main-menu-wrapper">
@@ -97,9 +104,9 @@
 							<a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
 						</div>
 						<ul class="main-nav">
-							<li ><a href="index.html">Home</a></li>
-							<li class="has-submenu ">
-								<a href="#">Coaches <i class="fas fa-chevron-down"></i></a>
+							<li class="active"><a href="index.php">Trang Chủ</a></li>
+							<li class="has-submenu">
+								<a href="#">Sân Cầu Lông <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li class="has-submenu">
 										<a href="#">Coaches Map</a>
@@ -127,7 +134,7 @@
 											<li><a href="venue-details.html">Venue Details</a></li>
 										</ul>
 									</li>
-									<li ><a href="coach-dashboard.html">Coach Dashboard</a></li>
+									<li><a href="coach-dashboard.html">Coach Dashboard</a></li>
 									<li><a href="all-court.html">Coach Courts</a></li>
 									<li><a href="add-court.html">List Your Court</a></li>
 									<li><a href="coach-chat.html">Chat</a></li>
@@ -138,61 +145,22 @@
 								</ul>
 								
 							</li>
-							<li class="has-submenu active">
-								<a href="#">User <i class="fas fa-chevron-down"></i></a>
+							<li class="has-submenu">
+								<a href="#">Người Dùng <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li><a href="user-dashboard.html">User Dashboard</a></li>
-									<li class="active"><a href="user-bookings.html">Bookings</a></li>
+									<li><a href="user-bookings.html">Bookings</a></li>
 									<li><a href="user-chat.html">Chat</a></li>
 									<li><a href="user-invoice.html">Invoice</a></li>
 									<li><a href="user-wallet.html">Wallet</a></li>
-									<li><a href="user-profile.html">Profile Edit</a></li>
+									<li><a href="user-profile.php">Profile Edit</a></li>
 									<li><a href="user-setting-password.html">Change Password</a></li>
 									<li><a href="user-profile-othersetting.html">Other Settings</a></li>
 								</ul>
 								
 							</li>
 							<li class="has-submenu">
-								<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-								    <li><a href="about-us.html">About Us</a></li>
-								    <li><a href="services.html">Services</a></li>
-								    <li><a href="events.html">Events</a></li>
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Authentication</a>
-										<ul class="submenu">
-											<li><a href="register.html">Signup</a></li>
-											<li><a href="login.html">Signin</a></li>
-											<li><a href="forgot-password.html">Forgot Password</a></li>
-											<li><a href="change-password.html">Reset Password</a></li>
-										</ul>
-									</li>
-									
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Error Page</a>
-										<ul class="submenu">
-											<li><a href="error-404.html">404 Error</a></li>
-										</ul>
-									</li>
-									<li><a href="pricing.html">Pricing</a></li>
-									<li><a href="faq.html">FAQ</a></li>
-									<li><a href="gallery.html">Gallery</a></li>
-									<li><a href="our-teams.html">Our Team</a></li>
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Testimonials</a>
-										<ul class="submenu">
-											<li><a href="testimonials.html">Testimonials</a></li>
-											<li><a href="testimonials-carousel.html">Testimonials Carousel</a></li>
-										</ul>
-									</li>
-									<li><a href="terms-condition.html">Terms & Conditions</a></li>
-									<li><a href="privacy-policy.html">Privacy Policy</a></li>			
-									<li><a href="maintenance.html">Maintenance</a></li>
-									<li><a href="coming-soon.html">Coming Soon</a></li>
-								</ul>
-							</li>
-							<li class="has-submenu">
-								<a href="#">Blog <i class="fas fa-chevron-down"></i></a>
+								<a href="#">Diễn Đàn <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 								    <li><a href="blog-list.html">Blog List</a></li>
 								    <li class="has-submenu">
@@ -221,9 +189,9 @@
 									<li><a href="blog-carousel.html">Blog Carousel</a></li>
 								</ul>
 							</li>
-							<li><a href="contact-us.html">Contact Us</a></li>
+							<li><a href="contact-us.html">Liên Hệ</a></li>
 							<li class="login-link">
-								<a href="register.html">Sign Up</a>
+								<a href="register.php">Sign Up</a>
 							</li>
 							<li class="login-link">
 								<a href="login.html">Sign In</a>
@@ -231,100 +199,52 @@
 						</ul>
 					</div>
 					<ul class="nav header-navbar-rht logged-in">
-						<li class="nav-item">
-							<a class="nav-link" href="coaches-grid.html"><i class="feather-search"></i></a>
-						</li>
-						<!-- Notifications -->
-						<li class="nav-item dropdown noti-nav">
-							<a href="listing-grid.html" class="dropdown-toggle nav-link position-relative" data-bs-toggle="dropdown">
-								<i class="feather-bell"></i> <span class="alert-bg"></span>
-							</a>
-							<div class="dropdown-menu notifications dropdown-menu-end ">
-								<div class="topnav-dropdown-header">
-									<span class="notification-title">Notifications</span>
-								</div>
-								<div class="noti-content">
-									<ul class="notification-list">
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<span class="avatar">
-														<img class="avatar-img" src="assets/img/profiles/avatar-01.jpg" alt="User">
-													</span>
-													<div class="media-body">
-														<h6>Travis Tremble <span class="notification-time">18.30 PM</span></h6>
-														<p class="noti-details">Sent a amount of $210 for his Appointment  <span class="noti-title">Mr.Ruby perin </span></p>
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<span class="avatar">
-														<img class="avatar-img"  src="assets/img/profiles/avatar-02.jpg" alt="User">
-													</span>
-													<div class="media-body">
-														<h6>Travis Tremble <span class="notification-time">12 Min Ago</span></h6>
-														<p class="noti-details"> has booked her appointment to  <span class="noti-title">Mr. Hendry Watt</span></p>
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<div class="avatar">
-														<img class="avatar-img" src="assets/img/profiles/avatar-03.jpg" alt="User">
-													</div>
-													<div class="media-body">
-														<h6>Travis Tremble <span class="notification-time">6 Min Ago</span></h6>
-														<p class="noti-details"> Sent a amount  $210 for his Appointment   <span class="noti-title">Mr.Maria Dyen</span></p>
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<div class="avatar avatar-sm">
-														<img class="avatar-img" src="assets/img/profiles/avatar-04.jpg" alt="User">
-													</div>
-													<div class="media-body">
-														<h6>Travis Tremble <span class="notification-time">8.30 AM</span></h6>
-														<p class="noti-details"> Send a message to his doctor</p>
-													</div>
-												</div>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</li>
-						<!-- /Notifications -->
+						
+								<!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
-						<!-- User Menu -->
-						<li class="nav-item dropdown has-arrow logged-item">
-							<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-								<span class="user-img">
-									<img class="rounded-circle" src="assets/img/profiles/avatar-05.jpg" width="31" alt="Darren Elder">
-								</span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end">
-								<div class="user-header">
-									<div class="avatar avatar-sm">
-										<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
-									</div>
-									<div class="user-text">
-										<h6>Henriques</h6>
-										<a href="user-profile.html" class="text-profile mb-0">Go to Profile</a>
-									</div>
-								</div>
-								<p><a class="dropdown-item" href="coach-profile.html">Settings</a></p>
-								<p><a class="dropdown-item" href="login.html">Logout</a></p>
-							</div>
-						</li>
-						<!-- /User Menu -->
+								<?php
+									if(isset($_REQUEST['maKH']))
+									{
+										echo '
+							
+											<li class="nav-item dropdown has-arrow logged-item">
+												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+													<span class="user-img">
+														<img class="rounded-circle" src="assets/img/profiles/avatar-05.jpg" width="31" alt="Darren Elder">
+													</span>
+												</a>
+												<div class="dropdown-menu dropdown-menu-end">
+													<div class="user-header">
+														<div class="avatar avatar-sm">
+															<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
+														</div>
+														<div class="user-text">
+															<h6>'.$layten.'</h6>
+															<a href="user-profile.php?id='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
+														</div>
+													</div>
+													<p><a class="dropdown-item"  href="coach-profile.php">Settings</a></p>
+													<p><a class="dropdown-item"  href="login.php">Logout</a></p>
+												</div>
+											</li>		
+											
+										';
+									}
+									else 
+									{
+										echo '
+										<li class="nav-item">
+											<div class="nav-link btn btn-white log-register">	
+												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
+										</div>
+										</li>
+										<li class="nav-item">
+										<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+										</li>
+										';
+									}
+								?>
+							
 						
 					</ul>
 				</nav>
@@ -336,17 +256,17 @@
 		<section class="breadcrumb breadcrumb-list mb-0">
 			<span class="primary-right-round"></span>
 			<div class="container">
-				<h1 class="text-white">User Bookings</h1>
+				<h1 class="text-white">Lịch Sử Giao Dịch</h1>
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li >User Bookings</li>
+					<li><a href="index.html">Trang Chủ</a></li>
+					<li >Lịch Sử Giao Dịch</li>
 				</ul>
 			</div>
 		</section>
 		<!-- /Breadcrumb -->
 
 		<!-- Dashboard Menu -->
-		<div class="dashboard-section">
+		<!-- <div class="dashboard-section">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -393,7 +313,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- /Dashboard Menu -->
 
 		<!-- Page Content -->
@@ -409,10 +329,10 @@
 									<div class="col-xl-7 col-lg-7 col-sm-12 col-12">
 										<div class="coach-court-list">
 											<ul class="nav">
-												<li><a href="user-bookings.html">Upcoming</a></li>
-												<li><a class="active" href="user-complete.html">Completed</a></li>
-												<li><a  href="user-ongoing.html">On Going</a></li>
-												<li><a href="user-cancelled.html">Cancelled</a></li>
+												<!-- <li><a href="user-bookings.html">Upcoming</a></li> -->
+												<li><a  href="user-complete.php?maKH=<?php echo $_SESSION['maKH']?>">Đã Thanh Toán</a></li>
+												<li><a class="active" href="user-uncomplete.php?maKH=<?php echo $_SESSION['maKH']?>">Chưa Thanh Toán</a></li>
+												<li><a href="user-cancelled.php?maKH=<?php echo $_SESSION['maKH']?>">Hủy Đặt Sân</a></li>
 											</ul>
 										</div>
 									</div>
@@ -454,12 +374,12 @@
 										<div class="row align-items-center">
 											<div class="col-md-5">
 												<div class="court-table-head">
-													<h4>My Bookings</h4>
-													<p>Track and manage your completed court bookings</p>
+													<h4>Giao Dịch Của Bạn</h4>
+													<p>Theo dõi và quản lý các sân đã hoàn thành của bạn</p>
 												</div>
 											</div>
 											<div class="col-md-7">
-												<div class="table-search-top">
+												<!-- <div class="table-search-top">
 													<div id="tablefilter"></div>
 													<div class="request-coach-list">
 														<div class="card-header-btns">
@@ -471,411 +391,19 @@
 															</nav>
 														</div>
 													</div>
-												</div>
+												</div> -->
 											</div>
 										</div>
 									</div>
-									<div class="tab-content">
-										<div class="tab-pane fade show active" id="nav-Recent" role="tabpanel" aria-labelledby="nav-Recent-tab"
-											tabindex="0">
-											<div class="table-responsive table-datatble">
-												<table class="table  datatable">
-													<thead class="thead-light">
-														<tr>
-														   <th>Court Name</th>
-														   <th>Date & Time  </th>
-														   <th>Payment</th>
-														   <th>Details</th>
-														   <th>Review</th>
-														   <th>Status</th>
-														   <th></th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>
-																<h2 class="table-avatar">
-																	<a href="#" class="avatar avatar-sm flex-shrink-0"><img class="avatar-img" src="assets/img/booking/booking-01.jpg" alt="User"></a>
-																	<span class="table-head-name flex-grow-1">
-																		<a href="#" data-bs-toggle="modal" data-bs-target="#profile-court" >Leap Sports Academy</a>
-																		<span>Court 1 </span>
-																	</span>
-																</h2>
-															</td>
-															<td class="table-date-time">
-																<h4>Mon, Jul 11<span>06:00 PM - 08:00 PM</span></h4>
-															</td>	
-															<td><span class="pay-dark fs-16">$150</span></td>
-															<td class="text-pink view-detail-pink"><a  href="#" data-bs-toggle="modal" data-bs-target="#complete-court"><i class="feather-eye"></i>View Details</a></td>
-															<td class="table-rating">
-																<div class="rating-point">
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-															   </div>
-															</td>
-															<td><span class="badge bg-success"><i class="feather-check-square me-1"></i>Completed</span></td>
-															<td class="text-end">
-																<div class="dropdown dropdown-action table-drop-action">
-																	<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-																	<div class="dropdown-menu dropdown-menu-end">
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-star"></i>Write Review</a>
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-trash"></i>Delete</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<h2 class="table-avatar">
-																	<a href="#" class="avatar avatar-sm flex-shrink-0"><img class="avatar-img" src="assets/img/booking/booking-02.jpg" alt="User"></a>
-																	<span class="table-head-name flex-grow-1">
-																		<a href="#" data-bs-toggle="modal" data-bs-target="#profile-court">Feather Badminton</a>
-																		<span>Court 1 </span>
-																	</span>
-																</h2>
-															</td>
-															<td class="table-date-time">
-																<h4>Mon, Jul 12<span>01:00 PM - 04:00 PM</span></h4>
-															</td>	
-															<td><span class="pay-dark fs-16">$90</span></td>
-															<td class="text-pink view-detail-pink"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#complete-court"><i class="feather-eye"></i>View Details</a></td>
-															<td class="table-rating">
-																<div class="rating-point">
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star "></i>
-															   </div>
-															</td>
-															<td><span class="badge bg-success"><i class="feather-check-square me-1"></i>Completed</span></td>
-															<td class="text-end">
-																<div class="dropdown dropdown-action table-drop-action">
-																	<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-																	<div class="dropdown-menu dropdown-menu-end">
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-star"></i>Write Review</a>
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-trash"></i>Delete</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<h2 class="table-avatar">
-																	<a href="#" class="avatar avatar-sm  flex-shrink-0"><img class="avatar-img" src="assets/img/booking/booking-03.jpg" alt="User"></a>
-																	<span class="table-head-name flex-grow-1">
-																		<a href="#" data-bs-toggle="modal" data-bs-target="#profile-court">Bwing Sports Academy</a>
-																		<span>Court 1 </span>
-																	</span>
-																</h2>
-															</td>
-															<td class="table-date-time">
-																<h4>Mon, Jul 15<span>02:00 PM - 04:00 PM</span></h4>
-															</td>	
-															<td><span class="pay-dark fs-16">$130</span></td>
-															<td class="text-pink view-detail-pink"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#complete-court"><i class="feather-eye"></i>View Details</a></td>
-															<td class="table-rating">
-																<div class="rating-point">
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-															   </div>
-															</td>
-															<td><span class="badge bg-success"><i class="feather-check-square me-1"></i>Completed</span></td>
-															<td class="text-end">
-																<div class="dropdown dropdown-action table-drop-action">
-																	<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-																	<div class="dropdown-menu dropdown-menu-end">
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-star"></i>Write Review</a>
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-trash"></i>Delete</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<h2 class="table-avatar">
-																	<a href="#" class="avatar avatar-sm  flex-shrink-0"><img class="avatar-img" src="assets/img/booking/booking-04.jpg" alt="User"></a>
-																	<span class="table-head-name flex-grow-1">
-																		<a href="#" data-bs-toggle="modal" data-bs-target="#profile-court">Marsh Academy</a>
-																		<span>Court 1 </span>
-																	</span>
-																</h2>
-															</td>
-															<td class="table-date-time">
-																<h4>Mon, Jul 16<span>03:00 PM - 05:00 PM</span></h4>
-															</td>	
-															<td><span class="pay-dark fs-16">$100</span></td>
-															<td class="text-pink view-detail-pink"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#complete-court"><i class="feather-eye"></i>View Details</a></td>
-															<td class="table-rating">
-																<div class="rating-point">
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star "></i>
-															   </div>
-															</td>
-															<td><span class="badge bg-success"><i class="feather-check-square me-1"></i>Completed</span></td>
-															<td class="text-end">
-																<div class="dropdown dropdown-action table-drop-action">
-																	<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-																	<div class="dropdown-menu dropdown-menu-end">
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-star"></i>Write Review</a>
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-trash"></i>Delete</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<h2 class="table-avatar">
-																	<a href="#" class="avatar avatar-sm  flex-shrink-0"><img class="avatar-img" src="assets/img/booking/booking-05.jpg" alt="User"></a>
-																	<span class="table-head-name flex-grow-1">
-																		<a href="#" data-bs-toggle="modal" data-bs-target="#profile-court">Wing Sports Academy</a>
-																		<span>Court 1 </span>
-																	</span>
-																</h2>
-															</td>
-															<td class="table-date-time">
-																<h4>Mon, Jul 16<span>06:00 PM - 08:00 PM</span></h4>
-															</td>	
-															<td><span class="pay-dark fs-16">$140</span></td>
-															<td class="text-pink view-detail-pink"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#complete-court"><i class="feather-eye"></i>View Details</a></td>
-															<td class="table-rating">
-																<div class="rating-point">
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-															   </div>
-															</td>
-															<td><span class="badge bg-success"><i class="feather-check-square me-1"></i>Completed</span></td>
-															<td class="text-end">
-																<div class="dropdown dropdown-action table-drop-action">
-																	<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-																	<div class="dropdown-menu dropdown-menu-end">
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-star"></i>Write Review</a>
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-trash"></i>Delete</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-										<div class="tab-pane fade" id="nav-RecentCoaching" role="tabpanel" aria-labelledby="nav-RecentCoaching-tab" tabindex="0">
-											<div class="table-responsive table-datatble">
-												<table class="table  datatable">
-													<thead class="thead-light">
-														<tr>
-														   <th>Coach Name</th>
-														   <th>Booking Type</th>
-														   <th>Date & Time  </th>
-														   <th>Payment</th>
-														   <th>Status</th>
-														   <th>Details</th>
-														   <th>Review</th>
-														   <th></th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>
-																<h2 class="table-avatar">
-																	<a href="#" class="avatar avatar-sm flex-shrink-0"><img class="avatar-img" src="assets/img/featured/featured-05.jpg" alt="User"></a>
-																	<span class="table-head-name flex-grow-1">
-																		<a href="#" data-bs-toggle="modal" data-bs-target="#profile-coach" >Kevin Anderson</a>
-																		<span class="book-active">Booked on : 25 May 2023</span>
-																	</span>
-																</h2>
-															</td>
-															<td>Onetime</td>
-															<td class="table-date-time">
-																<h4>Mon, Jul 11<span>06:00 PM - 08:00 PM</span></h4>
-															</td>	
-															<td><span class="pay-dark fs-16">$150</span></td>
-															<td><span class="badge bg-success"><i class="feather-check-square me-1"></i>Completed</span></td>
-															<td class="text-pink view-detail-pink"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#complete-coach"><i class="feather-eye"></i>View Details</a></td>
-															<td class="table-rating">
-																<div class="rating-point">
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-															   </div>
-															</td>
-															<td class="text-end">
-																<div class="dropdown dropdown-action table-drop-action">
-																	<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-																	<div class="dropdown-menu dropdown-menu-end">
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-star"></i>Write Review</a>
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-trash"></i>Delete</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<h2 class="table-avatar">
-																	<a href="#" class="avatar avatar-sm flex-shrink-0"><img class="avatar-img" src="assets/img/featured/featured-06.jpg" alt="User"></a>
-																	<span class="table-head-name flex-grow-1">
-																		<a href="#" data-bs-toggle="modal" data-bs-target="#profile-coach">Angela Roudrigez</a>
-																		<span class="book-active">Booked on : 26 May 2023</span>
-																	</span>
-																</h2>
-															</td>
-															<td>Single Lesson</td>
-															<td class="table-date-time">
-																<h4>Mon, Jul 12<span>04:00 PM - 06:00 PM</span></h4>
-															</td>	
-															<td><span class="pay-dark fs-16">$90</span></td>
-															<td><span class="badge bg-success"><i class="feather-check-square me-1"></i>Completed</span></td>
-															<td class="text-pink view-detail-pink"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#complete-coach"><i class="feather-eye"></i>View Details</a></td>
-															<td class="table-rating">
-																<div class="rating-point">
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star"></i>
-															   </div>
-															</td>
-															<td class="text-end">
-																<div class="dropdown dropdown-action table-drop-action">
-																	<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-																	<div class="dropdown-menu dropdown-menu-end">
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-star"></i>Write Review</a>
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-trash"></i>Delete</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<h2 class="table-avatar">
-																	<a href="#" class="avatar avatar-sm flex-shrink-0"><img class="avatar-img" src="assets/img/featured/featured-07.jpg" alt="User"></a>
-																	<span class="table-head-name flex-grow-1">
-																		<a href="#" data-bs-toggle="modal" data-bs-target="#profile-coach">Evon Raddick</a>
-																		<span class="book-active">Booked on : 27 May 2023</span>
-																	</span>
-																</h2>
-															</td>
-															<td>Onetime</td>
-															<td class="table-date-time">
-																<h4>Mon, Jul 15<span>06:00 PM - 08:00 PM</span></h4>
-															</td>	
-															<td><span class="pay-dark fs-16">$130</span></td>
-															<td><span class="badge bg-success"><i class="feather-check-square me-1"></i>Completed</span></td>
-															<td class="text-pink view-detail-pink"><a href="javascript:;"><i class="feather-eye"></i>View Details</a></td>
-															<td class="table-rating">
-																<div class="rating-point">
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-															   </div>
-															</td>
-															<td class="text-end">
-																<div class="dropdown dropdown-action table-drop-action">
-																	<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-																	<div class="dropdown-menu dropdown-menu-end">
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-star"></i>Write Review</a>
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-trash"></i>Delete</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<h2 class="table-avatar">
-																	<a href="#" class="avatar avatar-sm flex-shrink-0"><img class="avatar-img" src="assets/img/featured/featured-08.jpg" alt="User"></a>
-																	<span class="table-head-name flex-grow-1">
-																		<a href="#" data-bs-toggle="modal" data-bs-target="#profile-coach">Harry Richardson</a>
-																		<span class="book-active">Booked on : 28 May 2023</span>
-																	</span>
-																</h2>
-															</td>
-															<td>Onetime</td>
-															<td class="table-date-time">
-																<h4>Mon, Jul 16<span>01:00 PM - 02:00 PM</span></h4>
-															</td>	
-															<td><span class="pay-dark fs-16">$100</span></td>
-															<td><span class="badge bg-success"><i class="feather-check-square me-1"></i>Completed</span></td>
-															<td class="text-pink view-detail-pink"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#complete-coach"><i class="feather-eye"></i>View Details</a></td>
-															<td class="table-rating">
-																<div class="rating-point">
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star "></i>
-															   </div>
-															</td>
-															<td class="text-end">
-																<div class="dropdown dropdown-action table-drop-action">
-																	<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-																	<div class="dropdown-menu dropdown-menu-end">
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-star"></i>Write Review</a>
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-trash"></i>Delete</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<h2 class="table-avatar">
-																	<a href="#" class="avatar avatar-sm flex-shrink-0"><img class="avatar-img" src="assets/img/featured/featured-09.jpg" alt="User"></a>
-																	<span class="table-head-name flex-grow-1">
-																		<a href="#" data-bs-toggle="modal" data-bs-target="#profile-coach">Pete Hill</a>
-																		<span class="book-active">Booked on : 29 May 2023</span>
-																	</span>
-																</h2>
-															</td>
-															<td>Onetime</td>
-															<td class="table-date-time">
-																<h4>Mon, Jul 16<span>05:00 PM - 08:00 PM</span></h4>
-															</td>	
-															<td><span class="pay-dark fs-16">$140</span></td>
-															<td><span class="badge bg-success"><i class="feather-check-square me-1"></i>Completed</span></td>
-															<td class="text-pink view-detail-pink"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#complete-coach"><i class="feather-eye"></i>View Details</a></td>
-															<td class="table-rating">
-																<div class="rating-point">
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-																	<i class="fas fa-star filled"></i>
-															   </div>
-															</td>
-															<td class="text-end">
-																<div class="dropdown dropdown-action table-drop-action">
-																	<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-																	<div class="dropdown-menu dropdown-menu-end">
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-star"></i>Write Review</a>
-																		<a class="dropdown-item" href="javascript:void(0);"><i class="feather-trash"></i>Delete</a>
-																	</div>
-																</div>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
+									<div>
+										<?php
+											include_once("assets/view/sancaulong/viewlichsuchuagd.php");
+										?>
 									</div>
 									
 								</div>
 							</div> 
-							<div class="tab-footer">
+							<!-- <div class="tab-footer">
 								<div class="row">
 									<div class="col-md-6">
 										<div id="tablelength"></div>
@@ -884,7 +412,7 @@
 										<div id="tablepage"></div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>

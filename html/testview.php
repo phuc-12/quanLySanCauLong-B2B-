@@ -1,60 +1,45 @@
-<?php
-	include ("assets/controller/cLogin.php");
-	$p = new mylogin();
-?>
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="vi">
 <head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
+  <meta charset="UTF-8">
+  <title>Ví dụ localStorage</title>
 </head>
-
 <body>
-<form id="form1" name="form1" method="post">
-  <table width="400" border="1" align="center" cellpadding="5" cellspacing="0">
-    <tbody>
-      <tr>
-        <td colspan="2" align="center" valign="middle">Đăng nhập</td>
-      </tr>
-      <tr>
-        <td width="144" align="left" valign="middle">USERNAME:</td>
-        <td width="230" align="left" valign="middle"><input type="text" name="txtUsername" id="txtUsername"></td>
-      </tr>
-      <tr>
-        <td align="left" valign="middle">PASSWORD:</td>
-        <td align="left" valign="middle"><input type="password" name="txtPassword" id="txtPassword"></td>
-      </tr>
-      <tr>
-        <td colspan="2" align="center" valign="middle"><input type="submit" name="nut" id="nut" value="Đăng nhập">
-        <input type="reset" name="reset" id="reset" value="Reset"></td>
-      </tr>
-    </tbody>
-  </table>
-</form>
-<div align="center">
-<?php
-	switch($_POST['nut'])
-	{
-		case 'Đăng nhập':
-		{
-			$user = $_REQUEST['txtUsername'];
-			$pass = $_REQUEST['txtPassword'];
-			if($user!='' and $pass!='')
-			{
-				if($p->getTKND($user,$pass)==-1)
-				{
-					echo 'Sai username hoặc passwords';
-				}
-						
-			}
-			else
-			{
-				echo 'Vui lòng nhập đầy đủ thông tin';
-			}
-			break;
-		}
-	}
-?>
-</div>
+  <h2>Nhập tên của bạn:</h2>
+  <input type="text" id="usernameInput" placeholder="Nhập tên">
+  <button onclick="saveName()">Lưu tên</button>
+  <button onclick="clearName()">Xóa tên</button>
+
+  <h3 id="greeting"></h3>
+
+  <script>
+    // Hàm lưu tên vào localStorage
+    function saveName() {
+      const name = document.getElementById("usernameInput").value;
+      localStorage.setItem("username", name);
+      showGreeting();
+    }
+
+    // Hàm xóa tên khỏi localStorage
+    function clearName() {
+      localStorage.removeItem("username");
+      showGreeting();
+    }
+
+    // Hàm hiển thị lời chào
+    function showGreeting() {
+      const name = localStorage.getItem("username");
+	  console.log(name);
+      const greeting = document.getElementById("greeting");
+      if (name) {
+        greeting.textContent = "Xin chào, " + name + "!";
+      } else {
+        greeting.textContent = "Bạn chưa nhập tên.";
+      }
+    }
+
+    // Gọi khi trang được tải lại
+    showGreeting();
+  </script>
 </body>
 </html>

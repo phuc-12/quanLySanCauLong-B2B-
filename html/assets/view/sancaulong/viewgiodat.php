@@ -24,12 +24,8 @@
                         <td align="center">'.$dem.'</td>
                         <td align="center">'.$r['start_time'].'</td>
                         <td align="center">'.$r['end_time'].'</td>
-                        <td align="center">'.$r['gia'].'</td>
-                        <td align="center">
-                            <input type="hidden" name="maDat" value="'.$r['maDat'].'">
-                            <button type="submit" name="btn_xoa['.$r['maDat'].']" class="btn btn-danger btn-sm" style="padding: 10px 0;height: 45px; width: 50px; background-color: red; color: white; 
-                            text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block" >XÓA</button>
-                        </td>
+                        <td align="center">'.$r['gia'].'.000</td>
+                        
                     </tr>
                 </form>';
 

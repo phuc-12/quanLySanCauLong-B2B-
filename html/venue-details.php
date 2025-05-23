@@ -1,11 +1,12 @@
 <?php 
+
 include_once ("assets/model/ketnoi.php");
 $p=new clsketnoi();
 $conn = $p->moketnoi();
 // Thiết lập múi giờ Việt Nam
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-$maSan = isset($_GET['maSan']) ? $_GET['maSan'] : 1; 
+$maSan = isset($_GET['maSan']) ? $_GET['maSan'] : 1;
 $today = new DateTime(); 
 $dates = array();
 for ($i = 0; $i < 7; $i++) {
@@ -13,7 +14,6 @@ for ($i = 0; $i < 7; $i++) {
     $date->modify("+$i day");
     $dates[] = $date->format('Y-m-d');
 }
-
 
 
 $dateRange = implode("','", $dates); 
@@ -120,16 +120,67 @@ $idnguoidung = $_SESSION['idnguoidung'];
             z-index: 2;
         }
 
-        .sticky-col {
-            position: sticky;
-            left: 0;
-            background-color: white;
-            z-index: 3;
-        }
+        
 
         thead .sticky-col {
             z-index: 4; /* để cột đầu của thead nổi hơn */
         }
+
+		/* Cố định cột đầu tiên (Khung giờ) */
+		.sticky-col {
+			position: sticky;
+			left: 0;
+			background: white;
+			z-index: 2;
+			font-weight: bold;
+		}
+
+		/* Ô đã quá hạn */
+		td span.het-han {
+			color: gray;
+			font-weight: 500;
+		}
+
+		/* Ô đã được chọn */
+		td span.da-chon {
+			color: red;
+			font-weight: bold;
+		}
+
+		/* Button đặt giờ */
+		td form button {
+			background-color: white;
+			border: 2px solid #007F7F;
+			color: #007F7F;
+			padding: 6px 10px;
+			font-weight: bold;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: all 0.2s ease-in-out;
+			width: 100%;
+		}
+
+		/* Hover hiệu ứng */
+		td form button:hover {
+			background-color: #007F7F;
+			color: white;
+		}
+
+		/* Trạng thái nhấn */
+		td form button:active {
+			transform: scale(0.98);
+			background-color: #005f5f;
+		}
+
+		/* Đảm bảo phần tử cha của sticky sidebar (ví dụ: .col-lg-4) có đủ không gian để cuộn */
+		/* .col-lg-4 {
+			align-self: flex-start; 
+		}
+
+		aside.theiaStickySidebar { 
+			position: sticky;
+			top: 10px; 
+		} */
 </style>
 <body>
 	<!-- <div id="global-loader" >
@@ -329,7 +380,7 @@ $idnguoidung = $_SESSION['idnguoidung'];
 			$laygiamacdinh=$p->SelectCot("SELECT giaMacDinh FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laygiagiovang=$p->SelectCot("SELECT giaGioVang FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laymakh=$p->SelectCot("SELECT maKH FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
-			// $_SESSION['maKH'] = $laymakh;
+			$_SESSION['maKH'] = $laymakh;
 		?>
 
 		<div class="main-gallery-slider owl-carousel owl-theme">
@@ -528,40 +579,47 @@ $idnguoidung = $_SESSION['idnguoidung'];
 																?>                     
 																<td>                         
 																	<?php if ($isPast): ?>                             
-																		<span style="color:gray" title="Khung giờ đã trôi qua">Quá hạn</span>                         
+																		<span class="het-han" title="Khung giờ đã trôi qua">Quá hạn</span>                         
 																	<?php elseif ($isBooked): ?>   
-																		<?php 
-																			$ngayTao = $bookings[$d][$slot['id']]['ngayTao'];
-																		?>                          
-																		<span style="color:red" title="Đặt lúc: <?php echo $ngayTao ?>">Đã Chọn</span>                         
-																	<?php else: ?>                             
-																		<form method="POST" action="booking-process.php?maSan=<?php echo $maSan ?>">   
-																			<input type="hidden" name="maKH" value="<?php echo $laymakh; ?>">                               
-																			<input type="hidden" name="maSan" value="<?php echo $maSan ?>">                                 
-																			<input type="hidden" name="time_slot_id" value="<?php echo $slot['id'] ?>">                                 
-																			<input type="hidden" name="ngayDat" value="<?php echo $d ?>">                                 
+																		<?php $ngayTao = $bookings[$d][$slot['id']]['ngayTao']; ?>                          
+																		<span class="da-chon" title="Đặt lúc: <?php echo $ngayTao ?>">
+																			Đã Chọn
+																		</span>                         
+																	<?php elseif (isset($idnguoidung)) : ?>
+																		<form method="POST" action="booking-process.php">
+																			<input type="hidden" name="maKH" value="<?php echo $laymakh; ?>">
+																			<input type="hidden" name="maSan" value="<?php echo $maSan; ?>"> <input type="hidden" name="time_slot_id" value="<?php echo $slot['id']; ?>">
+																			<input type="hidden" name="ngayDat" value="<?php echo $d; ?>">
 																			<button type="submit">
-																			<?php 
+																				<?php
 																				$startTime = $slot['start_time'];
 																				if ($startTime >= '05:00:00' && $startTime < '16:00:00') {
 																					echo $laygiamacdinh;
 																				} elseif ($startTime >= '16:00:00' && $startTime <= '23:59:59') {
 																					echo $laygiagiovang;
 																				}
-																			?> K
-																			</button>                             
-																		</form>                         
-																	<?php endif; ?>                     
-																</td>                 
+																				?> K
+																			</button>
+																		</form>
+																	<?php else : ?>
+																
+																			<script>
+																				alert("Vui lòng đăng nhập");
+																				window.location="login.php";
+																			</script>
+																
+																		
+																	<?php endif; ?>                 
+																</td>
+																			
 															<?php endforeach; ?>
 														</tr>
 													<?php endforeach; ?>
 												</tbody>
 											</table>
 										</div>
-
-							      	</div>
-							    </div>
+							    	</div>
+								</div>
 							</div>
 							<div class="accordion-item mb-4" id="includes">
 							    <h4 class="accordion-header" id="panelsStayOpen-includes">
@@ -885,22 +943,46 @@ $idnguoidung = $_SESSION['idnguoidung'];
 								<div class="mb-10">
 									<label for="name" class="form-label">Giờ đặt</label>
 									<div>
-										<table style="border: 1px solid grey; width: 100%;">
-											<thead>
-												<tr style="border: 1px solid grey">
-													<td style="border: 1px solid grey" align="center"><b>STT</b></td>
-													<td style="border: 1px solid grey" align="center"><b>Bắt đầu</b></td>
-													<td style="border: 1px solid grey" align="center"><b>Kết thúc</b></td>
-													<td style="border: 1px solid grey" align="center"><b>Giá</b></td>
-													<td style="border: 1px solid grey" align="center"></td>
-												</tr>
-											</thead>
-											<tbody>
-												<?php
-													include_once("assets/view/sancaulong/viewgiochon.php");
-												?>
-											</tbody>
-										</table>
+										<div style="float:right;font-size:20px;">
+											<?php
+												include_once("assets/view/sancaulong/viewtongtien.php");
+											?>
+										</div>
+										<form method="POST" action=""></form>
+											<table style="border: 1px solid grey; width: 100%;">
+												<thead>
+													<tr style="border: 1px solid grey">
+														<td style="border: 1px solid grey" align="center"><b>STT</b></td>
+														<td style="border: 1px solid grey" align="center"><b>Bắt đầu</b></td>
+														<td style="border: 1px solid grey" align="center"><b>Kết thúc</b></td>
+														<td style="border: 1px solid grey" align="center"><b>Giá</b></td>
+														<td style="border: 1px solid grey" align="center"></td>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+														include_once("assets/view/sancaulong/viewgiochon.php");
+													?>
+												</tbody>
+											</table>
+										</form>
+									</div>
+									<div>
+										<?php
+										include_once('assets/model/mUser.php');
+										$k = new mUser();
+
+										if (isset($_POST['btn_xoa']) && isset($_POST['maDat'])) {
+										$maXoa = $_POST['maDat'];
+										if ($k->themxoasua("DELETE FROM bookings WHERE maDat = '$maXoa' LIMIT 1") == 1) {
+												echo '<script>window.location.href="venue-details.php?maSan='.$laymasan.'";</script>';
+												exit();
+											}
+										}
+
+										?>
+
+
 									</div>
 								</div>
 								<div class="mb-10">
@@ -944,7 +1026,7 @@ $idnguoidung = $_SESSION['idnguoidung'];
 									<label class="form-check-label" for="policy">Bằng cách nhấp vào 'Gửi yêu cầu', tôi đồng ý với Chính sách bảo mật và Điều khoản sử dụng của Dreamsport</label>
 								</div>
 								<div class="d-grid btn-block">
-									<a href="javascript:;" class="btn btn-secondary d-inline-flex justify-content-center align-items-center">Gửi Yêu Cầu<i class="feather-arrow-right-circle ms-1"></i></a>
+									<a href="court-payment.php?maKH=<?php echo $laymakh;?>" class="btn btn-secondary d-inline-flex justify-content-center align-items-center">Thanh Toán<i class="feather-arrow-right-circle ms-1"></i></a>
 								</div>
 							</form>
 						</div>
@@ -1406,6 +1488,7 @@ $idnguoidung = $_SESSION['idnguoidung'];
 
 <script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="af674bb7daf9cc3aee6fa6da-|49" defer></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92a5cd478d9f1065","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
 </body>
+
 
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/venue-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:31:23 GMT -->
 </html>

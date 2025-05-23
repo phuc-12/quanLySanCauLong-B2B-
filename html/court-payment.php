@@ -1,3 +1,9 @@
+<?php
+include_once("assets/model/mUser.php");
+$p = new mUser();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,20 +58,36 @@
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
 
+	<script src="assets/js/thanhtoanqr.js"></script>
 </head>
 
 <body>
+	<?php
+		$layid = $_REQUEST['maKH'];
+		$layngaydat = $p->laycot("SELECT ngayDat FROM bookings WHERE maKH = '$layid'");
+		$laygiobd = $p->laycot("SELECT t.start_time FROM bookings b join time_slots t on b.time_slot_id = t.id WHERE maKH = '$layid' ORDER BY maDat ASC LIMIT 1");
+		$laygiokt = $p->laycot("SELECT t.end_time FROM bookings b join time_slots t on b.time_slot_id = t.id WHERE maKH = '$layid' ORDER BY maDat DESC LIMIT 1");
+		$laytongtg = $p->laycot("SELECT COUNT(*) FROM bookings WHERE maKH = '$layid'");
+		$layten = $p->laycot("SELECT tenKH FROM khachhang WHERE maKH = '$layid' LIMIT 1");
+		$laysdt = $p->laycot("SELECT soDienThoai FROM khachhang WHERE maKH = '$layid' LIMIT 1");
+		$layemail = $p->laycot("SELECT email FROM khachhang WHERE maKH = '$layid' LIMIT 1");
+		$_SESSION['maKH'] = $layid;
+
+		//lay ten san
+		//lay ngay dat
+		//lay gio bat dau 
+		//lay gio ket thuc
+	?>
 	<div id="global-loader" >
 		<div class="loader-img">
 			<img src="assets/img/loader.png" class="img-fluid" alt="Global">
 		</div>
 	</div>
-
 	<!-- Main Wrapper -->
-	<div class="main-wrapper coach">
+	<div class="main-wrapper">
 
 		<!-- Header -->
-		<header class="header header-sticky">
+		<header class="header header-trans">
 			<div class="container-fluid">
 				<nav class="navbar navbar-expand-lg header-nav">
 					<div class="navbar-header">
@@ -76,8 +98,8 @@
 								<span></span>
 							</span>
 						</a>
-						<a href="index.html" class="navbar-brand logo">
-							<img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
+						<a href="index.php" class="navbar-brand logo">
+							<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
 						</a>
 					</div>
 					<div class="main-menu-wrapper">
@@ -88,9 +110,9 @@
 							<a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
 						</div>
 						<ul class="main-nav">
-							<li><a href="index.html">Home</a></li>
-							<li class="has-submenu active">
-								<a href="#">Coaches <i class="fas fa-chevron-down"></i></a>
+							<li class="active"><a href="index.php">Trang Chủ</a></li>
+							<li class="has-submenu">
+								<a href="#">Sân Cầu Lông <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li class="has-submenu">
 										<a href="#">Coaches Map</a>
@@ -103,11 +125,11 @@
 									<li><a href="coaches-list.html">Coaches List</a></li>
 									<li><a href="coaches-grid-sidebar.html">Coaches Grid Sidebar</a></li>
 									<li><a href="coaches-list-sidebar.html">Coaches List Sidebar</a></li>
-									<li class="has-submenu active">
+									<li class="has-submenu">
 										<a href="javascript:void(0);">Booking</a>
 										<ul class="submenu">
 											<li><a href="cage-details.html">Book a Court</a></li>
-											<li  class="active"><a href="coach-details.html">Book a Coach</a></li>
+											<li><a href="coach-details.html">Book a Coach</a></li>
 										</ul>
 									</li>
 									<li><a href="coach-detail.html">Coach Details</a></li>
@@ -130,61 +152,21 @@
 								
 							</li>
 							<li class="has-submenu">
-								<a href="#">User <i class="fas fa-chevron-down"></i></a>
+								<a href="#">Người Dùng <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li><a href="user-dashboard.html">User Dashboard</a></li>
 									<li><a href="user-bookings.html">Bookings</a></li>
 									<li><a href="user-chat.html">Chat</a></li>
 									<li><a href="user-invoice.html">Invoice</a></li>
 									<li><a href="user-wallet.html">Wallet</a></li>
-									<li><a href="user-profile.html">Profile Edit</a></li>
+									<li><a href="user-profile.php">Profile Edit</a></li>
 									<li><a href="user-setting-password.html">Change Password</a></li>
 									<li><a href="user-profile-othersetting.html">Other Settings</a></li>
 								</ul>
 								
 							</li>
 							<li class="has-submenu">
-								<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-								    <li><a href="about-us.html">About Us</a></li>
-								    <li><a href="our-teams.html">Our Team</a></li>
-								    <li><a href="services.html">Services</a></li>
-								    <li><a href="events.html">Events</a></li>
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Authentication</a>
-										<ul class="submenu">
-											<li><a href="register.html">Signup</a></li>
-											<li><a href="login.html">Signin</a></li>
-											<li><a href="forgot-password.html">Forgot Password</a></li>
-											<li><a href="change-password.html">Reset Password</a></li>
-										</ul>
-									</li>
-									
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Error Page</a>
-										<ul class="submenu">
-											<li><a href="error-404.html">404 Error</a></li>
-										</ul>
-									</li>
-									<li><a href="pricing.html">Pricing</a></li>
-									<li><a href="faq.html">FAQ</a></li>
-									<li><a href="gallery.html">Gallery</a></li>
-									<li><a href="our-teams.html">Our Team</a></li>
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Testimonials</a>
-										<ul class="submenu">
-											<li><a href="testimonials.html">Testimonials</a></li>
-											<li><a href="testimonials-carousel.html">Testimonials Carousel</a></li>
-										</ul>
-									</li>
-									<li><a href="terms-condition.html">Terms & Conditions</a></li>
-									<li><a href="privacy-policy.html">Privacy Policy</a></li>			
-									<li><a href="maintenance.html">Maintenance</a></li>
-									<li><a href="coming-soon.html">Coming Soon</a></li>
-								</ul>
-							</li>
-							<li class="has-submenu">
-								<a href="#">Blog <i class="fas fa-chevron-down"></i></a>
+								<a href="#">Diễn Đàn <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 								    <li><a href="blog-list.html">Blog List</a></li>
 								    <li class="has-submenu">
@@ -213,9 +195,9 @@
 									<li><a href="blog-carousel.html">Blog Carousel</a></li>
 								</ul>
 							</li>
-							<li><a href="contact-us.html">Contact Us</a></li>
+							<li><a href="contact-us.html">Liên Hệ</a></li>
 							<li class="login-link">
-								<a href="register.html">Sign Up</a>
+								<a href="register.php">Sign Up</a>
 							</li>
 							<li class="login-link">
 								<a href="login.html">Sign In</a>
@@ -223,105 +205,53 @@
 						</ul>
 					</div>
 					<ul class="nav header-navbar-rht logged-in">
-						<li class="nav-item">
-							<form class="header-search">
-								<a class="nav-link" href="coaches-grid.html"><i class="feather-search"></i></a>
-							</form>
-						</li>
-						<!-- Notifications -->
-						<li class="nav-item dropdown noti-nav">
-							<a href="listing-grid.html" class="dropdown-toggle nav-link position-relative" data-bs-toggle="dropdown">
-								<i class="feather-bell"></i> <span class="alert-bg"></span>
-							</a>
-							<div class="dropdown-menu notifications dropdown-menu-end ">
-								<div class="topnav-dropdown-header">
-									<span class="notification-title">Notifications</span>
-								</div>
-								<div class="noti-content">
-									<ul class="notification-list">
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<span class="avatar">
-														<img class="avatar-img" src="assets/img/profiles/avatar-01.jpg" alt="User">
-													</span>
-													<div class="media-body">
-														<h6>Sarah Sports Academy<span class="notification-time">18.30 PM</span></h6>
-														<p class="noti-details">Sent a amount of $210 for his Appointment  <span class="noti-title">Mr.Ruby perin </span></p>
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<span class="avatar">
-														<img class="avatar-img" src="assets/img/profiles/avatar-02.jpg" alt="User">
-													</span>
-													<div class="media-body">
-														<h6>Badminton Academy<span class="notification-time">12 Min Ago</span></h6>
-														<p class="noti-details"> has booked her appointment to  <span class="noti-title">Mr. Hendry Watt</span></p>
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<div class="avatar">
-														<img class="avatar-img" src="assets/img/profiles/avatar-03.jpg" alt="User">
-													</div>
-													<div class="media-body">
-														<h6>Manchester Academy<span class="notification-time">6 Min Ago</span></h6>
-														<p class="noti-details"> Sent a amount  $710 for his Appointment   <span class="noti-title">Mr.Maria Dyen</span></p>
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="notification-message">
-											<a href="#">
-												<div class="media d-flex">
-													<div class="avatar avatar-sm">
-														<img class="avatar-img" src="assets/img/profiles/avatar-04.jpg" alt="User">
-													</div>
-													<div class="media-body">
-														<h6>ABC Sports Academy<span class="notification-time">8.30 AM</span></h6>
-														<p class="noti-details"> Send a message to the Coach</p>
-													</div>
-												</div>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</li>
-						<!-- /Notifications -->
+						
+								<!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
-						<!-- User Menu -->
-						<li class="nav-item dropdown has-arrow logged-item">
-							<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-								<span class="user-img">
-									<img class="rounded-circle" src="assets/img/profiles/avatar-05.jpg" width="31" alt="Darren Elder">
-								</span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end">
-								<div class="user-header">
-									<div class="avatar avatar-sm">
-										<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
-									</div>
-									<div class="user-text">
-										<h6>Henriques</h6>
-										<a href="user-profile.html" class="text-profile mb-0">Go to Profile</a>
-									</div>
-								</div>
-								<p><a class="dropdown-item" href="coach-profile.html">Settings</a></p>
-								<p><a class="dropdown-item" href="login.html">Logout</a></p>
-							</div>
-						</li>
-						<!-- /User Menu -->
-						<li class="nav-item">
-							<a class="nav-link btn btn-secondary" href="add-court.html"><span><i class="feather-check-circle"></i></span>List Your Court</a>
-						</li>
+								<?php
+									if(isset($_REQUEST['maKH']))
+									{
+										echo '
+							
+											<li class="nav-item dropdown has-arrow logged-item">
+												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+													<span class="user-img">
+														<img class="rounded-circle" src="assets/img/profiles/avatar-05.jpg" width="31" alt="Darren Elder">
+													</span>
+												</a>
+												<div class="dropdown-menu dropdown-menu-end">
+													<div class="user-header">
+														<div class="avatar avatar-sm">
+															<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
+														</div>
+														<div class="user-text">
+															<h6>'.$layten.'</h6>
+															<a href="user-profile.php?id='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
+														</div>
+													</div>
+													<p><a class="dropdown-item"  href="coach-profile.php">Settings</a></p>
+													<p><a class="dropdown-item"  href="login.php">Logout</a></p>
+												</div>
+											</li>		
+											
+										';
+									}
+									else 
+									{
+										echo '
+										<li class="nav-item">
+											<div class="nav-link btn btn-white log-register">	
+												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
+										</div>
+										</li>
+										<li class="nav-item">
+										<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+										</li>
+										';
+									}
+								?>
+							
+						
 					</ul>
 				</nav>
 			</div>
@@ -332,15 +262,15 @@
 		<div class="breadcrumb mb-0">
 			<span class="primary-right-round"></span>
 			<div class="container">
-				<h1 class="text-white">Book A Coach</h1>
+				<h1 class="text-white">Hoàn Thành Đặt Sân</h1>
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li>Book A Coach</li>
+					<li><a href="index.html">Trang Chủ</a></li>
+					<li>Thanh Toán</li>
 				</ul>
 			</div>
 		</div>
 		<!-- /Breadcrumb -->
-		<section class="booking-steps py-30">
+		<!-- <section class="booking-steps py-30">
 			<div class="container">
 				<ul class="d-xl-flex justify-content-center align-items-center">
 					<li><h5><a href="coach-details.html"><span>1</span>Type of Booking</a></h5></li>
@@ -350,17 +280,17 @@
 					<li class="active"><h5><a href="coach-payment.html"><span>5</span>Payment</a></h5></li>
 				</ul>
 			</div>
-		</section>
+		</section> -->
 
 		<!-- Page Content -->
 		<div class="content">
 			<div class="container">
 				<section>
-					<div class="text-center mb-40">
-						<h3 class="mb-1">Payment</h3>
-						<p class="sub-title">Securely make your payment for the booking. Contact support for assistance.</p>
-					</div>
-					<div class="master-academy dull-whitesmoke-bg card mb-40">
+					<!-- <div class="text-center mb-40">
+						<h3 class="mb-1">THANH TOÁN</h3>
+						<p class="sub-title">Thanh toán an toàn cho đặt phòng của bạn.</p>
+					</div> -->
+					<!-- <div class="master-academy dull-whitesmoke-bg card mb-40">
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="d-sm-flex justify-content-start align-items-center">
 								<a href="javascript:void(0);"><img class="corner-radius-10" src="assets/img/profiles/avatar-02.png" alt="User"></a>
@@ -374,38 +304,55 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="row checkout">
 						<div class="col-12 col-sm-12 col-md-12 col-lg-7">
 							<div class="card booking-details">
-								<h3 class="border-bottom">Order Summary</h3>
+								<h3 class="border-bottom">Thông tin đặt sân</h3>
 								<ul>
-									<li><i class="feather-calendar me-2"></i>27, April 2023</li>
-									<li><i class="feather-clock me-2"></i>05:00 PM to 07:00 PM</li>
-									<li><i class="feather-users me-2"></i>Total Hours : 3 Hrs</li>
+									<div style="float:left; width: 300px;">
+										<li><i class="feather-calendar me-2"></i><?php echo $layngaydat; ?></li>
+										<li><i class="feather-clock me-2"></i><?php echo $laygiobd.' Đến '.$laygiokt; ?> </li>
+										<li><i class="feather-users me-2"></i>Tổng thời gian : <?php echo $laytongtg.' Tiếng'; ?></li>
+									</div>
+									
+									<div style="float:left; width: 350px;">
+										<li><i class="feather-user me-2"></i>Tên: <?php echo $layten; ?></li>
+										<li><i class="feather-phone me-2"></i>SĐT: <?php echo $laysdt; ?></li>
+										<li><i class="feather-mail me-2"></i><?php echo $layemail; ?></li>
+									</div>
 								</ul>
+								
+							</div>
+							<div class="course_qr" align="center">
+								<img 
+									class="course_qr_img" style="width: 300px;"
+									src="">
+								<!-- <p>Nội dung chuyển khoản: <span id="paid_content"></span></p>
+								<p>Số tiền: <span id="paid_price"></span></p>
+								<p>Số tiền đã chuyển <span id="ketqua"></span></p> -->
 							</div>
 						</div>
 						<div class="col-12 col-sm-12 col-md-12 col-lg-5">
 							<aside class="card payment-modes">
-								<h3 class="border-bottom">Checkout</h3>
-								<h6 class="mb-3">Select Payment Gateway</h6>
+								<h3 class="border-bottom">Thanh toán</h3>
+								<!-- <h6 class="mb-3">Chọn phương thức thanh toán</h6> -->
 								<div class="radio">
-									<div class="form-check form-check-inline mb-3">
+									<!-- <div class="form-check form-check-inline mb-3">
 									  	<input class="form-check-input default-check me-2" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Credit Card">
-									  	<label class="form-check-label" for="inlineRadio1">Credit Card</label>
+									  	<label class="form-check-label" for="inlineRadio1">Chuyển khoản</label>
 									</div>
 									<div class="form-check form-check-inline mb-3">
 									  	<input class="form-check-input default-check me-2" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Paypal">
-									  	<label class="form-check-label" for="inlineRadio2">Paypal</label>
-									</div>
-									<div class="form-check form-check-inline">
+									  	<label class="form-check-label" for="inlineRadio2">Tiền mặt</label>
+									</div> -->
+									<!-- <div class="form-check form-check-inline">
 									  	<input class="form-check-input default-check me-2" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Wallet">
 									  	<label class="form-check-label" for="inlineRadio3">Wallet</label>
-									</div>
+									</div> -->
 								</div>
-								<hr>
-								<ul class="order-sub-total">
+								<!-- <hr> -->
+								<!-- <ul class="order-sub-total">
 									<li>
 										<p>Sub total</p>
 										<h6>$250</h6>
@@ -418,19 +365,49 @@
 										<p>Service charge</p>
 										<h6>$70</h6>
 									</li>
-								</ul>
+								</ul> -->
+								<div class="mb-10">
+									<div>
+										<form method="POST" action=""></form>
+											<table style="border: 1px solid grey; width: 100%;">
+												<thead>
+													<tr style="border: 1px solid grey">
+														<td style="border: 1px solid grey" align="center"><b>STT</b></td>
+														<td style="border: 1px solid grey" align="center"><b>Bắt đầu</b></td>
+														<td style="border: 1px solid grey" align="center"><b>Kết thúc</b></td>
+														<td style="border: 1px solid grey" align="center"><b>Giá</b></td>
+														<!-- <td style="border: 1px solid grey" align="center"></td> -->
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+														include_once("assets/view/sancaulong/viewgiodat.php");
+													?>
+												</tbody>
+											</table>
+										</form>
+									</div>
+									
+								</div>
 								<div class="order-total d-flex justify-content-between align-items-center">
-									<h5>Order Total</h5>
-									<h5>$450</h5>
+									<?php
+										include_once("assets/view/sancaulong/viewtongtien.php");
+									?>
+									<input type="hidden" id="maKH" value="<?php echo $layid; ?>">
+									<input type="hidden" id="tongtien" value="<?php echo $tongtien*1000; ?>">
 								</div>
 								<div class="form-check d-flex justify-content-start align-items-center policy">
 									<div class="d-inline-block">
 										<input class="form-check-input" type="checkbox" value="" id="policy">
 									</div>
-									<label class="form-check-label" for="policy">By clicking 'Send Request', I agree to Dreamsport <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-condition.html">Terms of Use</a></label>
+									<label class="form-check-label" for="policy">Bằng cách nhấp vào 'Gửi yêu cầu', tôi đồng ý với Chính sách bảo mật và Điều khoản sử dụng của Dreamsport</label>
 								</div>
-								<div class="d-grid btn-block">
-									<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingconfirmModal">Proceed  $200</button>
+								<!-- <div class="d-grid btn-block">
+									<button type="button" class="btn btn-primary course_item_btn">Thanh Toán</button>
+								</div> -->
+								<div class="d-flex justify-content-center gap-2">
+									<button type="button" class="btn btn-primary btn-sm w-100 course_item_btn" style="max-width: 150px;">Chuyển Khoản</button>
+									<button type="button" class="btn btn-primary btn-sm w-100 " style="max-width: 150px;">Tiền Mặt</button>
 								</div>
 							</aside>
 						</div>
@@ -656,7 +633,7 @@
 	<!-- /Main Wrapper -->
 
 	<!-- Booking Confirmed Modal -->
-	<div class="modal fade" id="bookingconfirmModal" tabindex="-1" aria-labelledby="bookingconfirmModal" aria-hidden="true">
+	<!-- <div class="modal fade" id="bookingconfirmModal" tabindex="-1" aria-labelledby="bookingconfirmModal" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 		    <div class="modal-content">
 		      	<div class="modal-header text-center d-inline-block">
@@ -671,7 +648,7 @@
 		      </div>
 		    </div>
 		</div>
-	</div>
+	</div> -->
 	<!-- /Booking Confirmed Modal -->
 
 	<!-- jQuery -->

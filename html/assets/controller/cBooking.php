@@ -24,6 +24,48 @@
                 return false;
             }
         }
+
+        public function getBookedBymaKH($maKH)
+        {
+            $p = new mBooking();
+            $tblBook = $p->SelectAllBookedBymaKH($maKH);
+            if($tblBook)
+            {
+                if($tblBook->num_rows>0)
+                {
+                    return $tblBook;
+                }
+                else 
+                {
+                    return -1;
+                }
+            }
+            else 
+            {
+                return false;
+            }
+        }
+
+        public function getBookBymaKH($maKH)
+        {
+            $p = new mBooking();
+            $tblBook = $p->SelectAllBookBymaKH($maKH);
+            if($tblBook)
+            {
+                if($tblBook->num_rows>0)
+                {
+                    return $tblBook;
+                }
+                else 
+                {
+                    return -1;
+                }
+            }
+            else 
+            {
+                return false;
+            }
+        }
     }
 
 ?>
