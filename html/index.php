@@ -370,7 +370,7 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 									<a href="listing-grid.php">Chọn Địa Điểm</a>
 								</h5>
 								<p>Đặt sân cầu lông nhanh chóng để được trải nghiệm cơ sở vật chất cao cấp và dịch vụ chuyên nghiệp.</p>
-								<a class="btn" href="listing-grid.php">
+								<a class="btn" href="listing-grid.php?id=<?php echo $layid; ?>">
 									Đến Danh Sách Sân <i class="feather-arrow-right"></i>
 								</a>
 							</div>

@@ -37,11 +37,11 @@
                         echo ' <td style="text-decoration:none; color: black;">Không xác định</td>';
                 }
             echo ' <td style="text-decoration:none; color: black;">
-            <form method="post" action="" onsubmit="return confirmDelete();" style="float: right; padding-right: 20px;">
-                <input type="hidden" name="id" value="'.$r['maKH'].'">
-                <input type="submit" name="btnxoa" value="XÓA" class="btn btn-danger btn-sm" style="padding: 10px 0;height: 45px; width: 120px; background-color: red; color: white; 
-                text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
-            </form>
+                <form method="post" action="" onsubmit="return confirmDelete();" style="float: right; padding-right: 20px;">
+                    <input type="hidden" name="id" value="'.$r['maKH'].'">
+                    <input type="submit" name="btnxoa" value="XÓA" class="btn btn-danger btn-sm" style="padding: 10px 0;height: 45px; width: 120px; background-color: red; color: white; 
+                    text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
+                </form>
             </td>'; 
             echo '</tr>';
             $dem++;
