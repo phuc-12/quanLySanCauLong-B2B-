@@ -1,7 +1,5 @@
 <?php
-
     include_once("ketnoi.php");
-
     class mTKND
     {
         public function SelectTKND($user, $pass)

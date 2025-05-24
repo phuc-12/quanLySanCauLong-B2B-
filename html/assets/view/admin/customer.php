@@ -41,10 +41,13 @@ $p = new mUser();
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/favicon.png">
 	<link rel="apple-touch-icon" sizes="120x120" href="../../img/apple-touch-icon-120x120.png">
 	<link rel="apple-touch-icon" sizes="152x152" href="../../img/apple-touch-icon-152x152.png">
+    
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css">
-
+    <!-- Bootstrap Bundle (bao gồm Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
 	<!-- Fontawesome CSS -->
 	<link rel="stylesheet" href="../../plugins/fontawesome/css/fontawesome.min.css">
 	<link rel="stylesheet" href="../../plugins/fontawesome/css/all.min.css">

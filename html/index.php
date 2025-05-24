@@ -4,6 +4,8 @@ $p = new mUser();
 session_start();
 // error_reporting(0);
 $_SESSION['idnguoidung'] = $_REQUEST['id'];
+$maDN = $_SESSION['maDN'];
+// $maKH = $_SESSION['maKH'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,12 +71,22 @@ $_SESSION['idnguoidung'] = $_REQUEST['id'];
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/chatbox.css">
 
+	<!-- chatbox  -->
+	<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+	<!-- <script src="assets/js/chatbox/server.js"></script> -->
+	
 </head>
 
 <body>
 <?php
+session_start();
+// $laymaKH = $maKH;	
 $layid = $_REQUEST['id'];
-$layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' limit 1");
+$laytenND = $p->laycot("select tenKH from khachhang limit 1");
+$laymaKH = $p->laycot("select maKH from khachhang where idnguoidung=$layid limit 1");
+$laymaDN = $p->laycot("select maDN from doanhnghiep limit 1");
+$laytenDN = $p->laycot("select tenDN from doanhnghiep limit 1");
+
 ?>
 	<div id="global-loader" >
 		<div class="loader-img">
@@ -210,7 +222,9 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 									if(isset($_REQUEST['id']))
 									{
 										echo '
-							
+											<li class="nav-item">
+												<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+											</li>
 											<li class="nav-item dropdown has-arrow logged-item">
 												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
 													<span class="user-img">
@@ -223,15 +237,14 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 															<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
 														</div>
 														<div class="user-text">
-															<h6>'.$layten.'</h6>
+															<h6>'.$laytenND.'</h6>
 															<a href="user-profile.php?id='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
 														</div>
 													</div>
 													<p><a class="dropdown-item"  href="coach-profile.php">Settings</a></p>
 													<p><a class="dropdown-item"  href="login.php">Logout</a></p>
 												</div>
-											</li>		
-											
+											</li>
 										';
 									}
 									else 
@@ -241,9 +254,6 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 											<div class="nav-link btn btn-white log-register">	
 												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
 										</div>
-										</li>
-										<li class="nav-item">
-										<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
 										</li>
 										';
 									}
@@ -286,15 +296,18 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 										<div class="search-input line">
 											<div class="form-group mb-0">
 												<!-- <label>Tìm Kiếm</label> -->
-												<select class="select">
+												<!-- <select class="select">
 													<option>Sân Cầu</option>
 													<option>...</option>
-												</select>
+												</select> -->
+												<div class="search-input-text">
+													<input type="text">
+												</div>
 											</div>
 										</div>
-										<div class="search-input">
+										<!-- <div class="search-input">
 											<div class="form-group mb-0">
-												<!-- <label>Vị trí</label> # -->
+												
 												<select class="form-control select">				
 													<option value="">Chọn Khu Vực</option>
 													<option>Gò Vấp</option>
@@ -305,7 +318,7 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 													<option>...</option>
 												</select>
 											</div>
-										</div>
+										</div> -->
 										<div class="search-btn">
 											<button class="btn" type="submit"><i class="feather-search"></i><span class="search-text">Search</span></button>
 										</div>
@@ -1712,22 +1725,24 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 					Bắt đầu chat? - Online
 				</div>
 				<div class="chat-box">
-					<div class="desc-text">
-					Điền đầy đủ để bắt đầu chat.
-					</div>
-					<form action="#">
-					<div class="field">
-						<input type="text" placeholder="Tên bạn" required>
-					</div>
-					<div class="field">
-						<input type="email" placeholder="Email" required>
-					</div>
-					<div class="field textarea">
-						<textarea cols="30" rows="10" placeholder="Yêu cầu của bạn là gì?" required></textarea>
-					</div>
-					<div class="field">
-						<button type="submit">Bắt Đầu</button>
-					</div>
+					<form id="chatRequestForm">
+						<!-- Chọn doanh nghiệp đang online -->
+						<div class="field">
+							<input type="hidden" id="maDN" value="<?php echo $laymaDN; ?>" />
+							<input type="hidden" id="tenDN" value="<?php echo $laytenDN; ?>" />
+							<select id="companySelect" style="color:black; border: 1px solid red; padding: 5px;">
+								<option value="">Loading...</option>
+							</select>
+						</div>
+						<!-- Nội dung yêu cầu -->
+						<div class="field textarea">
+							<textarea name="message" cols="30" rows="10" placeholder="Yêu cầu của bạn" required></textarea>
+						</div>
+						 
+						<div class="field">
+							<input type="hidden" name="maKH" id="maKH" value="<?php echo $laymaKH ?>">
+							<button type="submit">Bắt đầu chat</button>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -1772,7 +1787,25 @@ $layten = $p->laycot("select tenKH from khachhang where idnguoidung = '$layid' l
 	<script src="assets/js/script.js" type="e4c26da156d9fccf88a221dd-text/javascript"></script>
 
 <script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="e4c26da156d9fccf88a221dd-|49" defer></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92a5cc7dff1f1a5b","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
+<script>
+    const maDN = "<?php echo isset($laymaDN) ? $laymaDN : ''; ?>";
+    const tenDN = "<?php echo isset($laytenDN) ? $laytenDN : ''; ?>";
+	if (!maDN && !tenDN) {
+		console.error("maDN rỗng hoặc không xác định");
+	} else {
+		console.log("maDN lấy từ DB: ", maDN);
+		console.log("tenDN lấy từ DB: ", tenDN);
+	}
+</script>
+<script>
+  console.log("Giá trị maKH:", document.getElementById("maKH").value);
+</script>
+<script>
+  const socket = io("http://localhost:3000"); // Nếu server Node.js chạy ở port 3000
+</script>
+<script src="/quanLySanCauLong-B2B-/html/assets/js/chatbox/customer.js"></script>
 </body>
 
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:28:07 GMT -->
 </html>
+
