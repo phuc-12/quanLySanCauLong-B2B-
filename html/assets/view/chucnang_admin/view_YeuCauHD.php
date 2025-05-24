@@ -1,4 +1,5 @@
 <?php
+// session_start();
 error_reporting(1);
 include_once("../../model/mUser.php");
 $k = new mUser();
@@ -44,6 +45,9 @@ $k = new mUser();
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <!-- Bootstrap Bundle (bao gồm Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 	<!-- Fontawesome CSS -->
 	<link rel="stylesheet" href="../../plugins/fontawesome/css/fontawesome.min.css">
@@ -65,17 +69,16 @@ $k = new mUser();
 <body>
 <?php
 $layid = $_REQUEST['id'];
-$layMaYC=$k->laycot("select maYeuCau from yeucauhoatdong  limit 1");
-$layTenSan=$k->laycot("select tenSan from yeucauhoatdong  limit 1");
-$laySoLuongSan=$k->laycot("select soLuongSan from yeucauhoatdong  limit 1");
-$layGioMoCua=$k->laycot("select gioMoCua from yeucauhoatdong  limit 1");
-$layGiaMacDinh=$k->laycot("select giaMacDinh from yeucauhoatdong  limit 1");
-$layGiaGioVang=$k->laycot("select giaGioVang from yeucauhoatdong  limit 1");
-$layDiaChi=$k->laycot("select diaChi from yeucauhoatdong  limit 1");
-$layHinhAnh=$k->laycot("select hinhAnhSan from yeucauhoatdong  limit 1");
-$layCCCD=$k->laycot("select CCCD from yeucauhoatdong  limit 1");
-$layTenChuSan=$k->laycot("select tenChuSan from yeucauhoatdong  limit 1");
-
+$layMaYC = $k->laycot("SELECT maYeuCau FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layTenSan = $k->laycot("SELECT tenSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$laySoLuongSan = $k->laycot("SELECT soLuongSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layGioMoCua = $k->laycot("SELECT gioMoCua FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layGiaMacDinh = $k->laycot("SELECT giaMacDinh FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layGiaGioVang = $k->laycot("SELECT giaGioVang FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layDiaChi = $k->laycot("SELECT diaChi FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layHinhAnh = $k->laycot("SELECT hinhAnhSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layCCCD = $k->laycot("SELECT CCCD FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layTenChuSan = $k->laycot("SELECT tenChuSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
 ?>
     <!-- <div id="global-loader" >
 		<div class="loader-img">
@@ -189,7 +192,7 @@ $layTenChuSan=$k->laycot("select tenChuSan from yeucauhoatdong  limit 1");
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="view__YeuCauHD.php?id=<?php echo $layid ?>"class="active">
+                                    <a href="view_YeuCauHD.php?id=<?php echo $layid ?>"class="active">
                                         <img src="../../img/icons/booking-icon.svg" alt="Icon">
                                         <span>YÊU CẦU HOẠT ĐỘNG</span>
                                     </a>
@@ -278,7 +281,7 @@ $layTenChuSan=$k->laycot("select tenChuSan from yeucauhoatdong  limit 1");
                         <table style="margin:0; height: 500px;" style="width: 50%; float:left;">
                             <tr>
                                 <td style="width: 150px;"><label for="maYeuCau">Mã Yêu Cầu:</label></td>
-                                <td><input type="input" class="form-control" size="76" id="maYeuCau" value="<?php echo $layid;?>" name="maYeuCau" readonly></td>
+                                <td><input type="input" class="form-control" size="76" id="maYeuCau" value="<?php echo $layMaYC;?>" name="maYeuCau" readonly></td>
                                 <!-- <td style="width: 200px;"><span id="errMaNV" class="err text-danger"></span></td> -->
                             </tr>
                             <tr>
@@ -328,14 +331,18 @@ $layTenChuSan=$k->laycot("select tenChuSan from yeucauhoatdong  limit 1");
                             </tr> -->
 
                             <tr>
-                                <td colspan=2 style="text-align:right;">
-                                    <input type="submit" name="btn" id="btnsubmit" value="Phê Duyệt" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
-											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
-                                    <input type="submit" name="btn" id="btnrefuse" value="Từ Chối" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
-											text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;"> 
-                                </td>
+                                <?php
+                                    $layid = $_GET['id'];
+                                    $sql = "SELECT * FROM yeucauhoatdong WHERE maYeuCau = '$layid'";
 
-                                
+                                ?>
+                                <td colspan=2 style="text-align:right;">
+                                    <input type="hidden" name="id" value="<?php echo $layMaYC; ?>">
+                                    <input type="submit" name="btn" id="btnsubmit" value="Phê Duyệt" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
+										text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
+                                    <input type="submit" name="btn" id="btnrefuse" value="Từ Chối" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; 
+										text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;"> 
+                                </td>
                             </tr>
                         </table>
                         <div style="width: 400px; height: 400px; position: absolute; top: 510px; right: 150px; background-color: black;">
@@ -352,18 +359,18 @@ $layTenChuSan=$k->laycot("select tenChuSan from yeucauhoatdong  limit 1");
                             {
                                 case 'Phê Duyệt':
                                 {
-                                    $maYeuCau=$_REQUEST['maYeuCau'];
+                                    $maYeuCau=$_REQUEST['id'];
                                     if($maYeuCau!='')
                                     {
                                         if($k->themxoasua("UPDATE yeucauhoatdong SET trangThai = 'Phê Duyệt' WHERE maYeuCau = '$maYeuCau' LIMIT 1")==1)
                                         {
                                             echo'<script language="javascript">
                                             alert("Phê duyệt thành công");
-                                            window.location="view_YeuCauHD.php?id='.$maYeuCau.'";	
+                                            window.location="../admin/requirement.php?id='.$layid.'";	
                                             </script>';
                                         }
                                         echo'<script language="javascript">
-                                        window.location="view_YeuCauHD.php?id='.$maYeuCau.'";
+                                        window.location="view_YeuCauHD.php?id='.$layid.'";
                                         </script>';
                                         
                                     }
@@ -377,17 +384,18 @@ $layTenChuSan=$k->laycot("select tenChuSan from yeucauhoatdong  limit 1");
                                 }
                                 case 'Từ Chối':
                                 {
-                                    $maYeuCau=$_REQUEST['maYeuCau'];
+                                    $maYeuCau=$_REQUEST['id'];
                                     if($maYeuCau!='')
                                     {
-                                        if($k->themxoasua("UPDATE yeucauhoatdong SET trangThai = 'Từ chối' WHERE maYeuCau = '$maYeuCau' LIMIT 1")==1)
+                                        if($k->themxoasua("UPDATE yeucauhoatdong SET trangThai = 'Từ Chối' WHERE maYeuCau = '$maYeuCau' LIMIT 1")==1)
                                         {
                                             echo'<script language="javascript">
-                                            alert("Từ chối yêu cầu");	
+                                            alert("Từ chối yêu cầu");
+                                            window.location="../admin/requirement.php?id='.$layid.'";	
                                             </script>';
                                         }
                                         echo'<script language="javascript">
-                                        window.location="view_YeuCauHD.php?id='.$maYeuCau.'";
+                                        window.location="view_YeuCauHD.php?id='.$layid.'";
                                         </script>';
                                         
                                     }

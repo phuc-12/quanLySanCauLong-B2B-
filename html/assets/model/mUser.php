@@ -96,7 +96,7 @@
             $con = $p->moketnoi();
             $con->set_charset('utf8');
             if($con){
-                $str = "SELECT COUNT(*) as total FROM yeucauhoatdong";
+                $str = "SELECT COUNT(*) as total FROM yeucauhoatdong where trangThai='Chờ Phê Duyệt'";
                 $tblDN = $con->query($str);
                 $result = $tblDN->fetch_assoc(); // Lấy kết quả đếm
                 $p->dongketnoi($con);

@@ -44,6 +44,8 @@ $p = new mUser();
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <!-- Bootstrap Bundle (bao gồm Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Fontawesome CSS -->
 	<link rel="stylesheet" href="../../plugins/fontawesome/css/fontawesome.min.css">
@@ -108,7 +110,7 @@ $layYCRefuse = $p->laycot("select tenKH from khachhang where idnguoidung = '$lay
                         <!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
                         <?php
-									if(isset($_REQUEST['id']))
+									if(isset($_REQUEST['id']) || isset($_REQUEST['maYeuCau']))
 									{
 										echo '
 											<li class="nav-item dropdown has-arrow logged-item">
@@ -319,7 +321,7 @@ $layYCRefuse = $p->laycot("select tenKH from khachhang where idnguoidung = '$lay
                                             <form method="post" >
                                                 <input type="hidden" name="id" value="'.$r['maYeuCau'].'">
                                                 
-                                                <a href="../chucnang_admin/view_YeuCauHD.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
+                                                <a href="../chucnang_admin/view_YeuCauHD.php?id='.$r['maYeuCau'].'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
                                             </form>  
                                         </td>';
                                         echo '</tr>';
@@ -417,7 +419,7 @@ $layYCRefuse = $p->laycot("select tenKH from khachhang where idnguoidung = '$lay
 										<th>Số Lượng Sân</th>
 										<th>Địa chỉ</th>
 										<th>Trạng Thái</th>
-										<th>Hành Động</th>
+										<!-- <th>Hành Động</th> -->
 									</tr>
 								</thead>
                                 <tbody>
@@ -433,12 +435,12 @@ $layYCRefuse = $p->laycot("select tenKH from khachhang where idnguoidung = '$lay
                                         echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;">'.$r['diaChi'].'</a></td>';
                                         echo '<td><a href="?id='.$r['maYeuCau'].'" style="text-decoration:none; color: black;"><b>'.$r['trangThai'].'</b></a></td>';
                                         
-                                        echo '<td>
-                                            <form method="post"">
-                                                <input type="hidden" name="id" value="'.$r['maYeuCau'].'">
-                                                <a href="../chucnang_admin/view_YeuCauHD.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
-                                            </form>  
-                                        </td>';
+                                        // echo '<td>
+                                        //     <form method="post"">
+                                        //         <input type="hidden" name="id" value="'.$r['maYeuCau'].'">
+                                        //         <a href="../chucnang_admin/view_YeuCauHD.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT</a>
+                                        //     </form>  
+                                        // </td>';
                                         echo '</tr>';
                                         $dem++;
                                     }

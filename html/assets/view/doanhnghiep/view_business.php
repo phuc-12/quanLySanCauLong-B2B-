@@ -32,7 +32,7 @@
                 <form method="post" onsubmit="return confirmDelete();">
                 <input type="hidden" name="id" value="'.$r['maDN'].'">
                     <input type="submit" name="btnxoa" value="XÓA" class="btn btn-danger btn-sm" style="padding: 10px 0;height: 45px; width: 120px; background-color: red; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">
-					<a href="../chucnang_admin/view_updateDN.php?id='.$layid.'" style="padding: 10px 0;height: 45px; width: 120px; background-color: #097E52; color: white; text-align: center; border-radius: 5px; text-decoration: none; border: 0; font-weight: 700; display: inline-block;">CHI TIẾT  
+					  
 				</form>  
                 </td>';
             echo '</tr>';

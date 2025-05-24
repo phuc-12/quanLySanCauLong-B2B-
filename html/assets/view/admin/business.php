@@ -44,6 +44,8 @@ $p = new mUser();
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <!-- Bootstrap Bundle (bao gồm Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Fontawesome CSS -->
 	<link rel="stylesheet" href="../../plugins/fontawesome/css/fontawesome.min.css">

@@ -1,7 +1,10 @@
 <?php
+session_start();
 error_reporting(0);
 include_once("assets/model/mUser.php");
 $p = new mUser();
+$_SESSION['idnguoidung'] = $_REQUEST['id'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -38,7 +41,7 @@ $p = new mUser();
     <meta property="og:title" content="DreamSports -  Booking Coaches, Venue for tournaments, Court Rental template">
     <meta property="og:description"
         content="Elevate your badminton business with Dream Sports template. Empower coaches & players, optimize court performance and unlock industry-leading success for your brand.">
-    <meta property="og:image" content="../assets/img/meta-image.jpg">
+    <meta property="og:image" content="		assets/img/meta-image.jpg">
     <meta property="og:image:secure_url" content="assets/img/meta-image.jpg">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
@@ -50,6 +53,8 @@ $p = new mUser();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<!-- Bootstrap Bundle (bao gồm Popper.js) -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
@@ -66,12 +71,22 @@ $p = new mUser();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/chatbox.css">
+
+	<!-- chatbox  -->
+	 
+	<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+	<!-- <script src="assets/js/chatbox/server.js"></script> -->
+	
+
 </head>
 
 <body>
     <?php
 	$layid = $_REQUEST['id'];
-	$layten = $p->laycot("select tenDN from doanhnghiep where maDN = '$layid' limit 1");
+	$laytenND = $p->laycot("SELECT tenDN FROM doanhnghiep WHERE idnguoidung = $layid LIMIT 1");
+	$laymaDN = $p->laycot("select maDN from doanhnghiep where idnguoidung = $layid limit 1");
+	$laytenDN = $p->laycot("select tenDN from doanhnghiep where idnguoidung =$layid limit 1");
+	$laymaKH = $p->laycot("select maKH from khachhang where idnguoidung=$layid limit 1");
 	?>
     <!-- <div id="global-loader">
         <div class="loader-img">
@@ -116,7 +131,6 @@ $p = new mUser();
 									if(isset($_REQUEST['id']))
 									{
 										echo '
-							
 											<li class="nav-item dropdown has-arrow logged-item">
 												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
 													<span class="user-img">
@@ -129,8 +143,8 @@ $p = new mUser();
 															<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
 														</div>
 														<div class="user-text">
-															<h6>'.$layten.'</h6>
-															
+															<h6>'.$laytenND.'</h6>
+															<a href="assets/view/doanhnghiep/view_updateDN.php?id='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
 														</div>
 													</div>
 													
@@ -393,24 +407,21 @@ $p = new mUser();
 			</label>
 			<div class="wrapper">
 				<div class="head-text">
-					Bắt đầu chat? - Online
+					Doanh Nghiệp Chat
 				</div>
+				<div id="head-text">Chưa chọn khách hàng</div>
+				<!-- <ul id="requests"></ul> -->
 				<div class="chat-box">
-					<div class="desc-text">
-					Điền đầy đủ để bắt đầu chat.
-					</div>
-					<form action="#">
+					<ul id="requests"></ul>
+					<form action="" id="chatForm">
 					<div class="field">
-						<input type="text" placeholder="Tên bạn" required>
-					</div>
-					<div class="field">
-						<input type="email" placeholder="Email" required>
-					</div>
-					<div class="field textarea">
-						<textarea cols="30" rows="10" placeholder="Yêu cầu của bạn là gì?" required></textarea>
+						<input type="hidden" name="maKH" id="maKH" value="<?php echo $laymaKH ?>">
+						<input type="text" id="replyText" name="replyText" placeholder="Phản hồi..." autocomplete="off">
 					</div>
 					<div class="field">
-						<button type="submit">Bắt Đầu</button>
+						<input type="hidden" name="maDN" id="maDN" value="<?php echo $laymaDN ?>">
+						
+						<button type="submit">Gửi phản hồi</button>
 					</div>
 					</form>
 				</div>
@@ -440,6 +451,18 @@ $p = new mUser();
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
         data-cf-beacon='{"rayId":"92a5cd62af4a1a5b","version":"2025.3.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}'
         crossorigin="anonymous"></script>
+
+	<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const maDN = "<?php echo $laymaDN ?>";
+		// console.log("Doanh nghiệp online:", maDN);
+	});
+	</script>
+	<script>
+    const maDN = "<?php echo $laymaDN; ?>";
+    console.log("maDN:", maDN);
+</script>
+<script src="/quanLySanCauLong-B2B-/html/assets/js/chatbox/business.js"></script>
 </body>
 
 <!-- Mirrored from dreamsports.dreamstechnologies.com/html/user-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:32:23 GMT -->
@@ -450,5 +473,5 @@ function showTab(tabName) {
     document.getElementById('tab-khachhang').style.display = (tabName === 'khachhang') ? 'block' : 'none';
     document.getElementById('tab-doanhnghiep').style.display = (tabName === 'doanhnghiep') ? 'block' : 'none';
 }
-</script>
+</scrip>
 </html>
