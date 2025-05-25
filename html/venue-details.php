@@ -381,6 +381,9 @@ $idnguoidung = $_SESSION['idnguoidung'];
 			$laygiagiovang=$p->SelectCot("SELECT giaGioVang FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laymakh=$p->SelectCot("SELECT maKH FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
 			$_SESSION['maKH'] = $laymakh;
+			$laytenkh=$p->SelectCot("SELECT tenKH FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
+			$layemail=$p->SelectCot("SELECT email FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
+			$laysodienthoai=$p->SelectCot("SELECT soDienThoai FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
 		?>
 
 		<div class="main-gallery-slider owl-carousel owl-theme">
@@ -499,7 +502,7 @@ $idnguoidung = $_SESSION['idnguoidung'];
 						<div class="venue-options white-bg mb-4">
 							<ul class="clearfix">
 								<li class="active"><a href="#overview">Chọn Khung Giờ</a></li>
-								<li><a href="#includes">Bao Gồm</a></li>
+								<li><a href="#includes">Thuê Dài Hạn</a></li>
 								<li><a href="#rules">Quy Tắc</a></li>
 								<li><a href="#amenities">Tiện Nghi</a></li>
 								<li><a href="#gallery">Phòng Trưng Bày</a></li>
@@ -624,20 +627,125 @@ $idnguoidung = $_SESSION['idnguoidung'];
 							<div class="accordion-item mb-4" id="includes">
 							    <h4 class="accordion-header" id="panelsStayOpen-includes">
 							      	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-							        	 Bao Gồm
+							        	 Thuê Dài Hạn
 							      	</button>
 							    </h4>
 							    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-includes">
 							      	<div class="accordion-body">
-							        	<ul class="clearfix">
-							        		<li><i class="feather-check-square"></i>Vợt cầu lông không giới hạn</li>
-							        		<!-- <li><i class="feather-check-square"></i>Bats</li> -->
-							        		<!-- <li><i class="feather-check-square"></i>Máy đánh cầu</li> -->
-							        		<li><i class="feather-check-square"></i>Nhiều sân</li>
-							        		<li><i class="feather-check-square"></i>Người hướng dẫn</li>
-							        		<li><i class="feather-check-square"></i>Thuê vợt nhanh chóng</li>
-							        		<li><i class="feather-check-square"></i>Sách sẽ</li>
-							        	</ul>
+							        	<form method="post" enctype="multipart/form-data" name="form1" id="form1">
+											<div class="mb-10">
+												<label for="name" class="form-label">Họ tên</label>
+												<input type="text" class="form-control" id="name" value="<?php echo $laytenkh ?>">
+											</div>
+											<div class="mb-10">
+												<label for="email" class="form-label">Email</label>
+												<input type="email" class="form-control" id="email" value="<?php echo $layemail ?>">
+											</div>
+											<div class="mb-10">
+												<label for="name" class="form-label">Số điện thoại</label>
+												<input type="text" class="form-control" id="phonenumber" value="<?php echo $laysodienthoai ?>">
+											</div>
+											<div class="mb-10">
+												<label for="name" class="form-label">Số lượng sân</label>
+												<input type="text" class="form-control" id="soluong" name="soluong" value="" placeholder="... sân">
+											</div>
+											<div class="mb-10">
+												<label for="date" class="form-label">Ngày bắt đầu</label>
+												<div class="form-icon">
+													<input type="date" class="form-control " placeholder="Chọn ngày" id="date_start" name="date_start">
+													<!-- <span class="cus-icon">
+														<i class="feather-calendar"></i>
+													</span> -->
+												</div>
+											</div>
+											<div class="mb-10">
+												<label for="date" class="form-label">Ngày kết thúc</label>
+												<div class="form-icon">
+													<input type="date" class="form-control " placeholder="Chọn ngày" id="date_end" name="date_end">
+													<!-- <span class="cus-icon">
+														<i class="feather-calendar"></i>
+													</span> -->
+												</div>
+											</div>
+											<div class="mb-10">
+												<label for="comments" class="form-label">Ghi chú</label>
+												<textarea class="form-control" id="comments" rows="3" id="ghichu" name="comments" placeholder="Nhập các thứ trong tuần"></textarea>
+											</div>
+											<!-- <div class="">
+												<label class="form-label">Number of Guests</label>
+												<div class="input-group">
+													<input type="number" class="form-control" value="1" readonly>
+													<input type="number" class="form-control active" value="2" readonly>
+													<input type="number" class="form-control" value="3" readonly>
+													<input type="number" class="form-control" value="4" readonly>
+												</div>
+											</div> -->
+											<div class="form-check d-flex justify-content-start align-items-center policy">
+												<div class="d-inline-block">
+													<input class="form-check-input" type="checkbox" value="" id="policy" checked>
+												</div>
+												<label class="form-check-label" for="policy">Bằng cách nhấp vào 'Gửi yêu cầu', tôi đồng ý với Chính sách bảo mật và Điều khoản sử dụng của Dreamsport</label>
+											</div>
+											<div class="d-grid btn-block">
+												<input type="submit" class="btn btn-secondary d-inline-flex justify-content-center align-items-center" name="btnthemyeucau" value="Gửi Yêu Cầu">
+											</div>
+														
+											<?php
+												error_reporting(1);        
+												switch($_REQUEST['btnthemyeucau'])
+												{
+													case 'Gửi Yêu Cầu':
+													{
+														// echo "hy sinh";
+														$maKH=$laymakh;
+														$maSan=$laymasan;
+														$thoiGianBatDau=$_REQUEST['date_start'];
+														$thoiGianKetThuc=$_REQUEST['date_end'];
+														$soLuongSan=$_REQUEST['soluong'];
+														$ghiChu=$_REQUEST['comments'];
+														$trangThai="Chờ duyệt";
+														
+														if($maKH !='' && $maSan !=''&& $thoiGianBatDau!='' && $thoiGianKetThuc!=''&& $soLuongSan !='' && $ghiChu!=''&& $trangThai!='')
+														{
+															$conn = new mysqli('localhost','cnm','123','sancaulong');
+															if ($conn->connect_error) {
+																die("Connection failed: " . $conn->connect_error);
+															}
+																
+															if($conn)
+															{
+																// Chuyển định dạng ngày nếu cần thiết
+																
+																$str = "INSERT INTO hopdong (maKH,maSan,thoiGianBatDau,thoiGianKetThuc,soLuongSan,ghiChu,trangThai) VALUES ('$maKH','$maSan','$thoiGianBatDau','$thoiGianKetThuc','$soLuongSan','$ghiChu','$trangThai')";
+																
+																if ($conn->query($str) === TRUE) {
+																	if ($conn->affected_rows > 0) {
+																		echo "<script>alert('Gửi yêu cầu thành công!');</script>";
+																		echo'<script language="javascript">
+																				window.location="venue-details.php?maSan='.$laymasan.'";
+																				</script>';
+																	} else {
+																		echo "<script>alert('không có Khách Hàng nào được thêm!');</script>";
+																	}
+																} 
+																else 
+																{
+																	echo "Lỗi khi gửi yêu cầu" . $conn->error;
+																}
+																$conn->close();
+															}
+														}
+														else
+														{
+															echo "<script>alert('Vui lòng điền đầy đủ thông tin!');</script>";
+															
+														}
+														break;
+													}
+						
+												}
+											?>
+										</form>
 							      	</div>
 							    </div>
 							</div>
@@ -930,13 +1038,7 @@ $idnguoidung = $_SESSION['idnguoidung'];
 								<a href="coach-details.html" class="btn btn-secondary d-inline-flex justify-content-center align-items-center"><i class="feather-calendar"></i>Book Now</a>
 							</div> -->
 						</div>
-						<?php
 						
-							$laytenkh=$p->SelectCot("SELECT tenKH FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
-							$layemail=$p->SelectCot("SELECT email FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
-							$laysodienthoai=$p->SelectCot("SELECT soDienThoai FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
-						
-						?>
 						<div class="white-bg">
 							<h4 class="border-bottom">Thông tin đặt sân</h4>
 							<form>
