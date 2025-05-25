@@ -27,7 +27,7 @@
             $conn = $p->moketnoi();
             if($conn)
             {
-                $sql = "SELECT b.maDat, s.tenSan, t.start_time, t.end_time, b.ngayTao, b.gia, b.status FROM bookings b join time_slots t on b.time_slot_id=t.id join thongtinsan s on b.maSan=s.maSan WHERE maKH = '$maKH' AND b.status = 'booked' ORDER BY maDat desc";
+                $sql = "SELECT b.maDat, s.tenSan, t.start_time, t.end_time, b.ngayTao, b.gia, b.status, b.ngayDat FROM bookings b join time_slots t on b.time_slot_id=t.id join thongtinsan s on b.maSan=s.maSan WHERE maKH = '$maKH' AND b.status = 'booked' ORDER BY maDat desc";
                 $tblBook = $conn->query($sql);
                 $p->dongketnoi($conn);
                 return $tblBook;
