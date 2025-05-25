@@ -1,5 +1,4 @@
 <?php
-
     include_once("../../controller/cUser.php");
     $p = new CUser();
     $tblKH = $p->getALLKHTop5();

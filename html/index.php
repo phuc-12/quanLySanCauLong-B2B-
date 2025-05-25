@@ -5,7 +5,7 @@ session_start();
 // error_reporting(0);
 $_SESSION['idnguoidung'] = $_REQUEST['id'];
 $maDN = $_SESSION['maDN'];
-// $maKH = $_SESSION['maKH'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -292,35 +292,10 @@ $laytenDN = $p->laycot("select tenDN from doanhnghiep limit 1");
 								<h1>Chọn <span>Sân Cầu Lông Tốt</span> Và Bắt Đầu Hành Trình Rèn Luyện</h1>
 								<p class="sub-info">Giải phóng tiềm năng thể thao của bạn với cơ sở vật chất hiện đại và dịch vụ chuẩn thi đấu.</p>
 								<div class="search-box">
-									<form action="coaches-grid.php"> 
+									<form action="assets/view/khachhang/timKiemSan.php?action=timkiem" method="GET"> 
 										<div class="search-input line">
-											<div class="form-group mb-0">
-												<!-- <label>Tìm Kiếm</label> -->
-												<!-- <select class="select">
-													<option>Sân Cầu</option>
-													<option>...</option>
-												</select> -->
-												<div class="search-input-text">
-													<input type="text">
-												</div>
-											</div>
-										</div>
-										<!-- <div class="search-input">
-											<div class="form-group mb-0">
-												
-												<select class="form-control select">				
-													<option value="">Chọn Khu Vực</option>
-													<option>Gò Vấp</option>
-													<option>Bình Thạnh</option>
-													<option>Quận 12</option>
-													<option>Tân Phú</option>
-													<option>Tân Bình</option>
-													<option>...</option>
-												</select>
-											</div>
-										</div> -->
-										<div class="search-btn">
-											<button class="btn" type="submit"><i class="feather-search"></i><span class="search-text">Search</span></button>
+											<input type="text" name="keyword" placeholder="Nhập tên sân">
+											<button type="submit" id="btn" name="btn">Tìm kiếm</button>
 										</div>
 									</form>
 								</div>

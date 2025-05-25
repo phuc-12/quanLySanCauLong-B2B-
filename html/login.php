@@ -192,6 +192,7 @@ if (isset($_POST['btn-dangnhap']) && $_POST['btn-dangnhap'] == 'Đăng nhập') 
             $_SESSION['username'] = $row['username'];
             $_SESSION['passwords'] = $row['passwords'];
             $_SESSION['loainguoidung'] = $row['loainguoidung'];
+            $_SESSION['maDN'] = $row['maDN'];
 
             $id = $row['idnguoidung'];
 			var_dump($row['loainguoidung']);

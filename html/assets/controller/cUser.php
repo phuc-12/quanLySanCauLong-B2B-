@@ -1,5 +1,5 @@
 <?php
-include_once('../model/mUser.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . "/quanLySanCauLong-B2B-/html/assets/model/mUser.php");
 class CUser
 {
     //count customer
@@ -178,7 +178,43 @@ class CUser
 				return false;
 			}
 		}   
-      
-        
+    public function timKiem($keyword) {
+        $p = new mUser();
+
+        // Call the model's search function and get the results
+        return $p->timKiemSan($keyword); // Call the method directly on $p
+    
+    }
+    ///doanh nghiep
+    public function getALLReqDN()
+        {
+            $p = new mUser();
+            $tblReq = $p->SelectAllReqDN();
+            if($tblReq){ 
+                if($tblReq>0){
+                    return $tblReq;
+                }else{
+                    return -1; //không có dữ liệu trong bảng
+                }
+            }else{
+                return false;
+            }
+            
+        }
+    public function getCountALLReqDN()
+        {
+            $p = new mUser();
+            $tblReq = $p->selectCountReqDN();
+            if($tblReq){ 
+                if($tblReq>0){
+                    return $tblReq;
+                }else{
+                    return -1; //không có dữ liệu trong bảng
+                }
+            }else{
+                return false;
+            }
+            
+        }
 }
 ?>
