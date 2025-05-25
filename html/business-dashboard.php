@@ -213,7 +213,7 @@ $_SESSION['idnguoidung'] = $_REQUEST['id'];
 									</a>
 								</li> -->
                                 <li>
-                                    <a href="assets/view/admin/customer.php?id=<?php echo $layid ?>">
+                                    <a href="assets/view/doanhnghiep/view_dangKyHoatDong.php?id=<?php echo $layid ?>">
                                         <i class="fa fa-address-card-o" style="font-size: 29px;"></i>
                                         <br><span>ĐĂNG KÝ SÂN</span>
                                     </a>

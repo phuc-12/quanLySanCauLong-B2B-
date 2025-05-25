@@ -1,8 +1,8 @@
 <?php
-// session_start();
+session_start();
 error_reporting(1);
 include_once("../../model/mUser.php");
-$k = new mUser();
+$p = new mUser();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,16 +69,16 @@ $k = new mUser();
 <body>
 <?php
 $layid = $_REQUEST['id'];
-$layMaYC = $k->laycot("SELECT maYeuCau FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
-$layTenSan = $k->laycot("SELECT tenSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
-$laySoLuongSan = $k->laycot("SELECT soLuongSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
-$layGioMoCua = $k->laycot("SELECT gioMoCua FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
-$layGiaMacDinh = $k->laycot("SELECT giaMacDinh FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
-$layGiaGioVang = $k->laycot("SELECT giaGioVang FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
-$layDiaChi = $k->laycot("SELECT diaChi FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
-$layHinhAnh = $k->laycot("SELECT hinhAnhSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
-$layCCCD = $k->laycot("SELECT CCCD FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
-$layTenChuSan = $k->laycot("SELECT tenChuSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layMaYC = $p->laycot("SELECT maYeuCau FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layTenSan = $p->laycot("SELECT tenSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$laySoLuongSan = $p->laycot("SELECT soLuongSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layGioMoCua = $p->laycot("SELECT gioMoCua FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layGiaMacDinh = $p->laycot("SELECT giaMacDinh FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layGiaGioVang = $p->laycot("SELECT giaGioVang FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layDiaChi = $p->laycot("SELECT diaChi FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layHinhAnh = $p->laycot("SELECT hinhAnhSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layCCCD = $p->laycot("SELECT CCCD FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
+$layTenChuSan = $p->laycot("SELECT tenChuSan FROM yeucauhoatdong WHERE maYeuCau = '$layid' LIMIT 1");
 ?>
     <!-- <div id="global-loader" >
 		<div class="loader-img">

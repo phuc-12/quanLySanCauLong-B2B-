@@ -5,6 +5,8 @@
 		private $username = 'cnm';
 		private $password = '123';
 		private $database = 'sancaulong';
+
+        ///Admin
         public function select01User($user,$pw){
             $p = new clsKetNoi();
             $con = $p -> moKetNoi();
@@ -46,8 +48,9 @@
 
         public function laycot($sql)
 		{
-			$link = $this->connect();
-			$ketqua = $link->query($sql);
+            $p = new clsKetNoi();
+			$con = $p->moketnoi();
+			$ketqua = $con->query($sql);
 			$trave = '';
 
 			if($ketqua && $ketqua->num_rows > 0) {
@@ -57,6 +60,17 @@
 			}
 			return $trave;
 		}
+
+        function uploadfile($name, $tmp_name, $folder) {
+            $target = $folder . "/" . $name;
+            if (move_uploaded_file($tmp_name, $target)) {
+                return "Upload thành công!";
+            } else {
+                return "Upload thất bại tại $target";
+            }
+        }
+
+
 		//Count customer
 		public function selectCountCus()
 		{
@@ -221,7 +235,49 @@
 				return false;
 			}
 		}
-        
+        // khach hang 
+            public function timKiemSan($keyword) {
+            $p = new clsKetNoi();
+            $conn = $p->moketnoi();
+            $conn->set_charset('utf8');             
+            if ($conn) {
+                $str = "SELECT * FROM sancaulong WHERE tenMA LIKE '%$keyword%'";
+                $result = $conn->query($str);
+                $p->dongketnoi($conn);
+                return $result->fetch_all(MYSQLI_ASSOC);
+            } else {
+                return false; 
+            }
+        }
+        // Doanh Nghiep
+        public function SelectAllReqDN() {
+            $p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "select * from yeucauhoatdong y join doanhnghiep n where y.maDN = n.maDN ";
+                $tblReq = $con->query($str);
+                $p->dongketnoi($con);
+                return $tblReq;
+            }else{
+                return false;
+            }
+        }
+        public function selectCountReqDN()
+		{
+			$p = new clsKetNoi();
+            $con = $p->moketnoi();
+            $con->set_charset('utf8');
+            if($con){
+                $str = "SELECT COUNT(*) as total FROM yeucauhoatdong y join doanhnghiep n where y.maDN = n.maDN";
+                $tblDN = $con->query($str);
+                $result = $tblDN->fetch_assoc(); // Lấy kết quả đếm
+                $p->dongketnoi($con);
+                return $result['total']; // Trả về số lượng
+            } else {
+                return false;
+            }
+		}    
     }
 
 ?>

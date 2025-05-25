@@ -181,7 +181,7 @@ $laydiachi=$k->laycot("select diachi from doanhnghiep  limit 1");
                         <div class="dashboard-menu">
                             <ul>
                                 <li>
-                                    <a href="business-dashboard.php?id=<?php echo $layid ?>" class="active">
+                                    <a href="business-dashboard.php?id=<?php echo $layid ?>">
                                         <img src="../../img/icons/dashboard-icon.svg" alt="Icon">
                                         <span>TỔNG QUAN</span>
                                     </a>
