@@ -261,7 +261,10 @@ $layMaYC = $p->laycot("select maYeuCau FROM yeucauhoatdong limit 1");
                                 <!-- <?php 
                                     session_start();
                                     echo '<pre>';
-                                    print_r($_SESSION);
+                                    echo "<pre>";
+                                    print_r($_POST);
+                                    print_r($_FILES);
+                                    echo "</pre>";
                                     echo '</pre>';
                                     var_dump($layid); 
                                     var_dump($laymaDN);
@@ -328,6 +331,11 @@ $layMaYC = $p->laycot("select maYeuCau FROM yeucauhoatdong limit 1");
                                 <!-- <td style="width: 200px;"><span id="errHoTen" class="err text-danger"></span></td> -->
                             </tr>
                             <tr>
+                                <td style="width: 150px;"><label for="ngayTao">Ngày Tạo:</label></td>
+                                <td><input type="date" class="form-control" size="76" id="ngayTao" value="" name="ngayTao"></td>
+                                <!-- <td style="width: 200px;"><span id="errHoTen" class="err text-danger"></span></td> -->
+                            </tr>
+                            <tr>
                                 <td style="width: 150px;"><label for="CCCD">CCCD</label></td>
                                 <td><input type="input" class="form-control" size="76" id="CCCD" value="" name="CCCD"></td>
                                 <!-- <td style="width: 200px;"><span id="errNgaySinh" class="err text-danger"></span></td> -->
@@ -385,12 +393,13 @@ $layMaYC = $p->laycot("select maYeuCau FROM yeucauhoatdong limit 1");
                                         $diaChi = $_REQUEST['diaChi'];
                                         $tenChuSan = $_REQUEST['tenChuSan'];
                                         $CCCD = $_REQUEST['CCCD'];
+                                        $ngayTao = $_REQUEST['ngayTao'];
                                         $trangThai = 'Chờ Phê Duyệt';
-
+                                        $ngayTaoFormatted = date("Y-m-d",strtotime($ngayTao));
                                         if (
                                             $maYeuCau != '' && $maDN != '' && $tenSan != '' && $soLuongSan != '' &&
                                             $gioMoCua != '' && $giaMacDinh != '' && $giaGioVang != '' && $diaChi != '' &&
-                                            $tenChuSan != '' && $CCCD != '' && $trangThai != ''
+                                            $tenChuSan != '' && $CCCD != ''&& $ngayTaoFormatted != '' && $trangThai != '' 
                                         ) {
                                             $name = $_FILES['myfile']['name'];
                                             $type = $_FILES['myfile']['type'];
@@ -400,7 +409,7 @@ $layMaYC = $p->laycot("select maYeuCau FROM yeucauhoatdong limit 1");
                                             if (!empty($name)) {
                                                 if ($type == 'image/jpeg' || $type == 'image/png' || $type == 'image/jpg') {
                                                     $uniqueName = uniqid() . "_" . $name;
-                                                    $upload_dir = "quanLySanCauLong-B2B-/html/assets/img/venues";
+                                                    $upload_dir = $_SERVER['DOCUMENT_ROOT'] . "quanLySanCauLong-B2B-/html/assets/img/venues";
                                                     $target_path = $upload_dir . "/" . $uniqueName;
                                                     echo "Upload path: " . $target_path;
                                                     if (!is_dir($upload_dir)) {
@@ -418,6 +427,7 @@ $layMaYC = $p->laycot("select maYeuCau FROM yeucauhoatdong limit 1");
                                                     if ($upload_result === "Upload thành công!") {
                                                             // Thêm dữ liệu vào CSDL
                                                             $conn = new mysqli('localhost', 'cnm', '123', 'sancaulong');
+                                                            $conn->set_charset("utf8");
                                                             if ($conn->connect_error) {
                                                                 die("Connection failed: " . $conn->connect_error);
                                                             }
@@ -425,11 +435,11 @@ $layMaYC = $p->laycot("select maYeuCau FROM yeucauhoatdong limit 1");
                                                             $tenanh = $uniqueName;
                                                             $str = "INSERT INTO yeucauhoatdong (    
                                                                 maYeuCau, maDN, tenSan, soLuongSan, gioMoCua, giaMacDinh,
-                                                                giaGioVang, diaChi, tenChuSan, CCCD, trangThai, hinhAnhSan
+                                                                giaGioVang, diaChi, tenChuSan, hinhAnhSan , CCCD, ngayTao, trangThai
                                                             ) VALUES (
                                                                 '$maYeuCau', '$maDN', N'$tenSan', '$soLuongSan', '$gioMoCua',
-                                                                '$giaMacDinh', '$giaGioVang', N'$diaChi', N'$tenChuSan',
-                                                                '$CCCD', N'$trangThai', '$tenanh'
+                                                                '$giaMacDinh', '$giaGioVang', N'$diaChi', N'$tenChuSan',N'$tenanh',
+                                                                '$CCCD','$ngayTaoFormatted', N'$trangThai'
                                                             )";
 
                                                             if ($conn->query($str) === TRUE) {
