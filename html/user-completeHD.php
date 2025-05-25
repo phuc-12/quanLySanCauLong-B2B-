@@ -330,9 +330,9 @@
 										<div class="coach-court-list">
 											<ul class="nav">
 												<!-- <li><a href="user-bookings.html">Upcoming</a></li> -->
-												<li><a class="active" href="user-complete.php?maKH=<?php echo $_SESSION['maKH']?>">Đã Thanh Toán</a></li>
-												<li><a  href="user-uncomplete.php?maKH=<?php echo $_SESSION['maKH']?>">Chưa Thanh Toán</a></li>
-												<li><a href="user-completeHD.php?maKH=<?php echo $_SESSION['maKH']?>">Dài Hạn</a></li>
+												<li><a href="user-complete.php?maKH=<?php echo $_SESSION['maKH']?>">Đã Thanh Toán</a></li>
+												<li><a href="user-uncomplete.php?maKH=<?php echo $_SESSION['maKH']?>">Chưa Thanh Toán</a></li>
+												<li><a class="active"  href="user-completeHD.php?maKH=<?php echo $_SESSION['maKH']?>">Dài Hạn</a></li>
 											</ul>
 										</div>
 									</div>
@@ -398,7 +398,7 @@
 									<div>
 										
 											<?php
-												include_once("assets/view/sancaulong/viewlichsugd.php");
+												include_once("assets/view/sancaulong/viewlichsuhd.php");
 											?>
 
 										
@@ -410,10 +410,10 @@
 
 												if (isset($_POST['btn_xoa']) && isset($_POST['maDat'])) {
 													$maXoa = $_POST['maDat'];
-													if ($k->themxoasua("DELETE FROM bookings WHERE maDat = '$maXoa' LIMIT 1") == 1) {
+													if ($k->themxoasua("DELETE FROM hopdong WHERE maHopDong = '$maXoa' LIMIT 1") == 1) {
 														echo '<script>
 															alert("Đã hủy thành công!");
-															window.location.href="user-complete.php?maKH=' . $_SESSION['maKH'] . '";
+															window.location.href="user-completeHD.php?maKH=' . $_SESSION['maKH'] . '";
 														</script>';
 														exit();
 													} else {

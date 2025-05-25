@@ -373,6 +373,7 @@ $idnguoidung = $_SESSION['idnguoidung'];
 			$p=new tmdt();
 
 			$laymasan=$_REQUEST["maSan"];
+			$_SESSION['maSan']=$laymasan;
 			$layhinhanh=$p->SelectCot("SELECT hinhAnh FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laytensan=$p->SelectCot("SELECT tenSan FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laydiachi=$p->SelectCot("SELECT diaChi FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
@@ -699,11 +700,12 @@ $idnguoidung = $_SESSION['idnguoidung'];
 														// echo "hy sinh";
 														$maKH=$laymakh;
 														$maSan=$laymasan;
+														$ngayTao = date('Y-m-d H:i:s');
 														$thoiGianBatDau=$_REQUEST['date_start'];
 														$thoiGianKetThuc=$_REQUEST['date_end'];
 														$soLuongSan=$_REQUEST['soluong'];
 														$ghiChu=$_REQUEST['comments'];
-														$trangThai="Chờ duyệt";
+														$trangThai="chờ";
 														
 														if($maKH !='' && $maSan !=''&& $thoiGianBatDau!='' && $thoiGianKetThuc!=''&& $soLuongSan !='' && $ghiChu!=''&& $trangThai!='')
 														{
@@ -711,12 +713,12 @@ $idnguoidung = $_SESSION['idnguoidung'];
 															if ($conn->connect_error) {
 																die("Connection failed: " . $conn->connect_error);
 															}
-																
+															$conn->set_charset("utf8");	
 															if($conn)
 															{
 																// Chuyển định dạng ngày nếu cần thiết
 																
-																$str = "INSERT INTO hopdong (maKH,maSan,thoiGianBatDau,thoiGianKetThuc,soLuongSan,ghiChu,trangThai) VALUES ('$maKH','$maSan','$thoiGianBatDau','$thoiGianKetThuc','$soLuongSan','$ghiChu','$trangThai')";
+																$str = "INSERT INTO hopdong (maKH,maSan,ngayTao,thoiGianBatDau,thoiGianKetThuc,soLuongSan,ghiChu,trangThai) VALUES ('$maKH','$maSan','$ngayTao','$thoiGianBatDau','$thoiGianKetThuc','$soLuongSan','$ghiChu','$trangThai')";
 																
 																if ($conn->query($str) === TRUE) {
 																	if ($conn->affected_rows > 0) {
@@ -1009,15 +1011,6 @@ $idnguoidung = $_SESSION['idnguoidung'];
 						<!-- Accordian Contents -->
 					</div>
 					<aside class="col-12 col-sm-12 col-md-12 col-lg-4 theiaStickySidebar">
-						<div class="white-bg d-flex justify-content-start align-items-center availability">
-							<div>
-								<span class="icon-bg"><img class="img-fluid" alt="Icon" src="assets/img/icons/head-calendar.svg"></span>
-							</div>
-							<div>
-								<h4>Khả dụng</h4>
-								<p class="mb-0">Kiểm tra tình trạng phòng trống vào thời gian thuận tiện của bạn</p>
-							</div>
-						</div>
 						<div class="white-bg book-court">
 							<h4 class="border-bottom">Đặt sân trực tiếp</h4>
 							<h5 class="d-inline-block"><?php echo $laytensan ?></h5><p class="d-inline-block">, có sẵn ngay bây giờ</p>
@@ -1132,6 +1125,61 @@ $idnguoidung = $_SESSION['idnguoidung'];
 								</div>
 							</form>
 						</div>
+						<div class="white-bg justify-content-start align-items-center availability">
+							
+							<form method="POST" action=""></form>
+								<div style="float:left;">
+									<span class="icon-bg"><img class="img-fluid" alt="Icon" src="assets/img/icons/head-calendar.svg"></span>
+								</div>
+								<div style="float:left;">
+									<h4>Khả dụng</h4>
+									<p class="mb-0">Kiểm tra tình trạng lịch đặt sắp tới của bạn</p>
+								</div>
+									<table style="border: 1px solid grey; width: 100%; margin-bottom: 20px;">
+										<thead>
+											<tr style="border: 1px solid grey">
+												<td style="border: 1px solid grey" align="center"><b>STT</b></td>
+												<td style="border: 1px solid grey" align="center"><b>Bắt đầu</b></td>
+												<td style="border: 1px solid grey" align="center"><b>Kết thúc</b></td>
+												<td style="border: 1px solid grey" align="center"><b>Giá</b></td>
+												<!-- <td style="border: 1px solid grey" align="center"></td> -->
+											</tr>
+										</thead>
+										<tbody>
+											<?php
+												include_once("assets/view/sancaulong/viewkhadung.php");
+											?>
+										</tbody>
+									</table>
+							</form>
+							<form method="POST" action="" ></form>
+								<div style="float:left;">
+									<span class="icon-bg"><img class="img-fluid" alt="Icon" src="assets/img/icons/head-calendar.svg"></span>
+								</div>
+								<div style="float:left;">
+									<h4>Dài hạn</h4>
+									<p class="mb-0">Kiểm tra tình trạng lịch đặt dài hạn</p>
+								</div>
+									<table style="border: 1px solid grey; width: 100%;">
+										<thead>
+											<tr style="border: 1px solid grey">
+												<td style="border: 1px solid grey" align="center"><b>STT</b></td>
+												<td style="border: 1px solid grey" align="center"><b>Bắt đầu</b></td>
+												<td style="border: 1px solid grey" align="center"><b>Kết thúc</b></td>
+												<td style="border: 1px solid grey" align="center"><b>Số lượng</b></td>
+												<td style="border: 1px solid grey" align="center"><b>Ghi chú</b></td>
+												<!-- <td style="border: 1px solid grey" align="center"></td> -->
+											</tr>
+										</thead>
+										<tbody>
+											<?php
+												include_once("assets/view/sancaulong/viewhopdong.php");
+											?>
+										</tbody>
+									</table>
+							</form>
+						</div>
+						
 						<div class="white-bg cage-owner-info">
 							<h4 class="border-bottom">Chi Tiết Chủ Sân</h4>
 							<div class="d-flex justify-content-start align-items-center">
