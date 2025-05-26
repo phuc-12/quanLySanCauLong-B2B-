@@ -272,12 +272,12 @@ $p = new mUser();
 					<div class="col-lg-12">
 						<div class="dashboard-menu">
 							<ul>
-								<li>
+								<!-- <li>
 									<a href="user-dashboard.html">
 										<img src="assets/img/icons/dashboard-icon.svg" alt="Icon">
 										<span>Tổng Quan</span>
 									</a>
-								</li>
+								</li> -->
 								<li>
 									<a href="user-profile.php" class="active">
 										<img src="assets/img/icons/profile-icon.svg" alt="Icon">

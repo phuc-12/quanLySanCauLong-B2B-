@@ -57,7 +57,7 @@ session_start();
 
 	<!-- JS -->
 	<script src="assets/js/jquery-3.7.1.min.js"></script>
-	<!-- <script src="assets/js/register.js"></script> -->
+	<script src="assets/js/register.js"></script>
 
 </head>
 
@@ -132,6 +132,7 @@ session_start();
 															<div class="group-img">
 																<i class="feather-user"></i>
 																<input type="text" class="form-control" placeholder="Username" name="txtUsername">
+																<!-- <div ><span id="errUsername" class="err text-danger">*<b style="font-size: 20px; color: red;"></b></span></div> -->
 															</div>
 														</div>
 														<div class="form-group">
