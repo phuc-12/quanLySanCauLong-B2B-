@@ -178,12 +178,21 @@ class CUser
 				return false;
 			}
 		}   
-    public function timKiem($keyword) {
+    // public function timKiem($keyword) {
+    //     $p = new mUser();
+
+    //     // Call the model's search function and get the results
+    //     return $p->timKiemSan($keyword); // Call the method directly on $p
+    
+    // }
+
+    public function searchAction($keyword)
+    {
+        // Create an instance of the MMonAnTrangChu model
         $p = new mUser();
 
         // Call the model's search function and get the results
-        return $p->timKiemSan($keyword); // Call the method directly on $p
-    
+        return $p->searchSan($keyword); // Call the method directly on $p
     }
     ///doanh nghiep
     public function getALLReqDN()

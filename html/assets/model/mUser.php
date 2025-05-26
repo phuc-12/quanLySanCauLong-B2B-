@@ -236,19 +236,41 @@
 			}
 		}
         // khach hang 
-            public function timKiemSan($keyword) {
+        //     public function timKiemSan($keyword) {
+        //     $p = new clsKetNoi();
+        //     $conn = $p->moketnoi();
+        //     $conn->set_charset('utf8');             
+        //     if ($conn) {
+        //         $str = "SELECT * FROM sancaulong WHERE tenMA LIKE '%$keyword%'";
+        //         $result = $conn->query($str);
+        //         $p->dongketnoi($conn);
+        //         return $result->fetch_all(MYSQLI_ASSOC);
+        //     } else {
+        //         return false; 
+        //     }
+        // }
+
+         public function searchSan($keyword)
+        {
+            // Create a new database connection object
             $p = new clsKetNoi();
             $conn = $p->moketnoi();
-            $conn->set_charset('utf8');             
-            if ($conn) {
-                $str = "SELECT * FROM sancaulong WHERE tenMA LIKE '%$keyword%'";
-                $result = $conn->query($str);
+            $conn->set_charset('utf8'); // Set the charset for the connection
+
+            // If the connection is established
+            if($conn)
+            {
+                $sql = "SELECT * FROM thongtinsan WHERE tenSan LIKE '%$keyword%'";
+                $tblSCL = $conn->query($sql);
                 $p->dongketnoi($conn);
-                return $result->fetch_all(MYSQLI_ASSOC);
-            } else {
-                return false; 
+                return $tblSCL;
+            }
+            else 
+            {
+                return false;
             }
         }
+
         // Doanh Nghiep
         public function SelectAllReqDN() {
             $p = new clsKetNoi();

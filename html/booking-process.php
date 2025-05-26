@@ -35,7 +35,7 @@ if ($count > 0) {
 } else {
     $ngayTao = date('Y-m-d H:i:s');
 
-    $insert = $conn->prepare("INSERT INTO bookings (maSan, time_slot_id, ngayDat, status, ngayTao, maKH, gia) VALUES (?, ?, ?, 'booking', ?,?,?)");
+    $insert = $conn->prepare("INSERT INTO bookings (maSan, time_slot_id, soLuong, ngayDat, status, ngayTao, maKH, gia) VALUES (?, ?, 1, ?, 'booking', ?,?,?)");
     $insert->bind_param("iissid", $maSan, $slot_id, $ngayDat, $ngayTao, $maKH, $gia);
     $insert->execute();
 

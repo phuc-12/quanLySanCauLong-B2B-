@@ -25,6 +25,27 @@
             }
         }
 
+        public function getAllHDBymaSan($maSan)
+        {
+            $p = new mHopDong();
+            $tblSCL = $p->SelectAllHDBymaSan( $maSan);
+            if($tblSCL)
+            {
+                if($tblSCL->num_rows>0)
+                {
+                    return $tblSCL;
+                } 
+                else 
+                {
+                    return -1;
+                }
+            } 
+            else 
+            {
+                return false;
+            }
+        }
+
         public function getAllHD($maKH)
         {
             $p = new mHopDong();

@@ -66,6 +66,27 @@
                 return false;
             }
         }
+
+        public function getBook()
+        {
+            $p = new mBooking();
+            $tblBook = $p->SelectAllBook();
+            if($tblBook)
+            {
+                if($tblBook->num_rows>0)
+                {
+                    return $tblBook;
+                }
+                else 
+                {
+                    return -1;
+                }
+            }
+            else 
+            {
+                return false;
+            }
+        }
     }
 
 ?>
