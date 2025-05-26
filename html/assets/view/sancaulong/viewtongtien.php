@@ -16,10 +16,12 @@
         }
         else 
         {
+            $tiengio = 0;
             $tongtien = 0;
             while($r = $tblBook->fetch_assoc())
             {
-                $tongtien=$tongtien+$r['gia'];
+                $tiengio = $r['gia']*$r['soLuong'];
+                $tongtien=$tongtien+$tiengio;
             }
             echo '<span style="test: 50px;color:red"><b>TỔNG: '.$tongtien.'.000đ</b></span>';
             // $_SESSION['tongtien']=$tongtien*1000;

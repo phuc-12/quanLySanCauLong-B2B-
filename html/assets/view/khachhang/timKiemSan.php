@@ -1,7 +1,7 @@
 <?php
 session_start();
 // error_reporting(0);
-$_SESSION['idnguoidung'] = $_REQUEST['id'];
+$idnguoidung = $_SESSION['idnguoidung'];
 $maDN = $_SESSION['maDN'];
 
 ?>
@@ -274,11 +274,9 @@ $laytenDN = $a->laycot("select tenDN from doanhnghiep limit 1");
 								<h1>Chọn <span>Sân Cầu Lông Tốt</span> Và Bắt Đầu Hành Trình Rèn Luyện</h1>
 								<p class="sub-info">Giải phóng tiềm năng thể thao của bạn với cơ sở vật chất hiện đại và dịch vụ chuẩn thi đấu.</p>
 								<div class="search-box">
-									<form action="timKiemSan.php?id=<?php echo $layid?>" method="GET"> 
-										<div class="search-input line">
-											<input type="text" name="keyword" placeholder="Nhập tên sân">
-											<button type="submit">Tìm kiếm</button>
-										</div>
+									<form action="timKiemSan.php" method="GET">
+										<input type="search" name="keyword" placeholder="Bạn cần tìm gì" autocomplete="off" required>
+										<input type="submit" name="btn" id="btn" value="Search">
 									</form>
 								</div>
 							</div>
@@ -294,93 +292,90 @@ $laytenDN = $a->laycot("select tenDN from doanhnghiep limit 1");
 		</section>
 		<!-- /Hero Section -->
         <!-- search  -->
-        <section class="section featured-venues">
-			<div class="container">
+        <section class="section featured-venues" >
+			<div class="container" style="height: 800px">
 				<div class="section-heading aos" data-aos="fade-up">
-					<h2><span>Địa Điểm</span> Nổi Bật</h2>
-					<p class="sub-title">Các địa điểm thể thao tiên tiến cung cấp cơ sở vật chất mới nhất, môi trường năng động và độc đáo để nâng cao hiệu suất chơi cầu lông.</p>
+					<h2><span>Địa Điểm Liên Quan</span></h2>
+					<!-- <p class="sub-title">Các địa điểm thể thao tiên tiến cung cấp cơ sở vật chất mới nhất, môi trường năng động và độc đáo để nâng cao hiệu suất chơi cầu lông.</p> -->
 				</div>
 				<div class="row">
 			        <div class="featured-slider-group ">
 			        	<div class="owl-carousel featured-venues-slider owl-theme">
-                        <?php
-                        if (isset($_GET['btn'])) {
-                            $keyword = $_GET['keyword'];  // Get the search query from the GET parameter
-                            include_once("../../controller/cUser.php");  // Include the controller
+							<?php
+								if (isset($_GET['btn'])) {
+									$keyword = $_GET['keyword'];  // Get the search query from the GET parameter
+									include_once("../../controller/cUser.php");  // Include the controller
 
-                            // Create a controller object and call the searchAction method
-                            $p = new CUser();
-                            $timSan = $p->timKiem($keyword);  // Pass the search term to the controller's searchAction
-                        }
+									// Create a controller object and call the searchAction method
+									$p = new CUser();
+									$timSan = $p->searchAction($keyword);  // Pass the search term to the controller's searchAction
+								}
 
-                        if (!empty($timSan)) { ?>
-                        <h3>Kết quả tìm kiếm:</h3>
-                            <?php 
-                            if (count($ketqua) > 0): ?>
-                                <div class="row">
-                                    <?php foreach ($ketqua as $r): ?>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="featured-venues-item aos" data-aos="fade-up">
-                                                <div class="listing-item mb-0">										
-                                                    <div class="listing-img">
-                                                        <a href="../../../venue-details.php?maSan=<?= $r['maSan'] ?>">
-                                                            <img src=../../img/venues/<?= htmlspecialchars($r['hinhAnh']) ?>" alt="Venue">
-                                                        </a>
-                                                        <div class="fav-item-venues">
-                                                            <span class="tag tag-blue"><?= htmlspecialchars($r['trangThai']) ?></span>		
-                                                            <h5 class="tag tag-primary"><?= htmlspecialchars($r['giaMacDinh']) ?><span>/Giờ</span></h5>
-                                                        </div>
-                                                    </div>										
-                                                    <div class="listing-content">
-                                                        <div class="list-reviews">							
-                                                            <div class="d-flex align-items-center">
-                                                                <span class="rating-bg">4.2</span><span>300 Reviews</span> 
-                                                            </div>
-                                                            <a href="javascript:void(0)" class="fav-icon">
-                                                                <i class="feather-heart"></i>
-                                                            </a>
-                                                        </div>	
-                                                        <h3 class="listing-title">
-                                                            <a href="../../../venue-details.php?maSan=<?= $r['maSan'] ?>"><?= htmlspecialchars($r['tenSan']) ?></a>
-                                                        </h3>
-                                                        <div class="listing-details-group">
-                                                            <p><?= htmlspecialchars($r['moTa']) ?></p>
-                                                            <ul>
-                                                                <li>
-                                                                    <span>
-                                                                        <i class="feather-map-pin"></i> <?= htmlspecialchars($r['diaChi']) ?>
-                                                                    </span>
-                                                                </li>
-                                                                <li>
-                                                                    <span>
-                                                                        <i class="feather-calendar"></i> Giờ mở cửa: <span class="primary-text"><?= htmlspecialchars($r['gioMoCua']) ?></span>
-                                                                    </span>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="listing-button">
-                                                            <a href="../../../venue-details.php?maSan=<?= $r['maSan'] ?>" class="user-book-now">
-                                                                <span><i class="feather-calendar me-2"></i></span>Đặt Ngay
-                                                            </a>
-                                                        </div>	
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php else: ?>
-                                <p>Không tìm thấy sân nào phù hợp.</p>
-                            <?php endif; ?>
-                            <?}?>
+								if (!empty($timSan)) { ?>
+									<h2>Kết quả tìm kiếm được là: </h2>
+									<?php 
+										while($r = $timSan->fetch_assoc())
+											{
+												echo '
+												<div class="menu-item" style="width: 350px; height: 350px; margin-bottom: 20px; margin-right: 30px; float: left;">
+													<div class="featured-venues-item aos" data-aos="fade-up">
+														<div class="listing-item mb-0">										
+															<div class="listing-img">
+																<a href="../../../venue-details.php?maSan='.$r['maSan'].'">
+																	<img src="../../img/venues/'.$r['hinhAnh'].'" alt="Venue">
+																</a>
+																<div class="fav-item-venues">
+																	<span class="tag tag-blue">Đang Hoạt Động</span>		
+																	<h5 class="tag tag-primary">'.$r['giaMacDinh'].'<span>/Giờ</span></h5>
+																</div>
+															</div>										
+															<div class="listing-content">
+																<div class="list-reviews">							
+																	<div class="d-flex align-items-center">
+																		<span class="rating-bg">4.2</span><span>300 Reviews</span> 
+																	</div>
+																	<a href="javascript:void(0)" class="fav-icon">
+																		<i class="feather-heart"></i>
+																	</a>
+																</div>	
+																<h3 class="listing-title">
+																	<a href="../../../venue-details.php?maSan='.$r['maSan'].'">'.$r['tenSan'].'</a>
+																</h3>
+																<div class="listing-details-group">
+																	<p>'.$r['moTa'].'</p>
+																	<ul>
+																		<li>
+																			<span>
+																				<i class="feather-map-pin"></i>'.$r['diaChi'].'
+																			</span>
+																		</li>
+																		<li>
+																			<span>
+																				<i class="feather-calendar"></i>Giờ mở cửa: <span class="primary-text">'.$r['gioMoCua'].'</span>
+																			</span>
+																		</li>
+																	</ul>
+																</div>
+																<div class="listing-button">
+																	<div class="listing-venue-owner">											
+																	</div>
+																	<a href="venue-details.php" class="user-book-now"><span><i class="feather-calendar me-2"></i></span>Đặt Ngay</a>
+																</div>	
+															</div>
+														</div>
+													</div>
+													</div>
+												';
+											}
+								} ?>
 						</div>	
 					</div>
 				</div>
 
 				<!-- View More -->
-				<div class="view-all text-center aos" data-aos="fade-up">
+				<!-- <div class="view-all text-center aos" data-aos="fade-up">
 					<a href="listing-grid.php" class="btn btn-secondary d-inline-flex align-items-center">Xem tất cả<span class="lh-1"><i class="feather-arrow-right-circle ms-2"></i></span></a>
-				</div>
+				</div> -->
 				<!-- View More -->
 
 			</div>
@@ -667,6 +662,4 @@ $laytenDN = $a->laycot("select tenDN from doanhnghiep limit 1");
         crossorigin="anonymous"></script>
 
 </body>
-
-<!-- Mirrored from dreamsports.dreamstechnologies.com/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 04:28:07 GMT -->
-</html
+</html>

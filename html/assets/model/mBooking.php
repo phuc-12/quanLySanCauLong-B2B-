@@ -10,7 +10,7 @@
             $conn = $p->moketnoi();
             if($conn)
             {
-                $sql = "SELECT t.start_time, t.end_time, b.ngayTao, b.gia, b.maDat FROM bookings b join time_slots t on b.time_slot_id=t.id WHERE b.maKH = '$maKH' AND b.status = 'booking' ORDER BY maDat asc";
+                $sql = "SELECT t.start_time, t.end_time, b.ngayTao, b.gia, b.maDat, b.soLuong FROM bookings b join time_slots t on b.time_slot_id=t.id WHERE b.maKH = '$maKH' AND b.status = 'booking' ORDER BY maDat asc";
                 $tblBook = $conn->query($sql);
                 $p->dongketnoi($conn);
                 return $tblBook;
@@ -55,6 +55,22 @@
             }
         }
 
+        public function SelectAllBook()
+        {
+            $p = new clsketnoi();
+            $conn = $p->moketnoi();
+            if($conn)
+            {
+                $sql = "SELECT * FROM bookings b join time_slots t on b.time_slot_id=t.id join khachhang s on b.maKH=s.maKH ORDER BY maDat desc";
+                $tblBook = $conn->query($sql);
+                $p->dongketnoi($conn);
+                return $tblBook;
+            }
+            else 
+            {
+                return false;
+            }
+        }
     }
 
 ?>

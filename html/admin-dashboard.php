@@ -81,39 +81,133 @@ $p = new mUser();
 
         <!-- Header -->
         <header class="header header-trans">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg header-nav">
-                    <div class="navbar-header">
-                        <a id="mobile_btn" href="javascript:void(0);">
-                            <span class="bar-icon">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
-                        </a>
-                        <a href="#" class="navbar-brand logo">
-                            <img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
-                        </a>
-                    </div>
-                    <div class="main-menu-wrapper">
-                        <div class="menu-header">
-                            <a href="#" class="menu-logo">
-                                <img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
-                            </a>
-                            <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i
-                                    class="fas fa-times"></i></a>
-                        </div>
-                    
-                    </div>
-                    <ul class="nav header-navbar-rht logged-in">
+			<div class="container-fluid">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="navbar-header">
+						<a id="mobile_btn" href="javascript:void(0);">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+						<a href="index.php" class="navbar-brand logo">
+							<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="index.html" class="menu-logo">
+								<img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
+						</div>
+						<ul class="main-nav">
+							<li class="active"><a href="index.php">Trang Chủ</a></li>
+							<li class="has-submenu">
+								<a href="#">Sân Cầu Lông <i class="fas fa-chevron-down"></i></a>
+								<ul class="submenu">
+									<li class="has-submenu">
+										<a href="#">Coaches Map</a>
+										<ul class="submenu inner-submenu">
+											<li><a href="coaches-map.html">Coaches Map</a></li>
+											<li><a href="coaches-map-sidebar.html">Coaches Map Sidebar</a></li>
+										</ul>
+									</li>
+									<li><a href="coaches-grid.html">Coaches Grid</a></li>
+									<li><a href="coaches-list.html">Coaches List</a></li>
+									<li><a href="coaches-grid-sidebar.html">Coaches Grid Sidebar</a></li>
+									<li><a href="coaches-list-sidebar.html">Coaches List Sidebar</a></li>
+									<li class="has-submenu">
+										<a href="javascript:void(0);">Booking</a>
+										<ul class="submenu">
+											<li><a href="cage-details.html">Book a Court</a></li>
+											<li><a href="coach-details.html">Book a Coach</a></li>
+										</ul>
+									</li>
+									<li><a href="coach-detail.html">Coach Details</a></li>
+									<li class="has-submenu">
+										<a href="#">Venue</a>
+										<ul class="submenu inner-submenu">
+											<li><a href="listing-list.html">Venue List</a></li>
+											<li><a href="venue-details.html">Venue Details</a></li>
+										</ul>
+									</li>
+									<li><a href="coach-dashboard.html">Coach Dashboard</a></li>
+									<li><a href="all-court.html">Coach Courts</a></li>
+									<li><a href="add-court.html">List Your Court</a></li>
+									<li><a href="coach-chat.html">Chat</a></li>
+									<li><a href="coach-earning.html">Earnings</a></li>
+									<li><a href="coach-wallet.html">Wallet</a></li>
+									<li><a href="coach-profile.html">Profile Settings</a></li>
+									<li><a href="invoice.html">Invoice</a></li>
+								</ul>
+								
+							</li>
+							<li class="has-submenu">
+								<a href="#">Người Dùng <i class="fas fa-chevron-down"></i></a>
+								<ul class="submenu">
+									<li><a href="user-dashboard.html">User Dashboard</a></li>
+									<li><a href="user-bookings.html">Bookings</a></li>
+									<li><a href="user-chat.html">Chat</a></li>
+									<li><a href="user-invoice.html">Invoice</a></li>
+									<li><a href="user-wallet.html">Wallet</a></li>
+									<li><a href="user-profile.php">Profile Edit</a></li>
+									<li><a href="user-setting-password.html">Change Password</a></li>
+									<li><a href="user-profile-othersetting.html">Other Settings</a></li>
+								</ul>
+								
+							</li>
+							<li class="has-submenu">
+								<a href="#">Diễn Đàn <i class="fas fa-chevron-down"></i></a>
+								<ul class="submenu">
+								    <li><a href="blog-list.html">Blog List</a></li>
+								    <li class="has-submenu">
+										<a href="javascript:void(0);">Blog List Sidebar</a>
+										<ul class="submenu">
+											<li><a href="blog-list-sidebar-left.html">Blog List Sidebar Left</a></li>
+											<li><a href="blog-list-sidebar-right.html">Blog List Sidebar Right</a></li>
+										</ul>
+									</li>
+									<li><a href="blog-grid.html">Blog Grid</a></li>
+									<li class="has-submenu">
+										<a href="javascript:void(0);">Blog Grid Sidebar</a>
+										<ul class="submenu">
+											<li><a href="blog-grid-sidebar-left.html">Blog Grid Sidebar Left</a></li>
+											<li><a href="blog-grid-sidebar-right.html">Blog Grid Sidebar Right</a></li>
+										</ul>
+									</li>
+									<li><a href="blog-details.html">Blog Details</a></li>
+									<li class="has-submenu">
+										<a href="javascript:void(0);">Blog Details Sidebar</a>
+										<ul class="submenu">
+											<li><a href="blog-details-sidebar-left.html">Blog Detail Sidebar Left</a></li>
+											<li><a href="blog-details-sidebar-right.html">Blog Detail Sidebar Right</a></li>
+										</ul>
+									</li>
+									<li><a href="blog-carousel.html">Blog Carousel</a></li>
+								</ul>
+							</li>
+							<li><a href="contact-us.html">Liên Hệ</a></li>
+							<li class="login-link">
+								<a href="register.php">Sign Up</a>
+							</li>
+							<li class="login-link">
+								<a href="login.html">Sign In</a>
+							</li>
+						</ul>
+					</div>
+					<ul class="nav header-navbar-rht logged-in">
+						
+								<!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
-                        <!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
-
-                        <?php
-									if(isset($_REQUEST['id']))
+								<?php
+									if(isset($_REQUEST['id']) && $_REQUEST['id'] != "")
 									{
 										echo '
-							
+											<li class="nav-item">
+												<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+											</li>
 											<li class="nav-item dropdown has-arrow logged-item">
 												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
 													<span class="user-img">
@@ -126,14 +220,14 @@ $p = new mUser();
 															<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
 														</div>
 														<div class="user-text">
-															<h6>Admin</h6>
+															<h6>'.$laytenND.'</h6>
+															<a href="user-profile.php?id='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
 														</div>
 													</div>
-													
+													<p><a class="dropdown-item"  href="coach-profile.php">Settings</a></p>
 													<p><a class="dropdown-item"  href="login.php">Logout</a></p>
 												</div>
-											</li>		
-											
+											</li>
 										';
 									}
 									else 
@@ -144,16 +238,15 @@ $p = new mUser();
 												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
 										</div>
 										</li>
-										<li class="nav-item">
-										<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
-										</li>
 										';
 									}
-						?>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+								?>
+							
+						
+					</ul>
+				</nav>
+			</div>
+		</header>
         <!-- /Header -->
 
         <!-- Breadcrumb -->

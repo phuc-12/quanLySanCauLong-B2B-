@@ -21,6 +21,23 @@
             }
         }
 
+        public function SelectAllHDBymaSan($maSan)
+        {
+            $p = new clsketnoi();
+            $conn = $p->moketnoi();
+            if($conn)
+            {
+                $sql = "SELECT * FROM hopdong h join khachhang k on h.maKH = k.maKH WHERE maSan = '$maSan' ORDER BY maHopDong desc";
+                $tblSCL = $conn->query($sql);
+                $p->dongketnoi($conn);
+                return $tblSCL;
+            }
+            else 
+            {
+                return false;
+            }
+        }
+
         public function SelectAllHD($maKH)
         {
             $p = new clsketnoi();

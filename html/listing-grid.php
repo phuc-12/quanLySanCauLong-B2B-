@@ -61,12 +61,17 @@
 			<img src="assets/img/loader.png" class="img-fluid" alt="Global">
 		</div>
 	</div>
-
+<?php
+	include_once("assets/model/mUser.php");
+	$p = new mUser();
+	$maKH = $_REQUEST['maKH'];
+	$layidnguoidung = $p->laycot("SELECT idnguoidung FROM khachhang WHERE maKH = '$maKH' LIMIT 1");
+?>
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">
 
 		<!-- Header -->
-		<header class="header header-sticky">
+		<header class="header header-trans">
 			<div class="container-fluid">
 				<nav class="navbar navbar-expand-lg header-nav">
 					<div class="navbar-header">
@@ -77,8 +82,8 @@
 								<span></span>
 							</span>
 						</a>
-						<a href="index.php" class="navbar-brand logo">
-							<img src="assets/img/logo-black.svg" class="img-fluid" alt="Logo">
+						<a href="index.php?id=<?php echo $layidnguoidung; ?>" class="navbar-brand logo">
+							<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
 						</a>
 					</div>
 					<div class="main-menu-wrapper">
@@ -89,7 +94,7 @@
 							<a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
 						</div>
 						<ul class="main-nav">
-							<li class="active"><a href="index.php">Trang Chủ</a></li>
+							<li class="active"><a href="index.php?id=<?php echo $layidnguoidung; ?>">Trang Chủ</a></li>
 							<li class="has-submenu">
 								<a href="#">Sân Cầu Lông <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
@@ -138,51 +143,12 @@
 									<li><a href="user-chat.html">Chat</a></li>
 									<li><a href="user-invoice.html">Invoice</a></li>
 									<li><a href="user-wallet.html">Wallet</a></li>
-									<li><a href="user-profile.html">Profile Edit</a></li>
+									<li><a href="user-profile.php">Profile Edit</a></li>
 									<li><a href="user-setting-password.html">Change Password</a></li>
 									<li><a href="user-profile-othersetting.html">Other Settings</a></li>
 								</ul>
 								
 							</li>
-							<!-- <li class="has-submenu">
-								<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-								    <li><a href="about-us.html">About Us</a></li>
-								    <li><a href="services.html">Services</a></li>
-								    <li><a href="events.html">Events</a></li>
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Authentication</a>
-										<ul class="submenu">
-											<li><a href="register.html">Signup</a></li>
-											<li><a href="login.html">Signin</a></li>
-											<li><a href="forgot-password.html">Forgot Password</a></li>
-											<li><a href="change-password.html">Reset Password</a></li>
-										</ul>
-									</li>
-									
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Error Page</a>
-										<ul class="submenu">
-											<li><a href="error-404.html">404 Error</a></li>
-										</ul>
-									</li>
-									<li><a href="pricing.html">Pricing</a></li>
-									<li><a href="faq.html">FAQ</a></li>
-									<li><a href="gallery.html">Gallery</a></li>
-									<li><a href="invoice.html">Invoice</a></li>
-									<li class="has-submenu">
-										<a href="javascript:void(0);">Testimonials</a>
-										<ul class="submenu">
-											<li><a href="testimonials.html">Testimonials</a></li>
-											<li><a href="testimonials-carousel.html">Testimonials Carousel</a></li>
-										</ul>
-									</li>
-									<li><a href="terms-condition.html">Terms & Conditions</a></li>
-									<li><a href="privacy-policy.html">Privacy Policy</a></li>			
-									<li><a href="maintenance.html">Maintenance</a></li>
-									<li><a href="coming-soon.html">Coming Soon</a></li>
-								</ul>
-							</li> -->
 							<li class="has-submenu">
 								<a href="#">Diễn Đàn <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
@@ -218,19 +184,56 @@
 								<a href="register.php">Sign Up</a>
 							</li>
 							<li class="login-link">
-								<a href="login.php">Sign In</a>
+								<a href="login.html">Sign In</a>
 							</li>
 						</ul>
 					</div>
-					<ul class="nav header-navbar-rht">
-						<li class="nav-item">
-							<div class="nav-link btn btn-primary log-register">
-								<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
-						</li>
+					<ul class="nav header-navbar-rht logged-in">
+						
+								<!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
+
+								<?php
+									if(isset($_REQUEST['id']) && $_REQUEST['id'] != "")
+									{
+										echo '
+											<li class="nav-item">
+												<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+											</li>
+											<li class="nav-item dropdown has-arrow logged-item">
+												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+													<span class="user-img">
+														<img class="rounded-circle" src="assets/img/profiles/avatar-05.jpg" width="31" alt="Darren Elder">
+													</span>
+												</a>
+												<div class="dropdown-menu dropdown-menu-end">
+													<div class="user-header">
+														<div class="avatar avatar-sm">
+															<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
+														</div>
+														<div class="user-text">
+															<h6>'.$laytenND.'</h6>
+															<a href="user-profile.php?id='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
+														</div>
+													</div>
+													<p><a class="dropdown-item"  href="coach-profile.php">Settings</a></p>
+													<p><a class="dropdown-item"  href="login.php">Logout</a></p>
+												</div>
+											</li>
+										';
+									}
+									else 
+									{
+										echo '
+										<li class="nav-item">
+											<div class="nav-link btn btn-white log-register">	
+												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
+										</div>
+										</li>
+										';
+									}
+								?>
+							
+						
 					</ul>
 				</nav>
 			</div>

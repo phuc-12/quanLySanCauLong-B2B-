@@ -108,7 +108,7 @@ $laytenDN = $p->laycot("select tenDN from doanhnghiep limit 1");
 								<span></span>
 							</span>
 						</a>
-						<a href="index.php" class="navbar-brand logo">
+						<a href="index.php?id=<?php echo $layid; ?>" class="navbar-brand logo">
 							<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
 						</a>
 					</div>
@@ -120,7 +120,7 @@ $laytenDN = $p->laycot("select tenDN from doanhnghiep limit 1");
 							<a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
 						</div>
 						<ul class="main-nav">
-							<li class="active"><a href="index.php">Trang Chủ</a></li>
+							<li class="active"><a href="index.php?id=<?php echo $layid; ?>">Trang Chủ</a></li>
 							<li class="has-submenu">
 								<a href="#">Sân Cầu Lông <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
@@ -219,7 +219,7 @@ $laytenDN = $p->laycot("select tenDN from doanhnghiep limit 1");
 								<!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
 								<?php
-									if(isset($_REQUEST['id']))
+									if(isset($_REQUEST['id']) && $_REQUEST['id'] != "")
 									{
 										echo '
 											<li class="nav-item">
@@ -292,11 +292,15 @@ $laytenDN = $p->laycot("select tenDN from doanhnghiep limit 1");
 								<h1>Chọn <span>Sân Cầu Lông Tốt</span> Và Bắt Đầu Hành Trình Rèn Luyện</h1>
 								<p class="sub-info">Giải phóng tiềm năng thể thao của bạn với cơ sở vật chất hiện đại và dịch vụ chuẩn thi đấu.</p>
 								<div class="search-box">
-									<form action="assets/view/khachhang/timKiemSan.php?action=timkiem" method="GET"> 
+									<!-- <form action="assets/view/khachhang/timKiemSan.php?action=timkiem" method="GET"> 
 										<div class="search-input line">
 											<input type="text" name="keyword" placeholder="Nhập tên sân">
 											<button type="submit" id="btn" name="btn">Tìm kiếm</button>
 										</div>
+									</form> -->
+									<form action="assets/view/khachhang/timKiemSan.php" method="GET">
+										<input type="search" name="keyword" placeholder="Bạn cần tìm gì" autocomplete="off" required style="width: 90%; border-radius: 10px; margin-right: 10px; border: solid 1px black;">
+										<input type="submit" class="btn btn-gradient pull-right write-review add-review" name="btn" id="btn" value="Search">
 									</form>
 								</div>
 							</div>

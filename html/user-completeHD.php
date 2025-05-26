@@ -76,7 +76,12 @@
 			<img src="assets/img/loader.png" class="img-fluid" alt="Global">
 		</div>
 	</div>
-
+<?php
+	include_once("assets/model/mUser.php");
+	$p = new mUser();
+	$maKH = $_REQUEST['maKH'];
+	$layidnguoidung = $p->laycot("SELECT idnguoidung FROM khachhang WHERE maKH = '$maKH' LIMIT 1");
+?>
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">
 
@@ -92,7 +97,7 @@
 								<span></span>
 							</span>
 						</a>
-						<a href="index.php" class="navbar-brand logo">
+						<a href="index.php?id=<?php echo $layidnguoidung; ?>" class="navbar-brand logo">
 							<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
 						</a>
 					</div>
@@ -104,7 +109,7 @@
 							<a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
 						</div>
 						<ul class="main-nav">
-							<li class="active"><a href="index.php">Trang Chủ</a></li>
+							<li class="active"><a href="index.php?id=<?php echo $layidnguoidung; ?>">Trang Chủ</a></li>
 							<li class="has-submenu">
 								<a href="#">Sân Cầu Lông <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
@@ -203,10 +208,12 @@
 								<!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
 								<?php
-									if(isset($_REQUEST['maKH']))
+									if(isset($_REQUEST['id']) && $_REQUEST['id'] != "")
 									{
 										echo '
-							
+											<li class="nav-item">
+												<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+											</li>
 											<li class="nav-item dropdown has-arrow logged-item">
 												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
 													<span class="user-img">
@@ -219,15 +226,14 @@
 															<img src="assets/img/profiles/avatar-05.jpg" alt="User" class="avatar-img rounded-circle">
 														</div>
 														<div class="user-text">
-															<h6>'.$layten.'</h6>
+															<h6>'.$laytenND.'</h6>
 															<a href="user-profile.php?id='.$layid.'" style="color:black;" class="text-profile mb-0">Go to Profile</a>
 														</div>
 													</div>
 													<p><a class="dropdown-item"  href="coach-profile.php">Settings</a></p>
 													<p><a class="dropdown-item"  href="login.php">Logout</a></p>
 												</div>
-											</li>		
-											
+											</li>
 										';
 									}
 									else 
@@ -237,9 +243,6 @@
 											<div class="nav-link btn btn-white log-register">	
 												<a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a>
 										</div>
-										</li>
-										<li class="nav-item">
-										<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
 										</li>
 										';
 									}
