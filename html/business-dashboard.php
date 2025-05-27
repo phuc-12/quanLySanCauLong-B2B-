@@ -423,24 +423,24 @@ $idnguoidung = $_SESSION['idnguoidung'];
                                     </a>
                                 </li>
                                 
-                                <!-- <li>
+                                <li>
                                     <a href="assets/view/doanhnghiep/view_dangKyHoatDong.php?id=<?php echo $layid ?>">
                                         <i class="fa fa-address-card-o" style="font-size: 29px;"></i>
                                         <br><span>ĐĂNG KÝ SÂN</span>
                                     </a>
-                                </li> -->
+                                </li>
                                 <li>
                                     <a href="assets/view/doanhnghiep/view_hopdong.php?id=<?php echo $layid ?>">
                                         <i class="fa-regular fa-handshake" style="font-size: 29px;"></i>
                                         <span>HỢP ĐỒNG THUÊ</span>
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="assets/view/admin/customer.php?id=<?php echo $layid ?>">
                                         <i class="fa-regular fa-money-bill-1" style="font-size: 29px;"></i>
                                         <br><span>HÓA ĐƠN</span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <!-- <li>
                                     <a href="assets/view/admin/business.php?id=<?php echo $layid ?>">
                                         <i class="fa-regular fa-map" style="font-size: 29px;"></i>

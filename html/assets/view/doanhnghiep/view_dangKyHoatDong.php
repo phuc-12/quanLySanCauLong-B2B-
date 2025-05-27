@@ -195,12 +195,12 @@ $layTenChuSan = $p->laycot("SELECT tenChuSan FROM yeucauhoatdong WHERE maYeuCau 
                                         <span>TỔNG QUAN</span>
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="../admin/requirement.php?id=<?php echo $layid ?>">
                                         <img src="../../img/icons/booking-icon.svg" alt="Icon">
                                         <span>YÊU CẦU THUÊ</span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="view_dangKyHoatDong.php?id=<?php echo $layid ?>"class="active">
                                         <i class="fa fa-address-card-o" style="font-size: 29px;"></i>
@@ -213,18 +213,18 @@ $layTenChuSan = $p->laycot("SELECT tenChuSan FROM yeucauhoatdong WHERE maYeuCau 
                                         <span>HỢP ĐỒNG THUÊ</span>
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="assets/view/admin/customer.php?id=<?php echo $layid ?>">
                                         <i class="fa-regular fa-money-bill-1" style="font-size: 29px;"></i>
                                         <br><span>HÓA ĐƠN</span>
                                     </a>
-                                </li>
-                                <li>
+                                </li> -->
+                                <!-- <li>
                                     <a href="assets/view/admin/business.php?id=<?php echo $layid ?>">
                                         <i class="fa-regular fa-map" style="font-size: 29px;"></i>
                                         <span>SÂN</span>
                                     </a>
-                                </li>
+                                </li> -->
 
                             </ul>
                         </div>

@@ -180,36 +180,36 @@ $_SESSION['id']
                         <div class="dashboard-menu">
                             <ul>
                                 <li>
-                                    <a href="business-dashboard.php?id=<?php echo $layid ?>" class="active">
+                                    <a href="../../../business-dashboard.php?id=<?php echo $layid ?>" >
                                         <img src="../../img/icons/dashboard-icon.svg" alt="Icon">
                                         <span>TỔNG QUAN</span>
                                     </a>
                                 </li>
                                 
                                 <li>
-                                    <a href="assets/view/doanhnghiep/view_dangKyHoatDong.php?id=<?php echo $layid ?>">
+                                    <a href="view_dangKyHoatDong.php?id=<?php echo $layid ?>">
                                         <i class="fa fa-address-card-o" style="font-size: 29px;"></i>
                                         <br><span>ĐĂNG KÝ SÂN</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="assets/view/admin/business.php?id=<?php echo $layid ?>">
+                                    <a href="assets/view/admin/business.php?id=<?php echo $layid ?>" class="active">
                                         <i class="fa-regular fa-handshake" style="font-size: 29px;"></i>
                                         <span>HỢP ĐỒNG THUÊ</span>
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="assets/view/admin/customer.php?id=<?php echo $layid ?>">
                                         <i class="fa-regular fa-money-bill-1" style="font-size: 29px;"></i>
                                         <br><span>HÓA ĐƠN</span>
                                     </a>
-                                </li>
-                                <li>
+                                </li> -->
+                                <!-- <li>
                                     <a href="assets/view/admin/business.php?id=<?php echo $layid ?>">
                                         <i class="fa-regular fa-map" style="font-size: 29px;"></i>
                                         <span>SÂN</span>
                                     </a>
-                                </li>
+                                </li> -->
 
                             </ul>
                         </div>
