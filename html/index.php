@@ -223,7 +223,7 @@ $laytenDN = $p->laycot("select tenDN from doanhnghiep limit 1");
 									{
 										echo '
 											<li class="nav-item">
-												<a class="nav-link btn btn-secondary" href="add-court.php"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
+												<a class="nav-link btn btn-secondary" href="user-complete.php?maKH='.$laymaKH.'"><span><i class="feather-check-circle"></i></span>Sân Của Bạn</a>
 											</li>
 											<li class="nav-item dropdown has-arrow logged-item">
 												<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
