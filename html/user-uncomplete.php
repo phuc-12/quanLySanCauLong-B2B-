@@ -208,7 +208,7 @@
 								<!-- <a href="login.php"><span><i class="feather-users"></i></span>Đăng Nhập</a> / <a href="register.php">Đăng Ký</a> -->
 
 								<?php
-									if(isset($_REQUEST['id']) && $_REQUEST['id'] != "")
+									if(isset($_REQUEST['maKH']))
 									{
 										echo '
 											<li class="nav-item">
