@@ -122,10 +122,10 @@ session_start();
 													</div>
 													<div class="form-group d-sm-flex align-items-center justify-content-between">
 														<div class="form-check form-switch d-flex align-items-center justify-content-start">
-														  	<input class="form-check-input" type="checkbox" id="user-pass">
-														  	<label class="form-check-label" for="user-pass">Nhớ mặt khẩu</label>
+														  	<!-- <input class="form-check-input" type="checkbox" id="user-pass"> -->
+														  	<!-- <label class="form-check-label" for="user-pass">Nhớ mặt khẩu</label> -->
 														</div>																	
-														<span><a href="forgot-password.html" class="forgot-pass">Quên mật khẩu?</a></span>
+														<!-- <span><a href="forgot-password.html" class="forgot-pass">Quên mật khẩu?</a></span> -->
 													</div>
 													<!-- <button class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap" id="btn-dangnhap">Đăng nhập<i class="feather-arrow-right-circle ms-2"></i></button> -->
 													<input class="btn btn-secondary register-btn d-inline-flex justify-content-center align-items-center w-100 btn-block" type="submit" name="btn-dangnhap" id="btn-dangnhap" value="Đăng nhập"></input>
