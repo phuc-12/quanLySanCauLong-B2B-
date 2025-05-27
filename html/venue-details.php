@@ -379,22 +379,12 @@ $idnguoidung = $_SESSION['idnguoidung'];
 			$laygiamacdinh=$p->SelectCot("SELECT giaMacDinh FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laygiagiovang=$p->SelectCot("SELECT giaGioVang FROM thongtinsan WHERE maSan = $laymasan LIMIT 1");
 			$laymakh=$p->SelectCot("SELECT maKH FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
-			if(isset($_SESSION['maKH']))
-			{
+			
 				$_SESSION['maKH'] = $laymakh;
 				$laytenkh=$p->SelectCot("SELECT tenKH FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
 				$layemail=$p->SelectCot("SELECT email FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
 				$laysodienthoai=$p->SelectCot("SELECT soDienThoai FROM khachhang WHERE idnguoidung = $idnguoidung LIMIT 1");
-			}
-			else 
-			{
-				echo '
-					<script>
-						alert("Vui lòng đăng nhập");
-						window.location="login.php";
-					</script>
-				';
-			}
+			
 			
 		?>
 
